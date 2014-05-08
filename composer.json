@@ -1,0 +1,28 @@
+{
+    "name":        "netcommons/frames",
+    "description": "Frames Plugin for CakePHP",
+    "type":        "cakephp-plugin",
+    "keywords":    ["cakephp", "frames"],
+    "homepage":    "http://www.netcommons.org/",
+    "license":     "NetCommons License",
+    "authors": [
+        {
+            "name":     "NetCommons Community",
+            "homepage": "https://github.com/NetCommons3/Frames/graphs/contributors"
+        }
+    ],
+    "require": {
+        "cakephp/cakephp":        "~2.4",
+        "cakephp/debug_kit":      "~2.2",
+        "cakedc/migrations":      "~2.2",
+        "twbs/bootstrap":         "~3.1",
+        "components/jquery":      "~2.1"
+    },
+    "require-dev": {
+        "netcommons/boxes":       "dev-master",
+        "satooshi/php-coveralls": "dev-master"
+    },
+    "config": {
+        "vendor-dir": "vendors"
+    }
+}

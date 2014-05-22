@@ -26,28 +26,6 @@ class Frame extends FramesAppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
- * hasOne associations
- *
- * @var array
- */
-	public $hasOne = array(
-		'Plugin' => array(
-			'className' => 'Plugin',
-			'foreignKey' => 'id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Block' => array(
-			'className' => 'Block',
-			'foreignKey' => 'id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
-	);
-
-/**
  * belongsTo associations
  *
  * @var array
@@ -63,6 +41,20 @@ class Frame extends FramesAppModel {
 		'ParentFrame' => array(
 			'className' => 'Frame',
 			'foreignKey' => 'parent_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Plugin' => array(
+			'className' => 'Plugin',
+			'foreignKey' => 'plugin_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Block' => array(
+			'className' => 'Block',
+			'foreignKey' => 'block_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

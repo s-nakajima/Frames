@@ -18,7 +18,7 @@
 				<?php echo $this->element('edit_block_link'); ?>
 			</div>
 			<div class="panel-body">
-				<?php echo $this->requestAction($frame['Plugin']['folder']. DS . $frame['Plugin']['folder']. DS . 'index' . DS . $frame['Frame']['id'], array('return')); ?>
+				<?php echo $this->requestAction($frame['Plugin']['folder'] . DS . $frame['Plugin']['folder'] . DS . 'index' . DS . $frame['Frame']['id'], array('return')); ?>
 			</div>
 		</div>
 	</div>

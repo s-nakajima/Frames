@@ -23,6 +23,7 @@ class FramesController extends FramesAppController {
  * @return void
  */
 	public function index($id = null) {
+		$this->Frame->hasAndBelongsToMany['Language']['conditions'] = array('Language.code' => 'jpn');
 		$frames = $this->Frame->findById($id);
 		if (empty($frames)) {
 			throw new NotFoundException();
@@ -32,80 +33,42 @@ class FramesController extends FramesAppController {
 	}
 
 /**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		if (!$this->Frame->exists($id)) {
-			throw new NotFoundException(__('Invalid frame'));
-		}
-		$options = array('conditions' => array('Frame.' . $this->Frame->primaryKey => $id));
-		$this->set('frame', $this->Frame->find('first', $options));
-	}
-
-/**
  * add method
  *
  * @return void
  */
 	public function add() {
-		if ($this->request->is('post')) {
-			$this->Frame->create();
-			if ($this->Frame->save($this->request->data)) {
-				return $this->flash(__('The frame has been saved.'), array('action' => 'index'));
-			}
+		if (!$this->request->is('post')) {
+			return;
 		}
-		$boxes = $this->Frame->Box->find('list');
-		$parentFrames = $this->Frame->ParentFrame->find('list');
-		$languages = $this->Frame->Language->find('list');
-		$this->set(compact('boxes', 'parentFrames', 'languages'));
-	}
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->Frame->exists($id)) {
-			throw new NotFoundException(__('Invalid frame'));
-		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Frame->save($this->request->data)) {
-				return $this->flash(__('The frame has been saved.'), array('action' => 'index'));
-			}
-		} else {
-			$options = array('conditions' => array('Frame.' . $this->Frame->primaryKey => $id));
-			$this->request->data = $this->Frame->find('first', $options);
-		}
-		$boxes = $this->Frame->Box->find('list');
-		$parentFrames = $this->Frame->ParentFrame->find('list');
-		$languages = $this->Frame->Language->find('list');
-		$this->set(compact('boxes', 'parentFrames', 'languages'));
-	}
+		$this->Frame->create();
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->Frame->id = $id;
-		if (!$this->Frame->exists()) {
-			throw new NotFoundException(__('Invalid frame'));
+		$data['Frame'] = $this->request->data;
+		// テスト用データ
+		$data['Language'] = array(
+			array(
+				'id' => 1,
+				'FramesLanguage' => array(
+					'language_id' => 1,
+					'name' => 'Test' . date('Y/m/d H:i:s'),
+				),
+			),
+			array(
+				'id' => 2,
+				'FramesLanguage' => array(
+					'language_id' => 2,
+					'name' => 'テスト' . date('Y/m/d H:i:s'),
+				),
+			),
+		);
+
+		if (!$this->Frame->save($data)) {
+			//エラー処理
+			return $this->render();
 		}
-		$this->request->onlyAllow('post', 'delete');
-		if ($this->Frame->delete()) {
-			return $this->flash(__('The frame has been deleted.'), array('action' => 'index'));
-		} else {
-			return $this->flash(__('The frame could not be deleted. Please, try again.'), array('action' => 'index'));
-		}
+
+		$this->autoRender = false;
+		$this->redirect('/setting/');
 	}
 }

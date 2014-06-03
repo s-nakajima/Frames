@@ -94,7 +94,7 @@ class Frame extends FramesAppModel {
 			'foreignKey' => 'frame_id',
 			'associationForeignKey' => 'language_id',
 			'unique' => 'keepExisting',
-			'conditions' => array('Language.code' => 'jpn'),
+			'conditions' => '',
 			'fields' => '',
 			'order' => '',
 			'limit' => '',

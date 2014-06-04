@@ -18,7 +18,11 @@
 				<?php echo $this->element('edit_block_link'); ?>
 			</div>
 			<div class="panel-body">
+				<?php if (!isset($frame['Block']['id'])): ?>
+				<?php echo $this->requestAction($frame['Plugin']['folder'] . DS . $frame['Plugin']['folder'] . DS . 'edit' . DS . $frame['Frame']['id'], array('return')); ?>
+				<?php else: ?>
 				<?php echo $this->requestAction($frame['Plugin']['folder'] . DS . $frame['Plugin']['folder'] . DS . 'index' . DS . $frame['Frame']['id'], array('return')); ?>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>

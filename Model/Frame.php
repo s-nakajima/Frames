@@ -103,4 +103,35 @@ class Frame extends FramesAppModel {
 		)
 	);
 
+/**
+ * findBlockIdByFrameId
+ *
+ * @param   integer $frameId
+ * @return  mixed $blockId or false
+ */
+	public function findBlockIdByFrameId($frameId) {
+		$frame = $this->find('first', array(
+			'fields' => array('Frame.id', 'Block.id'),
+			'recursive' => -1,
+			'conditions' => array('Frame.id' => $frameId),
+			'joins' => array(
+				array(
+					"type" => "LEFT",
+					"table" => "blocks",
+					"alias" => "Block",
+					"conditions" => array(
+						'Frame.block_id = Block.id'
+					)
+				)
+			),
+		));
+		if (!isset($frame['Frame']['id'])) {
+			return false;
+		}
+		if (!isset($frame['Block']['id'])) {
+			return 0;	// BlockIDが設定されていない。
+		}
+		return $frame['Block']['id'];
+	}
+
 }

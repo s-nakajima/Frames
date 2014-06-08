@@ -1,4 +1,5 @@
 <?php
+if (Configure::read('Pages.isSetting')) {
  $url = '/'.$frame['Plugin']['folder'].'/'
 	.$frame['Plugin']['folder'].'/'
 	.'block_setting'.'/'
@@ -14,7 +15,7 @@
 </button>
 
 	<!-- 設定枠 -->
-	<div class="modal fade" id="frame-setting-show_<?php echo intval($frame['Frame']['id']); ?>">
+	<div class="modal fade modal-" id="frame-setting-show_<?php echo intval($frame['Frame']['id']); ?>">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -30,3 +31,4 @@
 </div>
 
 <div style="clear:both"></div>
+<?php } ?>

@@ -12,7 +12,10 @@ $ActionView = $this->requestAction($frame['Plugin']['folder'] . DS . $frame['Plu
 if($ActionView || Configure::read('Pages.isSetting')) {
 ?>
 
-<div class="frame frame-id-<?php echo $frame['Frame']['id']; ?>">
+<div
+	class="frame frame-id-<?php echo $frame['Frame']['id']; ?>"
+    id="frame-wrap-<?php echo $frame['Frame']['id']; ?>"
+>
 	<div class="block block-id-<?php echo $frame['Frame']['block_id']; ?>">
 		<div class="panel panel-default">
 

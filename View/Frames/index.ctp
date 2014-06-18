@@ -9,12 +9,12 @@
  * @license http://www.netcommons.org/license.txt NetCommons License
  */
 
-
+$ActionView = '';
 if (!empty($frames['Plugin']['folder'])) {
 	$ActionView = $this->requestAction($frame['Plugin']['folder'] . DS . $frame['Plugin']['folder'] . DS . 'index' . DS . $frame['Frame']['id'], array('return'));
 }
 
-if(!empty($ActionView) || Configure::read('Pages.isSetting')) {
+if (strlen($ActionView) != 0 || Configure::read('Pages.isSetting')) {
 ?>
 
 <div

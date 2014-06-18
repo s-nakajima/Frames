@@ -28,8 +28,8 @@ class FramesControllerTest extends ControllerTestCase {
 		'plugin.frames.box',
 		'plugin.frames.plugin',
 		'plugin.frames.block',
-		'plugin.boxes.language',
-		'plugin.boxes.frames_language'
+		'plugin.frames.language',
+		'plugin.frames.frames_language'
 	);
 
 /**
@@ -53,7 +53,18 @@ class FramesControllerTest extends ControllerTestCase {
 	}
 
 /**
- * testIndexNotFound method
+ * testIndexSettingMode method
+ *
+ * @return void
+ */
+	public function testIndexSettingMode() {
+		Configure::write('Pages.isSetting', true);
+		$this->testAction('/frames/frames/index/1', array('return' => 'view'));
+		$this->assertTextContains('<div class="block block-id-', $this->view);
+	}
+
+/**
+ * testAdd method
  *
  * @return void
  */
@@ -63,7 +74,7 @@ class FramesControllerTest extends ControllerTestCase {
 	}
 
 /**
- * testIndexNotFound method
+ * testAddGetMethod method
  *
  * @return void
  */

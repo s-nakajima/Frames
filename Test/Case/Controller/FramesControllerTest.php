@@ -69,8 +69,14 @@ class FramesControllerTest extends ControllerTestCase {
  * @return void
  */
 	public function testAdd() {
-		$this->testAction('/frames/frames/add', array('return' => 'view'));
-		$this->assertEmpty($this->view);
+		$options = array(
+			'data' => array(
+				'box_id' => '1',
+				'plugin_id' => '1'
+			)
+		);
+		$this->testAction('/frames/frames/add', $options);
+		$this->assertEmpty($this->result);
 	}
 
 /**

@@ -18,8 +18,8 @@ class FramesController extends FramesAppController {
 /**
  * index method
  *
- * @throws NotFoundException
  * @param string $id frameId
+ * @throws NotFoundException
  * @return void
  */
 	public function index($id = null) {

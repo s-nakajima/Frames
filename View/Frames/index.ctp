@@ -8,13 +8,18 @@
  * @link http://www.netcommons.org NetCommons Project
  * @license http://www.netcommons.org/license.txt NetCommons License
  */
-$ActionView = $this->requestAction($frame['Plugin']['folder'] . DS . $frame['Plugin']['folder'] . DS . 'index' . DS . $frame['Frame']['id'], array('return'));
-if($ActionView || Configure::read('Pages.isSetting')) {
+
+
+if (!empty($frames['Plugin']['folder'])) {
+	$ActionView = $this->requestAction($frame['Plugin']['folder'] . DS . $frame['Plugin']['folder'] . DS . 'index' . DS . $frame['Frame']['id'], array('return'));
+}
+
+if(!empty($ActionView) || Configure::read('Pages.isSetting')) {
 ?>
 
 <div
 	class="frame frame-id-<?php echo $frame['Frame']['id']; ?>"
-    id="frame-wrap-<?php echo $frame['Frame']['id']; ?>"
+	id="frame-wrap-<?php echo $frame['Frame']['id']; ?>"
 >
 	<div class="block block-id-<?php echo $frame['Frame']['block_id']; ?>">
 		<div class="panel panel-default">

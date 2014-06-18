@@ -24,7 +24,12 @@ class FramesControllerTest extends ControllerTestCase {
 	public $fixtures = array(
 		'plugin.frames.frame',
 		'plugin.frames.site_setting',
-		'plugin.frames.site_setting_value'
+		'plugin.frames.site_setting_value',
+		'plugin.frames.box',
+		'plugin.frames.plugin',
+		'plugin.frames.block',
+		'plugin.boxes.language',
+		'plugin.boxes.frames_language'
 	);
 
 /**
@@ -33,38 +38,42 @@ class FramesControllerTest extends ControllerTestCase {
  * @return void
  */
 	public function testIndex() {
+		$this->testAction('/frames/frames/index/1', array('return' => 'view'));
+		$this->assertEmpty($this->view);
 	}
 
 /**
- * testView method
+ * testIndexNotFound method
  *
  * @return void
  */
-	public function testView() {
+	public function testIndexNotFound() {
+		$this->setExpectedException('NotFoundException');
+		$this->testAction('/frames/frames/index');
 	}
 
 /**
- * testAdd method
+ * testIndexNotFound method
  *
  * @return void
  */
 	public function testAdd() {
+		$this->testAction('/frames/frames/add', array('return' => 'view'));
+		$this->assertEmpty($this->view);
 	}
 
 /**
- * testEdit method
+ * testIndexNotFound method
  *
  * @return void
  */
-	public function testEdit() {
-	}
-
-/**
- * testDelete method
- *
- * @return void
- */
-	public function testDelete() {
+	public function testAddGetMethod() {
+		$options = array(
+			'method' => 'get',
+			'return' => 'view'
+		);
+		$this->testAction('/frames/frames/add', $options);
+		$this->assertEmpty($this->view);
 	}
 
 }

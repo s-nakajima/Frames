@@ -106,7 +106,7 @@ class Frame extends FramesAppModel {
 /**
  * findBlockIdByFrameId
  *
- * @param   integer $frameId
+ * @param   integer $frameId frameId
  * @return  mixed $blockId or false
  */
 	public function findBlockIdByFrameId($frameId) {

@@ -45,6 +45,7 @@ class FramesController extends FramesAppController {
 		$this->Frame->create();
 
 		$data['Frame'] = $this->request->data;
+		$data['Frame']['parent_id'] = 0;
 		// テスト用データ
 		$data['Language'] = array(
 			array(

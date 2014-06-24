@@ -10,7 +10,7 @@
  */
 
 $ActionView = '';
-if (!empty($frames['Plugin']['folder'])) {
+if (!empty($frame['Plugin']['folder'])) {
 	$ActionView = $this->requestAction($frame['Plugin']['folder'] . DS . $frame['Plugin']['folder'] . DS . 'index' . DS . $frame['Frame']['id'], array('return'));
 }
 

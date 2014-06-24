@@ -29,7 +29,6 @@ if (strlen($ActionView) != 0 || Configure::read('Pages.isSetting')) {
 				<?php echo $this->element('edit_frame_link'); ?>
 			</div>
 			<div class="panel-body">
-				<?php echo $this->element('edit_block_link'); ?>
 				<?php echo $ActionView;  ?>
 			</div>
 		</div>

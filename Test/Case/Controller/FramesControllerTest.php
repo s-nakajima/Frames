@@ -33,6 +33,17 @@ class FramesControllerTest extends ControllerTestCase {
 	);
 
 /**
+ * setUp
+ *
+ * @return void
+ */
+	public function setUp() {
+		parent::setUp();
+		$this->generate('Frames.Frames');
+		$this->controller->Frame = ClassRegistry::init('Frames.Frame');
+	}
+
+/**
  * testIndex method
  *
  * @return void

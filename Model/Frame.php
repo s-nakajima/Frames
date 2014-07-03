@@ -38,13 +38,6 @@ class Frame extends FramesAppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'ParentFrame' => array(
-			'className' => 'Frame',
-			'foreignKey' => 'parent_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
 		'Plugin' => array(
 			'className' => 'Plugin',
 			'foreignKey' => 'plugin_id',
@@ -58,27 +51,6 @@ class Frame extends FramesAppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		)
-	);
-
-/**
- * hasMany associations
- *
- * @var array
- */
-	public $hasMany = array(
-		'ChildFrame' => array(
-			'className' => 'Frame',
-			'foreignKey' => 'parent_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
 		)
 	);
 

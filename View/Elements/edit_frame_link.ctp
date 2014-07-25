@@ -22,7 +22,7 @@ if (Configure::read('Pages.isSetting')) {
 		class="btn btn-default"
 		ng-click="deleteFrame(<?php echo $frame['Frame']['id']; ?>)"
 	>
-		<span class="glyphicon glyphicon-remove"></span>
+		<span class="glyphicon glyphicon-trash"></span>
 		<span class="hidden"><?php echo __("閉じる"); ?></span>
 	</button>
 

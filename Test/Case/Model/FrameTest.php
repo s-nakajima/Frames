@@ -52,10 +52,27 @@ class FrameTest extends CakeTestCase {
 	}
 
 /**
- * test method
+ * testGetContainableQuery method
  *
  * @return void
  */
-	public function test() {
+	public function testGetContainableQuery() {
+		$containableQuery = $this->Frame->getContainableQuery();
+
+		$this->assertCount(3, $containableQuery);
+
+		$this->assertArrayHasKey('order', $containableQuery);
+		$this->assertCount(1, $containableQuery['order']);
+		$this->assertContains('Frame.weight', $containableQuery['order']);
+
+		$this->assertArrayHasKey('Language', $containableQuery);
+		$this->assertCount(1, $containableQuery['Language']);
+		$this->assertArrayHasKey('conditions', $containableQuery['Language']);
+		$this->assertCount(1, $containableQuery['Language']['conditions']);
+		$this->assertArrayHasKey('Language.code', $containableQuery['Language']['conditions']);
+		// It should test language code.
+		$this->assertContains('jpn', $containableQuery['Language']['conditions']);
+
+		$this->assertContains('Plugin', $containableQuery);
 	}
 }

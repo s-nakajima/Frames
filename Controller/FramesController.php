@@ -16,6 +16,13 @@ App::uses('FramesAppController', 'Frames.Controller');
 class FramesController extends FramesAppController {
 
 /**
+ * uses
+ *
+ * @var array
+ */
+	public $uses = array('Frames.Frame');
+
+/**
  * index method
  *
  * @param string $id frameId
@@ -24,12 +31,18 @@ class FramesController extends FramesAppController {
  */
 	public function index($id = null) {
 		$this->Frame->hasAndBelongsToMany['Language']['conditions'] = array('Language.code' => 'jpn');
-		$frames = $this->Frame->findById($id);
-		if (empty($frames)) {
+		$frame = $this->Frame->findById($id);
+		if (empty($frame)) {
 			throw new NotFoundException();
 		}
 
-		$this->set('frame', $frames);
+		$frame['Frame']['Plugin'] = $frame['Plugin'];
+		$frame['Frame']['Language'] = $frame['Language'];
+		unset($frame['Plugin'], $frame['Language']);
+		$this->set('frames', array($frame['Frame']));
+
+		// It probably does'nt needs index.ctp, but lower readability.
+		//$this->render('Frames.Elements/render_frames');
 	}
 
 /**
@@ -45,8 +58,8 @@ class FramesController extends FramesAppController {
 		$this->Frame->create();
 
 		$data['Frame'] = $this->request->data;
-		$data['Frame']['parent_id'] = 0;
 		// テスト用データ
+		$data['Frame']['room_id'] = 1;
 		$data['Language'] = array(
 			array(
 				'id' => 1,
@@ -72,4 +85,5 @@ class FramesController extends FramesAppController {
 		$this->autoRender = false;
 		$this->redirect('/setting/');
 	}
+
 }

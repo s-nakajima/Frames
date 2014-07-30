@@ -76,34 +76,24 @@ class Frame extends FramesAppModel {
 	);
 
 /**
- * findBlockIdByFrameId
+ * Get query option for containable behavior
  *
- * @param integer $frameId frameId
- * @return mixed $blockId or false
+ * @return array
  */
-	public function findBlockIdByFrameId($frameId) {
-		$frame = $this->find('first', array(
-			'fields' => array('Frame.id', 'Block.id'),
-			'recursive' => -1,
-			'conditions' => array('Frame.id' => $frameId),
-			'joins' => array(
-				array(
-					"type" => "LEFT",
-					"table" => "blocks",
-					"alias" => "Block",
-					"conditions" => array(
-						'Frame.block_id = Block.id'
-					)
+	public function getContainableQuery() {
+		$query = array(
+			'order' => array(
+				'Frame.weight'
+			),
+			'Language' => array(
+				'conditions' => array(
+					'Language.code' => 'jpn'
 				)
 			),
-		));
-		if (!isset($frame['Frame']['id'])) {
-			return false;
-		}
-		if (!isset($frame['Block']['id'])) {
-			return 0;	// BlockIDが設定されていない。
-		}
-		return $frame['Block']['id'];
+			'Plugin'
+		);
+
+		return $query;
 	}
 
 }

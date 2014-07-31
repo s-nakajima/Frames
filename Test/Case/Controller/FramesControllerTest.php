@@ -29,6 +29,7 @@ class TestPluginController extends FramesController {
 	}
 
 }
+CakePlugin::load('TestPlugin', array('path' => 'test_plugin'));
 
 /**
  * Summary for FramesController Test Case

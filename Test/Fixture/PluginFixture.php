@@ -42,7 +42,7 @@ class PluginFixture extends CakeTestFixture {
 		public $records = array(
 		array(
 			'id' => 1,
-			'folder' => 'testPlugin',
+			'folder' => 'test_plugin',
 			'weight' => 1,
 			'type' => 1,
 			'created_user_id' => 1,

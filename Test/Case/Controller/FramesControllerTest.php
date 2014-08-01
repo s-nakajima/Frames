@@ -53,11 +53,11 @@ class FramesControllerTest extends ControllerTestCase {
 	);
 
 /**
- * Frame ID 1 assertions
+ * It asserts view value of frame ID 1
  *
  * @return void
  */
-	private function __frameId1Assertion() {
+	private function __assertNormalView() {
 		$this->assertTextContains('<div id="frame-wrap-1" class="frame frame-id-1">', $this->view);
 		$this->assertTextContains('<div class="block block-id-5">', $this->view);
 		$this->assertTextContains('TestPluginController_index_1', $this->view);
@@ -71,7 +71,7 @@ class FramesControllerTest extends ControllerTestCase {
  */
 	public function testIndex() {
 		$this->testAction('/frames/frames/index/1', array('return' => 'view'));
-		$this->__frameId1Assertion();
+		$this->__assertNormalView();
 	}
 
 /**
@@ -102,7 +102,7 @@ class FramesControllerTest extends ControllerTestCase {
 	public function testIndexSettingMode() {
 		Configure::write('Pages.isSetting', true);
 		$this->testAction('/frames/frames/index/1', array('return' => 'view'));
-		$this->__frameId1Assertion();
+		$this->__assertNormalView();
 	}
 
 /**

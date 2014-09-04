@@ -14,8 +14,8 @@ foreach ($frames as $frame):
 		$ActionView = $this->requestAction($frame['Plugin']['folder'] . DS . $frame['Plugin']['folder'] . DS . 'index' . DS . $frame['id'], array('return'));
 	}
 
-	if (!Configure::read('Pages.isSetting')
-		&& strlen($ActionView) == 0) {
+	if (!Page::isSetting() &&
+			strlen($ActionView) == 0) {
 		continue;
 	}
 ?>

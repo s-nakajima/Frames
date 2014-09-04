@@ -19,7 +19,7 @@ class TestPluginController extends FramesController {
 
 /**
  * index action
- * 
+ *
  * @param string $id frameId
  * @return string
  */
@@ -50,6 +50,18 @@ class FramesControllerTest extends ControllerTestCase {
 		'plugin.frames.language',
 		'plugin.frames.frames_language'
 	);
+
+/**
+ * setUp
+ *
+ * @return   void
+ */
+	public function setUp() {
+		parent::setUp();
+
+		App::uses('Page', 'Pages.Model');
+		Page::unsetIsSetting();
+	}
 
 /**
  * It asserts view value of frame ID 1
@@ -99,8 +111,7 @@ class FramesControllerTest extends ControllerTestCase {
  * @return void
  */
 	public function testIndexSettingMode() {
-		Configure::write('Pages.isSetting', true);
-		$this->testAction('/frames/frames/index/1', array('return' => 'view'));
+		$this->testAction('/' . Page::SETTING_MODE_WORD . '/frames/frames/index/1', array('return' => 'view'));
 		$this->__assertNormalView();
 	}
 
@@ -110,8 +121,7 @@ class FramesControllerTest extends ControllerTestCase {
  * @return void
  */
 	public function testIndexSettingModeNoneContent() {
-		Configure::write('Pages.isSetting', true);
-		$this->testAction('/frames/frames/index/2', array('return' => 'view'));
+		$this->testAction('/' . Page::SETTING_MODE_WORD . '/frames/frames/index/2', array('return' => 'view'));
 		$this->assertTextContains('<div id="frame-wrap-2" class="frame frame-id-2">', $this->view);
 		$this->assertTextContains('<div class="block block-id-2">', $this->view);
 		$this->assertTextContains('Test frame name 2', $this->view);

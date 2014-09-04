@@ -1,5 +1,5 @@
 <?php
-if (Configure::read('Pages.isSetting')) {
+if (Page::isSetting()) {
 	?><div class="pull-right">
 	<button class="btn btn-default">
 		<span class="glyphicon glyphicon-arrow-up"></span>

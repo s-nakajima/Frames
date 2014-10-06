@@ -70,7 +70,7 @@ class FrameTest extends CakeTestCase {
 		$this->assertCount(1, $containableQuery['Language']['conditions']);
 		$this->assertArrayHasKey('Language.code', $containableQuery['Language']['conditions']);
 		// It should test language code.
-		$this->assertContains('jpn', $containableQuery['Language']['conditions']);
+		$this->assertContains('ja', $containableQuery['Language']['conditions']);
 
 		$this->assertContains('Plugin', $containableQuery);
 	}

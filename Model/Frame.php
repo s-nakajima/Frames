@@ -86,7 +86,7 @@ class Frame extends FramesAppModel {
 			),
 			'Language' => array(
 				'conditions' => array(
-					'Language.code' => 'jpn'
+					'Language.code' => 'ja'
 				)
 			),
 			'Plugin'

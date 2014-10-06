@@ -29,7 +29,7 @@ class FramesController extends FramesAppController {
  * @return void
  */
 	public function index($id = null) {
-		$this->Frame->hasAndBelongsToMany['Language']['conditions'] = array('Language.code' => 'jpn');
+		$this->Frame->hasAndBelongsToMany['Language']['conditions'] = array('Language.code' => 'ja');
 		$frame = $this->Frame->findById($id);
 		if (empty($frame)) {
 			throw new NotFoundException();

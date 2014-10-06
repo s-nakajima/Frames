@@ -44,6 +44,13 @@ class Frame extends FramesAppModel {
 			'fields' => '',
 			'order' => ''
 		),
+		'Language' => array(
+			'className' => 'Language',
+			'foreignKey' => 'language_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
 		'Block' => array(
 			'className' => 'Block',
 			'foreignKey' => 'block_id',
@@ -59,19 +66,6 @@ class Frame extends FramesAppModel {
  * @var array
  */
 	public $hasAndBelongsToMany = array(
-		'Language' => array(
-			'className' => 'Language',
-			'joinTable' => 'frames_languages',
-			'foreignKey' => 'frame_id',
-			'associationForeignKey' => 'language_id',
-			'unique' => 'keepExisting',
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'finderQuery' => '',
-		)
 	);
 
 /**

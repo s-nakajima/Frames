@@ -39,8 +39,8 @@ class Frame extends FramesAppModel {
 		),
 		'Plugin' => array(
 			'className' => 'Plugin',
-			'foreignKey' => 'plugin_id',
-			'conditions' => '',
+			'foreignKey' => false,
+			'conditions' => array('Frame.plugin_key = Plugin.key'),
 			'fields' => '',
 			'order' => ''
 		),

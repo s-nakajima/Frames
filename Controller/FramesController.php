@@ -54,28 +54,27 @@ class FramesController extends FramesAppController {
 			return;
 		}
 
-		$this->Frame->create();
-
-		$data['Frame'] = $this->request->data;
 		// テスト用データ
-		$data['Frame']['room_id'] = 1;
-		$data['Language'] = array(
-			array(
-				'id' => 1,
-				'FramesLanguage' => array(
-					'language_id' => 1,
-					'name' => 'Test' . date('Y/m/d H:i:s'),
-				),
-			),
-			array(
-				'id' => 2,
-				'FramesLanguage' => array(
-					'language_id' => 2,
-					'name' => 'テスト' . date('Y/m/d H:i:s'),
-				),
-			),
-		);
+		//$this->Frame->create();
+		//$data['Frame'] = array_merge(
+		//		$this->request->data,
+		//		array('room_id' => 1, 'language_id' => 1, 'name' => 'Test' . date('Y/m/d H:i:s'))
+		//	);
+		//if (!$this->Frame->save($data)) {
+		//	//エラー処理
+		//	return $this->render();
+		//}
 
+		$this->Frame->create();
+		$data['Frame'] = array_merge(
+				$this->request->data,
+				array(
+					'room_id' => 1,
+					'language_id' => 2,
+					'key' => hash('sha256', 'テスト' . date('Y/m/d H:i:s')),
+					'name' => 'テスト' . date('Y/m/d H:i:s'),
+				)
+			);
 		if (!$this->Frame->save($data)) {
 			//エラー処理
 			return $this->render();

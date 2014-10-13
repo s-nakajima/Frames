@@ -26,9 +26,9 @@ class BoxFixture extends CakeTestFixture {
 		'room_id' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'page_id' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'weight' => array('type' => 'integer', 'null' => true, 'default' => null),
-		'created_user_id' => array('type' => 'integer', 'null' => true, 'default' => null),
+		'created_user' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
-		'modified_user_id' => array('type' => 'integer', 'null' => true, 'default' => null),
+		'modified_user' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1)

@@ -1,7 +1,7 @@
 <?php
 /**
  * FrameFixture
- * 
+ *
  * @copyright Copyright 2014, NetCommons Project
  * @author Kohei Teraguchi <kteraguchi@commonsnet.org>
  * @link http://www.netcommons.org NetCommons Project
@@ -55,7 +55,7 @@ e.g.) ルーム管理者、またはそれに準ずるユーザ: ルーム管理
 			'language_id' => 2,
 			'room_id' => 1,
 			'box_id' => 1,
-			'plugin_key' => 'plugin_1',
+			'plugin_key' => 'test_plugin',
 			'block_id' => 5,
 			'key' => 'frame_1',
 			'weight' => 1,

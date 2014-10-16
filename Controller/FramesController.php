@@ -12,6 +12,12 @@
 
 App::uses('FramesAppController', 'Frames.Controller');
 
+/**
+ * Frames Controller
+ *
+ * @author Kohei Teraguchi <kteraguchi@commonsnet.org>
+ * @package NetCommons\Frames\Controller
+ */
 class FramesController extends FramesAppController {
 
 /**
@@ -29,7 +35,7 @@ class FramesController extends FramesAppController {
  * @return void
  */
 	public function index($id = null) {
-		$this->Frame->hasAndBelongsToMany['Language']['conditions'] = array('Language.code' => 'ja');
+		$this->Frame->belongsTo['Language']['conditions'] = array('Language.code' => 'ja');
 		$frame = $this->Frame->findById($id);
 		if (empty($frame)) {
 			throw new NotFoundException();

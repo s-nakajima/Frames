@@ -12,9 +12,18 @@ App::uses('FramesController', 'Frames.Controller');
 
 /**
  * Plugin controller class for testAction
+ *
+ * @author Kohei Teraguchi <kteraguchi@commonsnet.org>
+ * @package NetCommons\Frames\Test\Case\Controller
  */
 class TestPluginController extends FramesController {
 
+/**
+ * Set to true to automatically render the view
+ * after action logic.
+ *
+ * @var bool
+ */
 	public $autoRender = false;
 
 /**
@@ -26,7 +35,6 @@ class TestPluginController extends FramesController {
 	public function index($id = null) {
 		return 'TestPluginController_index_' . $id;
 	}
-
 }
 CakePlugin::load('TestPlugin', array('path' => 'test_plugin'));
 

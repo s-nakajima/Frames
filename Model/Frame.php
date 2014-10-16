@@ -19,6 +19,9 @@ App::uses('FramesAppModel', 'Frames.Model');
 
 /**
  * Summary for Frame Model
+ *
+ * @author Kohei Teraguchi <kteraguchi@commonsnet.org>
+ * @package NetCommons\Frames\Model
  */
 class Frame extends FramesAppModel {
 
@@ -58,14 +61,6 @@ class Frame extends FramesAppModel {
 			'fields' => '',
 			'order' => ''
 		)
-	);
-
-/**
- * hasAndBelongsToMany associations
- *
- * @var array
- */
-	public $hasAndBelongsToMany = array(
 	);
 
 /**

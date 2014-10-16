@@ -12,6 +12,9 @@ App::uses('Frame', 'Frames.Model');
 
 /**
  * Summary for Frame Test Case
+ *
+ * @author Kohei Teraguchi <kteraguchi@commonsnet.org>
+ * @package NetCommons\Frames\Test\Case\Model
  */
 class FrameTest extends CakeTestCase {
 

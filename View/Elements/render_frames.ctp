@@ -21,7 +21,7 @@ foreach ($frames as $frame):
 	?>
 
 	<div id="frame-wrap-<?php echo $frame['id']; ?>"
-		 class="frame frame-id-<?php echo $frame['id']; ?>">
+		class="frame frame-id-<?php echo $frame['id']; ?>">
 
 		<div class="block block-id-<?php echo $frame['block_id']; ?>">
 			<div class="panel panel-default">

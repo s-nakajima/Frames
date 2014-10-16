@@ -76,7 +76,8 @@ class FramesControllerTest extends ControllerTestCase {
  * @return void
  */
 	private function __assertNormalView() {
-		$this->assertTextContains('<div id="frame-wrap-1" class="frame frame-id-1">', $this->view);
+		$this->assertTextContains('<div id="frame-wrap-1"', $this->view);
+		$this->assertTextContains('class="frame frame-id-1">', $this->view);
 		$this->assertTextContains('<div class="block block-id-5">', $this->view);
 		$this->assertTextContains('TestPluginController_index_1', $this->view);
 		$this->assertTextContains('Test frame name 1', $this->view);

@@ -20,8 +20,8 @@ describe('frames', function() {
   });
 
   it('should be false deleted value', inject(function() {
-      var controller = createController();
-      expect($scope.deleted).toBe(false);
+    var controller = createController();
+    expect($scope.deleted).toBe(false);
   }));
 
   it('should confirm frame delete', inject(function($injector) {
@@ -29,11 +29,11 @@ describe('frames', function() {
     var modalInstance = {
       result: {
         then: function(confirmCallback) {
-            this.confirmCallBack = confirmCallback;
+          this.confirmCallBack = confirmCallback;
         }
       },
-      close: function( item ) {
-        this.result.confirmCallBack( item );
+      close: function(item) {
+        this.result.confirmCallBack(item);
       }
     };
     //dialogs.confirm(undefined, undefined);

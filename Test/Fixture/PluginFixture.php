@@ -60,7 +60,7 @@ e.g.) packagist', 'charset' => 'utf8'),
 		array(
 			'id' => 2,
 			'language_id' => 2,
-			'key' => '',
+			'key' => 'test_plugin',
 			'weight' => 2,
 			'type' => 1,
 			'created_user' => 2,

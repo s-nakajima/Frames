@@ -35,7 +35,6 @@ class FramesController extends FramesAppController {
  * @return void
  */
 	public function index($id = null) {
-		$this->Frame->belongsTo['Language']['conditions'] = array('Language.code' => 'ja');
 		$frame = $this->Frame->findById($id);
 		if (empty($frame)) {
 			throw new NotFoundException();
@@ -46,7 +45,7 @@ class FramesController extends FramesAppController {
 		unset($frame['Plugin'], $frame['Language']);
 		$this->set('frames', array($frame['Frame']));
 
-		// It probably does'nt needs index.ctp, but lower readability.
+		// It probably doesn't needs index.ctp, but lower readability.
 		//$this->render('Frames.Elements/render_frames');
 	}
 
@@ -56,9 +55,10 @@ class FramesController extends FramesAppController {
  * @return void
  */
 	public function add() {
-		if (!$this->request->is('post')) {
-			return;
-		}
+		//if (!$this->request->is('post')) {
+		//	return;
+		//}
+		$this->request->onlyAllow('post');
 
 		// テスト用データ
 		//$this->Frame->create();
@@ -88,6 +88,28 @@ class FramesController extends FramesAppController {
 
 		$this->autoRender = false;
 		$this->redirect('/setting/');
+	}
+
+/**
+ * delete method
+ *
+ * @param string $id frameId
+ * @throws NotFoundException
+ * @return void
+ */
+	public function delete($id = null) {
+		$this->Frame->id = $id;
+		if (!$this->Frame->exists()) {
+			throw new NotFoundException(__('Invalid frame'));
+		}
+
+		//$this->request->onlyAllow('post', 'delete');
+		$this->request->onlyAllow('delete');
+		if ($this->Frame->delete()) {
+			return $this->flash(__('The frame has been deleted.'), array('action' => 'index'));
+		} else {
+			return $this->flash(__('The frame could not be deleted. Please, try again.'), array('action' => 'index'));
+		}
 	}
 
 }

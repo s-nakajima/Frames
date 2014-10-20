@@ -25,7 +25,7 @@ class FrameTest extends CakeTestCase {
  */
 	public $fixtures = array(
 		'plugin.frames.frame',
-		//'plugin.frames.box',
+		'plugin.frames.box',
 		//'plugin.frames.plugin',
 		//'plugin.frames.block',
 		//'plugin.frames.language',

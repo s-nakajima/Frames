@@ -70,6 +70,9 @@ class FramesControllerTest extends ControllerTestCase {
 	public function setUp() {
 		parent::setUp();
 
+		$this->generate('Frames');
+		$this->controller->autoLayout = false;
+
 		App::uses('Page', 'Pages.Model');
 		Page::unsetIsSetting();
 	}

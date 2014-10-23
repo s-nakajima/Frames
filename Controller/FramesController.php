@@ -84,7 +84,7 @@ class FramesController extends FramesAppController {
 
 		if (!$this->Frame->saveFrame($data)) {
 			//エラー処理
-			return $this->render();
+			return false;
 		}
 
 		$this->autoRender = false;

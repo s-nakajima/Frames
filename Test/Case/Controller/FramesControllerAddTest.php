@@ -1,6 +1,6 @@
 <?php
 /**
- * FramesController Test Case
+ * FramesController Add Test Case
  *
  * @copyright Copyright 2014, NetCommons Project
  * @author Kohei Teraguchi <kteraguchi@commonsnet.org>
@@ -13,7 +13,7 @@ App::uses('FramesController', 'Frames.Controller');
 /**
  * Summary for FramesController Test Case
  */
-class FramesControllerDeleteTest extends ControllerTestCase {
+class FramesControllerAddTest extends ControllerTestCase {
 
 /**
  * Fixtures
@@ -26,7 +26,7 @@ class FramesControllerDeleteTest extends ControllerTestCase {
 		'plugin.frames.box',
 		'plugin.frames.plugin',
 		'plugin.frames.block',
-		'plugin.frames.language',
+		'plugin.frames.language'
 	);
 
 /**
@@ -42,48 +42,44 @@ class FramesControllerDeleteTest extends ControllerTestCase {
 	}
 
 /**
- * testDelete method
+ * testAdd method
  *
  * @return void
  */
-	public function testDelete() {
-		$this->testAction('/frames/frames/10', array('method' => 'delete'));
-		$this->assertTextNotContains('The frame has been deleted.', $this->view);
+	public function testAdd() {
+		$options = array(
+			'data' => array(
+				'box_id' => '1',
+				'plugin_id' => '1'
+			)
+		);
+		$this->testAction('/frames/frames/add', $options);
+		$this->assertEmpty($this->result);
 	}
 
 /**
- * testDeleteNotFound method
+ * testAddGetMethod method
  *
  * @return void
  */
-	public function testDeleteNotFound() {
-		$this->setExpectedException('NotFoundException');
-		$this->testAction('/frames/frames/99', array('method' => 'delete'));
-	}
-
-/**
- * testDeletePost method
- *
- * @return void
- */
-	public function testDeletePost() {
+	public function testAddGetMethod() {
 		$this->setExpectedException('MethodNotAllowedException');
-		$this->testAction('/frames/frames/delete/9', array('method' => 'post'));
+		$this->testAction('/frames/frames/add', array('method' => 'get'));
 	}
 
 /**
- * testDeleteError method
+ * testAddError method
  *
  * @return void
  */
-	public function testDeleteError() {
+	public function testAddError() {
 		$this->generate('Frames');
-		$this->controller->Frame = $this->getMockForModel('Frames.Frame', array('delete'));
+		$this->controller->Frame = $this->getMockForModel('Frames.Frame', array('save'));
 		$this->controller->Frame->expects($this->once())
-			->method('delete')
+			->method('save')
 			->will($this->returnValue(false));
 
-		$this->testAction('/frames/frames/10', array('method' => 'delete'));
+		$this->testAction('/frames/frames/add');
 		// It should be error assertion
 	}
 

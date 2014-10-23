@@ -138,30 +138,4 @@ class FramesControllerTest extends ControllerTestCase {
 		$this->assertTextNotContains('TestPluginController_index_', $this->view);
 	}
 
-/**
- * testAdd method
- *
- * @return void
- */
-	public function testAdd() {
-		$options = array(
-			'data' => array(
-				'box_id' => '1',
-				'plugin_id' => '1'
-			)
-		);
-		$this->testAction('/frames/frames/add', $options);
-		$this->assertEmpty($this->result);
-	}
-
-/**
- * testAddGetMethod method
- *
- * @return void
- */
-	public function testAddGetMethod() {
-		$this->setExpectedException('MethodNotAllowedException');
-		$this->testAction('/frames/frames/add', array('method' => 'get'));
-	}
-
 }

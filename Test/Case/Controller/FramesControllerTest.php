@@ -58,8 +58,7 @@ class FramesControllerTest extends ControllerTestCase {
 		'plugin.frames.box',
 		'plugin.frames.plugin',
 		'plugin.frames.block',
-		'plugin.frames.language',
-		//'plugin.frames.frames_language'
+		'plugin.frames.language'
 	);
 
 /**

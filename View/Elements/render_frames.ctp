@@ -28,9 +28,9 @@ foreach ($frames as $frame):
 			strlen($view) === 0) {
 		continue;
 	}
-?>
+	?>
 
-<div id="frame-wrap-<?php echo $frame['id']; ?>" class="frame frame-id-<?php echo $frame['id']; ?>" ng-controller="FramesController" ng-hide="deleted">
+	<div id="frame-wrap-<?php echo $frame['id']; ?>" class="frame frame-id-<?php echo $frame['id']; ?>" ng-controller="FramesController" ng-hide="deleted">
 		<div class="panel panel-default">
 			<div class="panel-heading clearfix">
 				<span>
@@ -54,7 +54,7 @@ foreach ($frames as $frame):
 						</button>
 
 						<button class="btn btn-default" ng-click="delete(<?php echo $frame['id']; ?>)">
-							<span class="glyphicon glyphicon-trash"></span>
+							<span class="glyphicon glyphicon-remove"></span>
 							<span class="sr-only"><?php echo __('Delete frame'); ?></span>
 						</button>
 					</div>
@@ -63,7 +63,7 @@ foreach ($frames as $frame):
 
 			<div class="panel-body">
 				<div class="block block-id-<?php echo $frame['block_id']; ?>">
-					<?php echo $view;  ?>
+					<?php echo $view; ?>
 				</div>
 			</div>
 		</div>

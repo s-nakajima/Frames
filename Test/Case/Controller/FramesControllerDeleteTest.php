@@ -26,7 +26,7 @@ class FramesControllerDeleteTest extends ControllerTestCase {
 		'plugin.frames.box',
 		'plugin.frames.plugin',
 		'plugin.frames.block',
-		'plugin.frames.language',
+		'plugin.frames.language'
 	);
 
 /**
@@ -36,9 +36,6 @@ class FramesControllerDeleteTest extends ControllerTestCase {
  */
 	public function setUp() {
 		parent::setUp();
-
-		App::uses('Page', 'Pages.Model');
-		Page::unsetIsSetting();
 	}
 
 /**

@@ -36,9 +36,6 @@ class FramesControllerAddTest extends ControllerTestCase {
  */
 	public function setUp() {
 		parent::setUp();
-
-		App::uses('Page', 'Pages.Model');
-		Page::unsetIsSetting();
 	}
 
 /**

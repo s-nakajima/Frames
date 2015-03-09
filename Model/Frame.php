@@ -55,7 +55,7 @@ class Frame extends FramesAppModel {
 			'order' => ''
 		),
 		'Block' => array(
-			'className' => 'Block',
+			'className' => 'Blocks.Block',
 			'foreignKey' => 'block_id',
 			'conditions' => '',
 			'fields' => '',

@@ -27,6 +27,7 @@
         "netcommons/boxes":       "dev-master",
         "netcommons/blocks":      "dev-master",
         "netcommons/pages":       "dev-master",
+        "netcommons/users":       "dev-master",
         "mustangostang/spyc":     "dev-master",
         "satooshi/php-coveralls": "dev-master"
     },

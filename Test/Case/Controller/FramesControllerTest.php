@@ -60,6 +60,7 @@ class FramesControllerTest extends ControllerTestCase {
 		'plugin.frames.block',
 		'plugin.frames.language',
 		'plugin.pages.page',
+		'plugin.users.user',
 	);
 
 /**

@@ -26,7 +26,8 @@ class FramesControllerDeleteTest extends ControllerTestCase {
 		'plugin.frames.box',
 		'plugin.frames.plugin',
 		'plugin.frames.block',
-		'plugin.frames.language'
+		'plugin.frames.language',
+		'plugin.pages.page',
 	);
 
 /**

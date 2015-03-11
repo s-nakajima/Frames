@@ -230,6 +230,27 @@ e.g.) ルーム管理者、またはそれに準ずるユーザ: ルーム管理
 			'modified_user' => 10,
 			'modified' => '2014-07-25 08:10:53'
 		),
+
+		// Frame just placed into page w/o block.
+		// This situation typically occur after placing new plugin into page.
+		array(
+			'id' => 11,
+			'language_id' => 2,
+			'room_id' => 11,
+			'box_id' => 11,
+			'plugin_key' => 'plugin_11',
+			'block_id' => null,
+			'key' => 'frame_11',
+			'name' => 'Test frame name 11',
+			'weight' => 11,
+			'is_published' => 1,
+			'from' => '2014-07-25 08:11:53',
+			'to' => '2014-07-25 08:11:53',
+			'created_user' => 11,
+			'created' => '2014-07-25 08:11:53',
+			'modified_user' => 11,
+			'modified' => '2014-07-25 08:11:53'
+		),
 	);
 
 }

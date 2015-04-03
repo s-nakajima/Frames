@@ -28,7 +28,8 @@ class FrameTest extends CakeTestCase {
 		'plugin.frames.box',
 		'plugin.frames.plugin',
 		'plugin.frames.block',
-		'plugin.frames.language'
+		'plugin.frames.language',
+		'plugin.users.user',
 	);
 
 /**
@@ -88,7 +89,6 @@ class FrameTest extends CakeTestCase {
 		$this->Frame->create();
 		$this->Frame->saveFrame(array());
 
-		//$this->assertEquals('master', $this->Frame->useDbConfig);
 		$this->assertEquals($expectCount, $this->Frame->find('count', array('recursive' => -1)));
 	}
 

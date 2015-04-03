@@ -90,9 +90,6 @@ class FrameTest extends CakeTestCase {
 
 		//$this->assertEquals('master', $this->Frame->useDbConfig);
 		$this->assertEquals($expectCount, $this->Frame->find('count', array('recursive' => -1)));
-
-		$actualFrame = $this->Frame->findById($this->Frame->getLastInsertID());
-		$this->assertEquals('11', $actualFrame['Frame']['id']);
 	}
 
 /**

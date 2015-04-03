@@ -24,11 +24,12 @@ class FrameTest extends CakeTestCase {
  * @var array
  */
 	public $fixtures = array(
+		'plugin.blocks.block',
+		'plugin.boxes.box',
 		'plugin.frames.frame',
-		'plugin.frames.box',
 		'plugin.frames.plugin',
-		'plugin.frames.block',
-		'plugin.frames.language',
+		'plugin.m17n.language',
+		'plugin.pages.page',
 		'plugin.users.user',
 	);
 

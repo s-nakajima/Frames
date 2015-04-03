@@ -36,9 +36,8 @@ describe('frames', function() {
         this.result.confirmCallBack(item);
       }
     };
-    //dialogs.confirm(undefined, undefined);
 
-    spyOn(dialogs, 'confirm').andReturn(modalInstance);
+    dialogs.confirm = jasmine.createSpy().and.returnValue(modalInstance);
 
     $httpBackend.expectDELETE('/frames/frames/1').respond(200, '');
 

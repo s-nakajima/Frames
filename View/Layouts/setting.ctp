@@ -39,6 +39,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		<link href="/net_commons/twbs/bootstrap/assets/css/docs.min.css" rel="stylesheet">
 		<!-- base  -->
 		<link href="/net_commons/base/css/style.css" rel="stylesheet">
+		<link href="/frames/css/style.css" rel="stylesheet">
 
 		<!-- themed  -->
 		<?php echo $this->Html->css("style"); ?>
@@ -51,6 +52,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			echo $this->fetch('meta');
 			echo $this->fetch('css');
 			echo $this->fetch('script');
+			echo $this->Html->script('/frames/js/settings.js');
 		?>
 	</head>
 	<body ng-controller="NetCommons.base">
@@ -107,8 +109,8 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 
 			</div>
 
-			<div class="col-sm-6">
-				<div class="panel panel-<?php echo h($frame['headerType']); ?>">
+			<div class="col-sm-6" ng-controller="FrameSettings" ng-init="initialize({frame: <?php echo h(json_encode($frame)) ?>})">
+				<div class="panel panel-{{frame.headerType}}">
 					<div class="panel-heading clearfix">
 						<?php echo $this->element('Frames.setting_header'); ?>
 					</div>

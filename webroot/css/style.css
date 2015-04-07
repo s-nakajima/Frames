@@ -1,0 +1,23 @@
+/**
+ * likes/css/style.css
+ *
+ * @author Shohei Nakajima <nakajimashouhei@gmail.com>
+ * @link http://www.netcommons.org NetCommons Project
+ * @license http://www.netcommons.org/license.txt NetCommons License
+ */
+
+.frame-name-setting {
+	display: inline-block;
+	width: auto;
+}
+.frame-header-type-btn {
+	padding: 4px 12px 5px 12px;
+}
+.frame-header-type-settings {
+	display: inline-block;
+	width: 120px;
+	margin: 0;
+}
+.frame-header-type-settings .panel-heading {
+	padding: 0;
+}

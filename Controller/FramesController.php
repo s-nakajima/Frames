@@ -33,7 +33,7 @@ class FramesController extends FramesAppController {
  * @var array
  */
 	public $components = array(
-			//'Security'
+		//'Security'
 	);
 
 /**
@@ -113,4 +113,27 @@ class FramesController extends FramesAppController {
 		}
 	}
 
+/**
+ * edit method
+ *
+ * @param int $frameId frameId
+ * @return void
+ * @throws InternalErrorException
+ */
+	public function edit($frameId = null) {
+		$this->request->onlyAllow('post');
+
+		$this->Frame->setDataSource('master');
+		if (! $frame = $this->Frame->findById($frameId)) {
+			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+		}
+
+		$data = Hash::merge($frame, $this->data);
+		if (! $this->Frame->saveFrame($data)) {
+			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+		}
+		if (! $this->request->is('ajax')) {
+			$this->redirect($this->request->referer());
+		}
+	}
 }

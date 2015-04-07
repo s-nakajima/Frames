@@ -28,6 +28,8 @@ class FramesControllerEditTest extends ControllerTestCase {
 		'plugin.m17n.language',
 		'plugin.net_commons.site_setting',
 		'plugin.pages.page',
+		'plugin.users.user',
+		'plugin.users.user_attributes_user',
 	);
 
 /**

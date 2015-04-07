@@ -106,7 +106,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 
 		<div class="container-fluid">
 			<div class="col-sm-3">
-
+				<!-- TODO: 左カラム -->
 			</div>
 
 			<div class="col-sm-6" ng-controller="FrameSettings" ng-init="initialize({frame: <?php echo h(json_encode($frame)) ?>})">
@@ -121,7 +121,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			</div>
 
 			<div class="col-sm-3">
-
+				<!-- TODO: 右カラム -->
 			</div>
 		</div>
 

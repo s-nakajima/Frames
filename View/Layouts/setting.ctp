@@ -1,6 +1,6 @@
 <?php
 /**
- * Bbses index
+ * Frame setting layout
  *
  * @author Noriko Arai <arai@nii.ac.jp>
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>

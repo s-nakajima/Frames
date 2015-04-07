@@ -1,6 +1,6 @@
 <?php
 /**
- * FramesController Add Test Case
+ * FramesController Edit Test Case
  *
  * @copyright Copyright 2014, NetCommons Project
  * @author Kohei Teraguchi <kteraguchi@commonsnet.org>
@@ -40,7 +40,7 @@ class FramesControllerEditTest extends ControllerTestCase {
 	}
 
 /**
- * testAdd method
+ * testEdit method
  *
  * @return void
  */
@@ -60,7 +60,7 @@ class FramesControllerEditTest extends ControllerTestCase {
 	}
 
 /**
- * testAddGetMethod method
+ * testEditGetMethod method
  *
  * @return void
  */
@@ -70,7 +70,7 @@ class FramesControllerEditTest extends ControllerTestCase {
 	}
 
 /**
- * testAddError method
+ * testEditSaveError method
  *
  * @return void
  */
@@ -87,7 +87,7 @@ class FramesControllerEditTest extends ControllerTestCase {
 	}
 
 /**
- * testAddError method
+ * testEditFindError method
  *
  * @return void
  */

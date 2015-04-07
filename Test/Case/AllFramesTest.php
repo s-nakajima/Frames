@@ -13,6 +13,7 @@
  *
  * @author Kohei Teraguchi <kteraguchi@commonsnet.org>
  * @package NetCommons\Frames\Test\Case
+ * @codeCoverageIgnore
  */
 class AllFramesTest extends CakeTestSuite {
 

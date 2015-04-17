@@ -48,7 +48,7 @@ foreach ($frames as $frame):
 							<span class="sr-only"><?php echo __('Down frame position'); ?></span>
 						</button>
 
-						<button class="btn btn-default">
+						<button class="btn btn-default" onclick="location.href='/<?php echo $frame['plugin_key'] . DS . 'blocks' . DS . 'index' . DS . $frame['id']; ?>'">
 							<span class="glyphicon glyphicon-cog"></span>
 							<span class="sr-only"><?php echo __('Show flame setting'); ?></span>
 						</button>

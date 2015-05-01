@@ -262,6 +262,52 @@ class FrameFixture extends CakeTestFixture {
 			'weight' => 1,
 		),
 
+		//Edumap plugin
+		array(
+			'id' => '121',
+			'language_id' => '2',
+			'room_id' => '1',
+			'box_id' => '1',
+			'plugin_key' => 'test_plugin',
+			'block_id' => '121',
+			'key' => 'frame_121',
+			'name' => 'Test frame name 121',
+			'weight' => 1,
+		),
+		array(
+			'id' => '122',
+			'language_id' => '2',
+			'room_id' => '1',
+			'box_id' => '1',
+			'plugin_key' => 'test_plugin',
+			'block_id' => '122',
+			'key' => 'frame_122',
+			'name' => 'Test frame name 122',
+			'weight' => 1,
+		),
+		array(
+			'id' => '123',
+			'language_id' => '2',
+			'room_id' => '2',
+			'box_id' => '1',
+			'plugin_key' => '',
+			'block_id' => null,
+			'key' => 'frame_123',
+			'name' => 'Test frame name 123',
+			'weight' => 1,
+		),
+		array(
+			'id' => '124',
+			'language_id' => '2',
+			'room_id' => '3',
+			'box_id' => '1',
+			'plugin_key' => '',
+			'block_id' => null,
+			'key' => 'frame_125',
+			'name' => 'Test frame name 125',
+			'weight' => 1,
+		),
+
 	);
 
 }

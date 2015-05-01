@@ -21,12 +21,12 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      '../../NetCommons/webroot/angular/angular.js',
-      '../../NetCommons/webroot/jquery/jquery.min.js',
-      '../../NetCommons/webroot/angular-bootstrap/ui-bootstrap.js',
-      '../../NetCommons/webroot/base/js/base.js',
-      '../../NetCommons/webroot/angular-ui-tinymce/src/tinymce.js',
-      '../../../../vendors/bower_components/angular-mocks/angular-mocks.js',
+      '../../../webroot/components/angular/angular.js',
+      '../../../webroot/components/jquery/dist/jquery.min.js',
+      '../../../webroot/components/angular-bootstrap/ui-bootstrap.js',
+      '../../NetCommons/webroot/js/base.js',
+      '../../../webroot/components/angular-ui-tinymce/src/tinymce.js',
+      '../../../webroot/components/angular-mocks/angular-mocks.js',
       'http://rawgit.com/angular/bower-angular-sanitize/v1.2.25/angular-sanitize.js',
       'http://rawgit.com/m-e-conroy/angular-dialog-service/v5.2.0/src/dialogs.js',
       '../webroot/js/frames.js',

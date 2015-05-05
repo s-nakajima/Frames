@@ -1,0 +1,40 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2015-05-05 15:03+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Frames/View/Elements/setting_header.ctp:80
+msgid "default"
+msgstr ""
+
+#: Frames/View/Elements/setting_header.ctp:81
+msgid "primary"
+msgstr ""
+
+#: Frames/View/Elements/setting_header.ctp:82
+msgid "info"
+msgstr ""
+
+#: Frames/View/Elements/setting_header.ctp:83
+msgid "success"
+msgstr ""
+
+#: Frames/View/Elements/setting_header.ctp:84
+msgid "warning"
+msgstr ""
+
+#: Frames/View/Elements/setting_header.ctp:85
+msgid "danger"
+msgstr ""
+

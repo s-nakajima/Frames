@@ -354,6 +354,52 @@ class FrameFixture extends CakeTestFixture {
 			'weight' => 1,
 		),
 
+		//AccessCounters plugin
+		array(
+			'id' => '161',
+			'language_id' => '2',
+			'room_id' => '1',
+			'box_id' => '1',
+			'plugin_key' => 'test_plugin',
+			'block_id' => '161',
+			'key' => 'frame_161',
+			'name' => 'Test frame name 161',
+			'weight' => 1,
+		),
+		array(
+			'id' => '162',
+			'language_id' => '2',
+			'room_id' => '1',
+			'box_id' => '1',
+			'plugin_key' => 'test_plugin',
+			'block_id' => '162',
+			'key' => 'frame_162',
+			'name' => 'Test frame name 162',
+			'weight' => 1,
+		),
+		array(
+			'id' => '163',
+			'language_id' => '2',
+			'room_id' => '2',
+			'box_id' => '1',
+			'plugin_key' => '',
+			'block_id' => null,
+			'key' => 'frame_163',
+			'name' => 'Test frame name 163',
+			'weight' => 1,
+		),
+		array(
+			'id' => '164',
+			'language_id' => '2',
+			'room_id' => '3',
+			'box_id' => '1',
+			'plugin_key' => '',
+			'block_id' => null,
+			'key' => 'frame_165',
+			'name' => 'Test frame name 165',
+			'weight' => 1,
+		),
+
 	);
 
 }

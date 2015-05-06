@@ -308,6 +308,52 @@ class FrameFixture extends CakeTestFixture {
 			'weight' => 1,
 		),
 
+		//Iframes plugin
+		array(
+			'id' => '141',
+			'language_id' => '2',
+			'room_id' => '1',
+			'box_id' => '1',
+			'plugin_key' => 'test_plugin',
+			'block_id' => '141',
+			'key' => 'frame_141',
+			'name' => 'Test frame name 141',
+			'weight' => 1,
+		),
+		array(
+			'id' => '142',
+			'language_id' => '2',
+			'room_id' => '1',
+			'box_id' => '1',
+			'plugin_key' => 'test_plugin',
+			'block_id' => '142',
+			'key' => 'frame_142',
+			'name' => 'Test frame name 142',
+			'weight' => 1,
+		),
+		array(
+			'id' => '143',
+			'language_id' => '2',
+			'room_id' => '2',
+			'box_id' => '1',
+			'plugin_key' => '',
+			'block_id' => null,
+			'key' => 'frame_143',
+			'name' => 'Test frame name 143',
+			'weight' => 1,
+		),
+		array(
+			'id' => '144',
+			'language_id' => '2',
+			'room_id' => '3',
+			'box_id' => '1',
+			'plugin_key' => '',
+			'block_id' => null,
+			'key' => 'frame_145',
+			'name' => 'Test frame name 145',
+			'weight' => 1,
+		),
+
 	);
 
 }

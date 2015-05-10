@@ -400,6 +400,63 @@ class FrameFixture extends CakeTestFixture {
 			'weight' => 1,
 		),
 
+		//RssReaders plugin
+		array(
+			'id' => '181',
+			'language_id' => '2',
+			'room_id' => '1',
+			'box_id' => '1',
+			'plugin_key' => 'test_plugin',
+			'block_id' => '181',
+			'key' => 'frame_181',
+			'name' => 'Test frame name 181',
+			'weight' => 1,
+		),
+		array(
+			'id' => '182',
+			'language_id' => '2',
+			'room_id' => '1',
+			'box_id' => '1',
+			'plugin_key' => 'test_plugin',
+			'block_id' => '182',
+			'key' => 'frame_182',
+			'name' => 'Test frame name 162',
+			'weight' => 1,
+		),
+		array(
+			'id' => '183',
+			'language_id' => '2',
+			'room_id' => '2',
+			'box_id' => '1',
+			'plugin_key' => '',
+			'block_id' => null,
+			'key' => 'frame_183',
+			'name' => 'Test frame name 183',
+			'weight' => 1,
+		),
+		array(
+			'id' => '184',
+			'language_id' => '2',
+			'room_id' => '3',
+			'box_id' => '1',
+			'plugin_key' => '',
+			'block_id' => null,
+			'key' => 'frame_185',
+			'name' => 'Test frame name 185',
+			'weight' => 1,
+		),
+		array(
+			'id' => '185',
+			'language_id' => '2',
+			'room_id' => '1',
+			'box_id' => '1',
+			'plugin_key' => 'test_plugin',
+			'block_id' => '186',
+			'key' => 'frame_186',
+			'name' => 'Test frame name 186',
+			'weight' => 1,
+		),
+
 	);
 
 }

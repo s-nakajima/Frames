@@ -74,18 +74,18 @@
 			</div>
 			<span class="caret"></span>
 		</button>
-		<ul role="menu" class="dropdown-menu">
-			<?php
-				$headerTypes = array(
-					['key' => 'default', 'name' => __d('frames', 'default')],
-					['key' => 'primary', 'name' => __d('frames', 'primary')],
-					['key' => 'info', 'name' => __d('frames', 'info')],
-					['key' => 'success', 'name' => __d('frames', 'success')],
-					['key' => 'warning', 'name' => __d('frames', 'warning')],
-					['key' => 'danger', 'name' => __d('frames', 'danger')],
-				);
-			?>
-			<li ng-repeat="headerType in <?php echo h(json_encode($headerTypes)); ?>" ng-click="selectHeaderType(headerType.key)">
+		<?php
+			$headerTypes = array(
+				['key' => 'default', 'name' => __d('frames', 'default')],
+				['key' => 'primary', 'name' => __d('frames', 'primary')],
+				['key' => 'info', 'name' => __d('frames', 'info')],
+				['key' => 'success', 'name' => __d('frames', 'success')],
+				['key' => 'warning', 'name' => __d('frames', 'warning')],
+				['key' => 'danger', 'name' => __d('frames', 'danger')],
+			);
+		?>
+		<ul role="menu" class="dropdown-menu" ng-init="headerTypes = <?php echo h(json_encode($headerTypes)); ?>">
+			<li ng-repeat="headerType in headerTypes" ng-click="selectHeaderType(headerType.key)">
 				<a href="">
 					<div class="panel panel-{{headerType.key}} frame-header-type-settings">
 						<div class="panel-heading text-center">

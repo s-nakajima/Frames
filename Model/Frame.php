@@ -73,12 +73,16 @@ class Frame extends FramesAppModel {
 			'order' => array(
 				'Frame.weight'
 			),
-			'Language' => array(
-				'conditions' => array(
-					'Language.code' => 'ja'
-				)
-			),
-			'Plugin'
+			//'Language' => array(
+			//	'conditions' => array(
+			//		'Language.code' => 'ja'
+			//	)
+			//),
+			//'Plugin' => array(
+			//	'conditions' => array(
+			//		'Plugin.key = Frame.plugin_key'
+			//	),
+			//)
 		);
 
 		return $query;

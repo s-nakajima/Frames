@@ -21,7 +21,7 @@
 	</button>
 
 	<a class="btn btn-default active" title="<?php echo __d('net_commons', 'Quit'); ?>"
-	   href="<?php echo $this->Html->url(isset($current['page']) ? '/' . $current['page']['permalink'] : null); ?>">
+	   href="<?php echo $this->Html->url(isset($this->request->data['current']['Page']) ? '/' . $this->request->data['current']['Page']['permalink'] : null); ?>">
 		<span class="glyphicon glyphicon-cog"> </span>
 		<span class="sr-only"><?php echo __('Show flame setting'); ?></span>
 	</a>
@@ -55,21 +55,20 @@
 			//'ng-model' => 'frame.name',
 		)); ?>
 
-
 	<?php echo $this->Form->input('Frame.header_type',
 		array(
 			'type' => 'text',
 			'label' => false,
 			'class' => 'hidden',
 			'div' => false,
-			'value' => $frame['headerType'],
+			'value' => $frame['header_type'],
 		)); ?>
 
 	<div class="btn-group">
 		<button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle frame-header-type-btn">
-			<div class="panel panel-{{frame.headerType}} frame-header-type-settings">
+			<div class="panel panel-{{frame.header_type}} frame-header-type-settings">
 				<div class="panel-heading">
-					<small>{{frame.headerType}}</small>
+					<small>{{frame.header_type}}</small>
 				</div>
 			</div>
 			<span class="caret"></span>
@@ -100,6 +99,4 @@
 	<button type="submit" class="btn btn-default">
 		<?php echo __d('net_commons', 'OK'); ?>
 	</button>
-
 <?php echo $this->Form->end();
-

@@ -8,8 +8,6 @@
  * @license http://www.netcommons.org/license.txt NetCommons License
  */
 
-echo $this->Html->script('http://rawgit.com/angular/bower-angular-sanitize/v1.2.25/angular-sanitize.js', false);
-echo $this->Html->script('http://rawgit.com/m-e-conroy/angular-dialog-service/v5.2.0/src/dialogs.js', false);
 echo $this->Html->script('/frames/js/frames.js', false);
 
 foreach ($frames as $frame):

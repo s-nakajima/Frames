@@ -6,8 +6,13 @@
  * @license http://www.netcommons.org/license.txt NetCommons License
  */
 
-// * @copyright Copyright 2014, NetCommons Project
-// Invalid JsDoc tag: copyright
+
+/**
+ * FramesController Controller Javascript
+ *
+ * @param {string} Controller name
+ * @param {function($scope)} Controller
+ */
 NetCommonsApp.controller('FramesController', function($scope, $http) {
 
   /**
@@ -32,5 +37,41 @@ NetCommonsApp.controller('FramesController', function($scope, $http) {
             alert(status);  // It should be error code
           });
     }
+  };
+});
+
+
+/**
+ * FrameSettings Controller Javascript
+ *
+ * @param {string} Controller name
+ * @param {function($scope)} Controller
+ */
+NetCommonsApp.controller('FrameSettingsController', function($scope) {
+
+  /**
+   * frame
+   *
+   * @type {object}
+   */
+  $scope.frame = {};
+
+  /**
+   * initialize
+   *
+   * @return {void}
+   */
+  $scope.initialize = function(data) {
+    $scope.frame = data.frame;
+  };
+
+  /**
+   * Select of header type
+   *
+   * @return {void}
+   */
+  $scope.selectHeaderType = function(headerType) {
+    $scope.frame.headerType = headerType;
+    $('#FrameHeaderType')[0].value = headerType;
   };
 });

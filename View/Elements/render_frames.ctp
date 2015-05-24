@@ -10,17 +10,17 @@
 echo $this->Html->script('/frames/js/frames.js', false);
 
 foreach ($frames as $frame) {
-	if (strlen($frame['plugin_key']) === 0) {
+	if (strlen($frame['pluginKey']) === 0) {
 		continue;
 	}
 
 	$defaultAction = 'index';
-	if (isset($pluginMap[$frame['plugin_key']]) && $pluginMap[$frame['plugin_key']]['default_action'] !== '') {
-		$defaultAction = $pluginMap[$frame['plugin_key']]['default_action'];
+	if (isset($pluginMap[$frame['pluginKey']]) && $pluginMap[$frame['pluginKey']]['defaultAction'] !== '') {
+		$defaultAction = $pluginMap[$frame['pluginKey']]['defaultAction'];
 	}
-	$defaultController = $frame['plugin_key'];
+	$defaultController = $frame['pluginKey'];
 
-	$url = $frame['plugin_key'] . DS . $defaultController . DS . $defaultAction . DS . $frame['id'];
+	$url = $frame['pluginKey'] . DS . $defaultController . DS . $defaultAction . DS . $frame['id'];
 	if (Page::isSetting()) {
 		$url = Page::SETTING_MODE_WORD . DS . $url;
 	}

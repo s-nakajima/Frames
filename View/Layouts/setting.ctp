@@ -29,7 +29,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 
 			echo $this->element('NetCommons.common_js');
 			echo $this->Html->script('/frames/js/frames.js', false);
-			echo $this->Html->script('/frames/js/settings.js', false);
 			echo $this->fetch('script');
 		?>
 	</head>
@@ -37,7 +36,9 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	<body ng-controller="NetCommons.base">
 		<?php echo $this->element('NetCommons.common_alert'); ?>
 
-		<?php echo $this->element('NetCommons.common_header'); ?>
+		<?php echo $this->element('NetCommons.common_header', array(
+				'isPageSetting' => true
+			)); ?>
 
 		<main class="<?php echo $this->Layout->getContainerFluid(); ?>">
 			<?php echo $this->element('Pages.page_header'); ?>
@@ -47,9 +48,9 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 
 				<!-- container-main -->
 				<div role="main" id="container-main" class="<?php echo $this->Layout->getContainerSize(Container::TYPE_MAIN); ?>"
-					ng-controller="FrameSettings" ng-init="initialize({frame: <?php echo h(json_encode($frame)) ?>})">
+					ng-controller="FrameSettingsController" ng-init="initialize({frame: <?php echo h(json_encode($frame)) ?>})">
 
-					<section class="frame panel panel-{{frame.header_type}}">
+					<section class="frame panel panel-{{frame.headerType}}">
 						<div class="panel-heading clearfix">
 							<?php echo $this->element('Frames.setting_header', array('frame' => $frame)); ?>
 						</div>

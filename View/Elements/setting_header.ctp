@@ -21,7 +21,7 @@
 	</button>
 
 	<a class="btn btn-default active" title="<?php echo __d('net_commons', 'Quit'); ?>"
-	   href="<?php echo $this->Html->url(isset($this->request->data['current']['Page']) ? '/' . $this->request->data['current']['Page']['permalink'] : null); ?>">
+	   href="<?php echo $this->Html->url(isset($current['page']) ? '/' . $current['page']['permalink'] : null); ?>">
 		<span class="glyphicon glyphicon-cog"> </span>
 		<span class="sr-only"><?php echo __('Show flame setting'); ?></span>
 	</a>
@@ -61,14 +61,14 @@
 			'label' => false,
 			'class' => 'hidden',
 			'div' => false,
-			'value' => $frame['header_type'],
+			'value' => $frame['headerType'],
 		)); ?>
 
 	<div class="btn-group">
 		<button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle frame-header-type-btn">
-			<div class="panel panel-{{frame.header_type}} frame-header-type-settings">
+			<div class="panel panel-{{frame.headerType}} frame-header-type-settings">
 				<div class="panel-heading">
-					<small>{{frame.header_type}}</small>
+					<small>{{frame.headerType}}</small>
 				</div>
 			</div>
 			<span class="caret"></span>

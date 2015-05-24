@@ -2,7 +2,7 @@
 /**
  * Element of frame.
  *  - $frame: The frame data
- *  - $view: The plugin view 
+ *  - $view: The plugin view
  *
  * @copyright Copyright 2014, NetCommons Project
  * @author Kohei Teraguchi <kteraguchi@commonsnet.org>
@@ -12,7 +12,7 @@
 ?>
 
 <section id="frame-wrap-<?php echo $frame['id']; ?>"
-	class="frame panel panel-<?php echo h($frame['header_type']); ?>"
+	class="frame panel panel-<?php echo h($frame['headerType']); ?>"
 	ng-controller="FramesController" ng-hide="deleted">
 
 	<div class="panel-heading clearfix">
@@ -32,7 +32,7 @@
 					<span class="sr-only"><?php echo __d('frames', 'Down frame position'); ?></span>
 				</button>
 
-				<button class="btn btn-default" onclick="location.href='/<?php echo $frame['plugin_key'] . DS . 'blocks' . DS . 'index' . DS . $frame['id']; ?>'">
+				<button class="btn btn-default" onclick="location.href='/<?php echo $frame['pluginKey'] . DS . 'blocks' . DS . 'index' . DS . $frame['id']; ?>'">
 					<span class="glyphicon glyphicon-cog"></span>
 					<span class="sr-only"><?php echo __d('frames', 'Show flame setting'); ?></span>
 				</button>

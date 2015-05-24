@@ -34,7 +34,7 @@ NetCommonsApp.controller('FrameSettings', function($scope) {
    * @return {void}
    */
   $scope.selectHeaderType = function(headerType) {
-    $scope.frame.header_type = headerType;
+    $scope.frame.headerType = headerType;
     $('#FrameHeaderType')[0].value = headerType;
   };
 });

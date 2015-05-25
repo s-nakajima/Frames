@@ -14,15 +14,10 @@ foreach ($frames as $frame) {
 		continue;
 	}
 
-	$defaultAction = 'index';
-	if (isset($pluginMap[$frame['pluginKey']]) && $pluginMap[$frame['pluginKey']]['defaultAction'] !== '') {
-		$defaultAction = $pluginMap[$frame['pluginKey']]['defaultAction'];
-	}
-	$defaultController = $frame['pluginKey'];
-
-	$url = $frame['pluginKey'] . DS . $defaultController . DS . $defaultAction . DS . $frame['id'];
+	$action = $pluginMap[$frame['pluginKey']]['defaultAction'] ? : $frame['pluginKey'] . '/index';
+	$url = $frame['pluginKey'] . '/' . $action . '/' . $frame['id'];
 	if (Page::isSetting()) {
-		$url = Page::SETTING_MODE_WORD . DS . $url;
+		$url = Page::SETTING_MODE_WORD . '/' . $url;
 	}
 
 	$view = $this->requestAction($url, array('return'));

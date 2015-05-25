@@ -32,7 +32,7 @@
 					<span class="sr-only"><?php echo __d('frames', 'Down frame position'); ?></span>
 				</button>
 
-				<button class="btn btn-default" onclick="location.href='/<?php echo $frame['pluginKey'] . DS . 'blocks' . DS . 'index' . DS . $frame['id']; ?>'">
+				<button class="btn btn-default" onclick="location.href='/<?php echo $frame['pluginKey'] . '/blocks/index/' . $frame['id']; ?>'">
 					<span class="glyphicon glyphicon-cog"></span>
 					<span class="sr-only"><?php echo __d('frames', 'Show flame setting'); ?></span>
 				</button>

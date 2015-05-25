@@ -17,9 +17,10 @@ foreach ($frames as $frame):
 		continue;
 	}
 
-	$url = $frame['plugin_key'] . DS . $frame['plugin_key'] . DS . 'index' . DS . $frame['id'];
+	$action = $pluginMap[$frame['plugin_key']]['default_action'] ? : $frame['plugin_key'] . '/index';
+	$url = $frame['plugin_key'] . '/' . $action . '/' . $frame['id'];
 	if (Page::isSetting()) {
-		$url = Page::SETTING_MODE_WORD . DS . $url;
+		$url = Page::SETTING_MODE_WORD . '/' . $url;
 	}
 
 	$view = $this->requestAction($url, array('return'));
@@ -48,7 +49,7 @@ foreach ($frames as $frame):
 							<span class="sr-only"><?php echo __('Down frame position'); ?></span>
 						</button>
 
-						<button class="btn btn-default" onclick="location.href='/<?php echo $frame['plugin_key'] . DS . 'blocks' . DS . 'index' . DS . $frame['id']; ?>'">
+						<button class="btn btn-default" onclick="location.href='/<?php echo $frame['plugin_key'] . '/' . 'blocks' . '/' . 'index' . '/' . $frame['id']; ?>'">
 							<span class="glyphicon glyphicon-cog"></span>
 							<span class="sr-only"><?php echo __('Show flame setting'); ?></span>
 						</button>

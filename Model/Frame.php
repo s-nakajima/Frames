@@ -79,6 +79,9 @@ class Frame extends FramesAppModel {
  */
 	public function getContainableQuery() {
 		$query = array(
+			'conditions' => array(
+				'is_deleted' => false
+			),
 			'order' => array(
 				'Frame.weight'
 			),
@@ -101,12 +104,30 @@ class Frame extends FramesAppModel {
 		$dataSource = $this->getDataSource();
 		$dataSource->begin();
 
-		$this->set('weight', 1);			// It should use OrderedBehavior
-		$this->set('is_published', true);	// It should check parts
-
 		try {
+			if ($data['Frame']['is_deleted']) {
+				//削除の場合、カウントDown
+				$this->updateAll(
+					array('Frame.weight' => 'Frame.weight - 1'),
+					array(
+						'Frame.weight > ' => $data['Frame']['weight'],
+						'Frame.box_id' => $data['Frame']['box_id'],
+					)
+				);
+				$data['Frame']['weight'] = null;
+			} else {
+				//カウントUp
+				$this->updateAll(
+					array('Frame.weight' => 'Frame.weight + 1'),
+					array(
+						'Frame.weight >= ' => $data['Frame']['weight'],
+						'Frame.box_id' => $data['Frame']['box_id'],
+					)
+				);
+			}
+
 			$frame = $this->save($data);
-			if (!$frame) {
+			if (! $frame) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 

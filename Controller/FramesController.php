@@ -82,8 +82,9 @@ class FramesController extends FramesAppController {
 			return;
 		}
 
-		// It should modify to use m17n on key and name
 		$data = $this->request->data;
+		$data['Frame']['weight'] = 1;
+		$data['Frame']['is_deleted'] = false;
 		$data['Frame']['name'] = __d('frames', 'New frame %s', date('YmdHis'));
 		if (! $data['Frame']['room_id']) {
 			$data['Frame']['room_id'] = null;
@@ -113,12 +114,22 @@ class FramesController extends FramesAppController {
 			return;
 		}
 
-		$this->Frame->id = $id;
-		if ($this->Frame->deleteFrame()) {
-			return $this->flash(__('The frame has been deleted.'), array('action' => 'index'));
-		} else {
-			return $this->flash(__('The frame could not be deleted. Please, try again.'), array('action' => 'index'));
+		$frame['Frame']['weight'] = null;
+		$frame['Frame']['is_deleted'] = true;
+		if (! $this->Frame->saveFrame($frame)) {
+			//エラー処理
+			$this->throwBadRequest();
+			return;
 		}
+
+		$this->flash(__('The frame has been deleted.'), array('action' => 'index'));
+
+		//$this->Frame->id = $id;
+		//if ($this->Frame->deleteFrame()) {
+		//	return $this->flash(__('The frame has been deleted.'), array('action' => 'index'));
+		//} else {
+		//	return $this->flash(__('The frame could not be deleted. Please, try again.'), array('action' => 'index'));
+		//}
 	}
 
 /**

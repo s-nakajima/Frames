@@ -38,7 +38,8 @@
 					<span class="sr-only"><?php echo __d('frames', 'Show flame setting'); ?></span>
 				</button>
 
-				<button class="btn btn-default" ng-click="delete(<?php echo $frame['id']; ?>)">
+				<button class="btn btn-default" ng-click="delete(<?php echo $frame['id']; ?>,
+							'<?php echo __d('frames', 'Do you want to delete the frame?') ?>')">
 					<span class="glyphicon glyphicon-remove"></span>
 					<span class="sr-only"><?php echo __d('frames', 'Delete frame'); ?></span>
 				</button>

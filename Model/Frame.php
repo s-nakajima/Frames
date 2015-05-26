@@ -25,6 +25,15 @@ App::uses('FramesAppModel', 'Frames.Model');
  */
 class Frame extends FramesAppModel {
 
+/**
+ * use behaviors
+ *
+ * @var array
+ */
+	public $actsAs = array(
+		'NetCommons.OriginalKey',
+	);
+
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
@@ -73,16 +82,6 @@ class Frame extends FramesAppModel {
 			'order' => array(
 				'Frame.weight'
 			),
-			//'Language' => array(
-			//	'conditions' => array(
-			//		'Language.code' => 'ja'
-			//	)
-			//),
-			//'Plugin' => array(
-			//	'conditions' => array(
-			//		'Plugin.key = Frame.plugin_key'
-			//	),
-			//)
 		);
 
 		return $query;
@@ -108,15 +107,16 @@ class Frame extends FramesAppModel {
 		try {
 			$frame = $this->save($data);
 			if (!$frame) {
-				throw new Exception();
+				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 
 			$dataSource->commit();
 			return $frame;
 
-		} catch (Exception $e) {
+		} catch (Exception $ex) {
 			$dataSource->rollback();
-			return false;
+			CakeLog::error($ex);
+			throw $ex;
 		}
 	}
 
@@ -135,15 +135,16 @@ class Frame extends FramesAppModel {
 
 		try {
 			if (!$this->delete()) {
-				throw new Exception();
+				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 
 			$dataSource->commit();
 			return true;
 
-		} catch (Exception $e) {
+		} catch (Exception $ex) {
 			$dataSource->rollback();
-			return false;
+			CakeLog::error($ex);
+			throw $ex;
 		}
 	}
 

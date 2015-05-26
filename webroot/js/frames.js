@@ -24,10 +24,7 @@ NetCommonsApp.controller('FramesController', function($scope, $http) {
    * @param {number} frameId
    * @return {void}
    */
-  $scope.delete = function(frameId) {
-    var message = 'Do you want to delete the frame?\n' +
-                  '(It should use defined language.)';
-
+  $scope.delete = function(frameId, message) {
     if (confirm(message)) {
       $http.delete('/frames/frames/' + frameId.toString())
         .success(function(data, status, headers, config) {

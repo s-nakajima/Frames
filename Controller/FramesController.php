@@ -25,7 +25,10 @@ class FramesController extends FramesAppController {
  *
  * @var array
  */
-	public $uses = array('Frames.Frame');
+	public $uses = array(
+		'Frames.Frame',
+		'Pages.Page'
+	);
 
 /**
  * use component
@@ -33,7 +36,13 @@ class FramesController extends FramesAppController {
  * @var array
  */
 	public $components = array(
-		//'Security'
+		'NetCommons.NetCommonsRoomRole' => array(
+			//コンテンツの権限設定
+			'allowedActions' => array(
+				'pageEditable' => array('add', 'edit', 'delete'),
+			),
+		),
+		'Security'
 	);
 
 /**
@@ -63,32 +72,30 @@ class FramesController extends FramesAppController {
  *
  * @return void
  */
-	public function add() {
-		//if (!$this->request->is('post')) {
-		//	return;
-		//}
+	public function add($pageId = null) {
 		$this->request->onlyAllow('post');
 
 		$this->Frame->create();
 
-		// It should modify to use m17n on key and name
-		$data['Frame'] = array_merge(
-			$this->request->data['Frame'],
-			array(
-				'room_id' => 1,
-				'language_id' => 2,
-				'key' => hash('sha256', 'テスト' . date('Y/m/d H:i:s')),
-				'name' => 'テスト' . date('Y/m/d H:i:s'),
-			)
-		);
-
-		if (!$this->Frame->saveFrame($data)) {
-			//エラー処理
-			return false;
+		if (! $page = $this->Page->findById($pageId)) {
+			$this->throwBadRequest();
+			return;
 		}
 
-		$this->autoRender = false;
-		$this->redirect('/setting/');
+		// It should modify to use m17n on key and name
+		$data = $this->request->data;
+		$data['Frame']['name'] = __d('frames', 'New frame %s', date('YmdHis'));
+		if (! $data['Frame']['room_id']) {
+			$data['Frame']['room_id'] = null;
+		}
+
+		if (! $this->Frame->saveFrame($data)) {
+			//エラー処理
+			$this->throwBadRequest();
+			return;
+		}
+
+		$this->redirect('/' . Page::SETTING_MODE_WORD . '/' . $page['Page']['permalink']);
 	}
 
 /**
@@ -99,13 +106,14 @@ class FramesController extends FramesAppController {
  * @return void
  */
 	public function delete($id = null) {
-		$this->Frame->id = $id;
-		if (!$this->Frame->exists()) {
-			throw new NotFoundException(__('Invalid frame'));
+		$this->request->onlyAllow('delete');
+
+		if (! $frame = $this->Frame->findById($id)) {
+			$this->throwBadRequest();
+			return;
 		}
 
-		//$this->request->onlyAllow('post', 'delete');
-		$this->request->onlyAllow('delete');
+		$this->Frame->id = $id;
 		if ($this->Frame->deleteFrame()) {
 			return $this->flash(__('The frame has been deleted.'), array('action' => 'index'));
 		} else {

@@ -114,7 +114,6 @@ class FramesController extends FramesAppController {
 			return;
 		}
 
-		$frame['Frame']['weight'] = null;
 		$frame['Frame']['is_deleted'] = true;
 		if (! $this->Frame->saveFrame($frame)) {
 			//エラー処理

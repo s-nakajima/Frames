@@ -112,16 +112,18 @@ class Frame extends FramesAppModel {
 					array(
 						'Frame.weight > ' => $data['Frame']['weight'],
 						'Frame.box_id' => $data['Frame']['box_id'],
+						'Frame.is_deleted' => false,
 					)
 				);
 				$data['Frame']['weight'] = null;
-			} else {
+			} elseif (! isset($data['Frame']['id']) || ! $data['Frame']['id']) {
 				//カウントUp
 				$this->updateAll(
 					array('Frame.weight' => 'Frame.weight + 1'),
 					array(
 						'Frame.weight >= ' => $data['Frame']['weight'],
 						'Frame.box_id' => $data['Frame']['box_id'],
+						'Frame.is_deleted' => false,
 					)
 				);
 			}

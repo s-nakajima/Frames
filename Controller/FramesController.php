@@ -73,7 +73,7 @@ class FramesController extends FramesAppController {
 
 		// It should modify to use m17n on key and name
 		$data['Frame'] = array_merge(
-			$this->request->data,
+			$this->request->data['Frame'],
 			array(
 				'room_id' => 1,
 				'language_id' => 2,

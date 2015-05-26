@@ -32,7 +32,8 @@
 					<span class="sr-only"><?php echo __d('frames', 'Down frame position'); ?></span>
 				</button>
 
-				<button class="btn btn-default" onclick="location.href='/<?php echo $frame['pluginKey'] . '/blocks/index/' . $frame['id']; ?>'">
+				<?php $action = $pluginMap[$frame['pluginKey']]['defaultSettingAction'] ? : 'blocks/index'; ?>
+				<button class="btn btn-default" onclick="location.href='/<?php echo $frame['pluginKey'] . '/' . $action . '/' . $frame['id']; ?>'">
 					<span class="glyphicon glyphicon-cog"></span>
 					<span class="sr-only"><?php echo __d('frames', 'Show flame setting'); ?></span>
 				</button>

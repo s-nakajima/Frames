@@ -75,15 +75,13 @@ class FramesController extends FramesAppController {
 	public function add($pageId = null) {
 		$this->request->onlyAllow('post');
 
-		$this->Frame->create();
-
 		if (! $page = $this->Page->findById($pageId)) {
 			$this->throwBadRequest();
 			return;
 		}
 
-		$data = $this->request->data;
-		$data['Frame']['weight'] = 1;
+		$this->Frame->create();
+		$data = $this->data;
 		$data['Frame']['is_deleted'] = false;
 		$data['Frame']['name'] = __d('frames', 'New frame %s', date('YmdHis'));
 		if (! $data['Frame']['room_id']) {
@@ -106,22 +104,29 @@ class FramesController extends FramesAppController {
  * @throws NotFoundException
  * @return void
  */
-	public function delete($id = null) {
+	public function delete($id = null, $pageId = null) {
 		$this->request->onlyAllow('delete');
 
+		if (! $page = $this->Page->findById($pageId)) {
+			$this->throwBadRequest();
+			return;
+		}
+
+		$this->Frame->setDataSource('master');
 		if (! $frame = $this->Frame->findById($id)) {
 			$this->throwBadRequest();
 			return;
 		}
 
-		$frame['Frame']['is_deleted'] = true;
-		if (! $this->Frame->saveFrame($frame)) {
+		$data = Hash::merge($frame, $this->data);
+		$data['Frame']['is_deleted'] = true;
+		if (! $this->Frame->saveFrame($data)) {
 			//エラー処理
 			$this->throwBadRequest();
 			return;
 		}
 
-		$this->flash(__('The frame has been deleted.'), array('action' => 'index'));
+		$this->redirect('/' . Page::SETTING_MODE_WORD . '/' . $page['Page']['permalink']);
 
 		//$this->Frame->id = $id;
 		//if ($this->Frame->deleteFrame()) {

@@ -7,7 +7,6 @@
  * @link http://www.netcommons.org NetCommons Project
  * @license http://www.netcommons.org/license.txt NetCommons License
  */
-echo $this->Html->script('/frames/js/frames.js', false);
 
 foreach ($frames as $frame) {
 	if (strlen($frame['pluginKey']) === 0) {
@@ -27,6 +26,7 @@ foreach ($frames as $frame) {
 
 	echo $this->element('Frames.frame', array(
 			'frame' => $frame,
-			'view' => $view
+			'view' => $view,
+			'pageId' => $pageId
 		));
 }

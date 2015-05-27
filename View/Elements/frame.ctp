@@ -11,9 +11,7 @@
  */
 ?>
 
-<section id="frame-wrap-<?php echo $frame['id']; ?>"
-	class="frame panel panel-<?php echo h($frame['headerType']); ?>"
-	ng-controller="FramesController" ng-hide="deleted">
+<section class="frame panel panel-<?php echo h($frame['headerType']); ?>">
 
 	<div class="panel-heading clearfix">
 		<span>
@@ -22,27 +20,24 @@
 
 		<?php if (Page::isSetting()): ?>
 			<div class="pull-right">
-				<button class="btn btn-default">
+				<button class="btn btn-default frame-btn pull-left">
 					<span class="glyphicon glyphicon-arrow-up"></span>
 					<span class="sr-only"><?php echo __d('frames', 'Up frame position'); ?></span>
 				</button>
 
-				<button class="btn btn-default">
+				<button class="btn btn-default frame-btn pull-left">
 					<span class="glyphicon glyphicon-arrow-down"></span>
 					<span class="sr-only"><?php echo __d('frames', 'Down frame position'); ?></span>
 				</button>
 
 				<?php $action = $pluginMap[$frame['pluginKey']]['defaultSettingAction'] ? : 'blocks/index'; ?>
-				<button class="btn btn-default" onclick="location.href='/<?php echo $frame['pluginKey'] . '/' . $action . '/' . $frame['id']; ?>'">
+				<button class="btn btn-default frame-btn pull-left" onclick="location.href='/<?php echo $frame['pluginKey'] . '/' . $action . '/' . $frame['id']; ?>'">
 					<span class="glyphicon glyphicon-cog"></span>
 					<span class="sr-only"><?php echo __d('frames', 'Show flame setting'); ?></span>
 				</button>
 
-				<button class="btn btn-default" ng-click="delete(<?php echo $frame['id']; ?>,
-							'<?php echo __d('frames', 'Do you want to delete the frame?') ?>')">
-					<span class="glyphicon glyphicon-remove"></span>
-					<span class="sr-only"><?php echo __d('frames', 'Delete frame'); ?></span>
-				</button>
+				<?php echo $this->element('Frames.delete_form', array('frame' => $frame, 'pageId' => $pageId)); ?>
+
 			</div>
 		<?php endif; ?>
 	</div>

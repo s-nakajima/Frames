@@ -15,26 +15,6 @@
  */
 NetCommonsApp.controller('FramesController', function($scope, $http) {
 
-  /**
-   * scope values
-   */
-  $scope.deleted = false;
-
-  /**
-   * @param {number} frameId
-   * @return {void}
-   */
-  $scope.delete = function(frameId, message) {
-    if (confirm(message)) {
-      $http.delete('/frames/frames/' + frameId.toString())
-        .success(function(data, status, headers, config) {
-            $scope.deleted = true;
-          })
-        .error(function(data, status, headers, config) {
-            alert(status);  // It should be error code
-          });
-    }
-  };
 });
 
 

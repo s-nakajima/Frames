@@ -91,6 +91,29 @@ class Frame extends FramesAppModel {
 	}
 
 /**
+ * getMaxWeight
+ *
+ * @param string $blockKey blocks.key
+ * @param string $categoryKey categories.key
+ * @return int $weight link_orders.weight
+ */
+	public function getMaxWeight($boxId) {
+		$order = $this->find('first', array(
+				'recursive' => -1,
+				'fields' => array('weight'),
+				'conditions' => array('box_id' => $boxId),
+				'order' => array('weight' => 'DESC')
+			));
+
+		if (isset($order[$this->alias]['weight'])) {
+			$weight = (int)$order[$this->alias]['weight'];
+		} else {
+			$weight = 0;
+		}
+		return $weight;
+	}
+
+/**
  * Save frame to master data source
  * Is it better to use before after method?
  * If so, is it okay to use beforeValidate?
@@ -112,7 +135,7 @@ class Frame extends FramesAppModel {
 
 		try {
 			if ($data['Frame']['is_deleted']) {
-				//削除の場合、カウントDown
+				//論理削除の場合、カウントDown
 				$this->updateAll(
 					array('Frame.weight' => 'Frame.weight - 1'),
 					array(
@@ -124,6 +147,7 @@ class Frame extends FramesAppModel {
 				$data['Frame']['weight'] = null;
 			} elseif (! isset($data['Frame']['id']) || ! $data['Frame']['id']) {
 				//カウントUp
+				$data['Frame']['weight'] = $this->getMaxWeight($data['Frame']['box_id']) + 1;
 				$this->updateAll(
 					array('Frame.weight' => 'Frame.weight + 1'),
 					array(

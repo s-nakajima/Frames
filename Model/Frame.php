@@ -96,9 +96,12 @@ class Frame extends FramesAppModel {
 	public function saveFrame($data) {
 		$plugin = Inflector::camelize($data[$this->alias]['plugin_key']);
 		$model = Inflector::singularize($plugin);
-		$this->loadModels([
-			$model => $plugin . '.' . $model,
-		]);
+		$classExists = ClassRegistry::init($plugin . '.' . $model, true);
+		$models = [];
+		if ($classExists) {
+			$models[$model] = $plugin . '.' . $model;
+		}
+		$this->loadModels($models);
 
 		$this->setDataSource('master');
 		$dataSource = $this->getDataSource();
@@ -112,7 +115,7 @@ class Frame extends FramesAppModel {
 			if (!$frame) {
 				throw new Exception();
 			}
-			if (method_exists($this->{$model}, 'afterFrameSave')) {
+			if ($this->{$model} instanceof Model && method_exists($this->{$model}, 'afterFrameSave')) {
 				$this->{$model}->afterFrameSave($frame);
 			}
 

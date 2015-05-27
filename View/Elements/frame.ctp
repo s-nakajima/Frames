@@ -20,15 +20,7 @@
 
 		<?php if (Page::isSetting()): ?>
 			<div class="pull-right">
-				<button class="btn btn-default frame-btn pull-left">
-					<span class="glyphicon glyphicon-arrow-up"></span>
-					<span class="sr-only"><?php echo __d('frames', 'Up frame position'); ?></span>
-				</button>
-
-				<button class="btn btn-default frame-btn pull-left">
-					<span class="glyphicon glyphicon-arrow-down"></span>
-					<span class="sr-only"><?php echo __d('frames', 'Down frame position'); ?></span>
-				</button>
+				<?php echo $this->element('Frames.order_form', array('frame' => $frame)); ?>
 
 				<?php $action = $pluginMap[$frame['pluginKey']]['defaultSettingAction'] ? : 'blocks/index'; ?>
 				<button class="btn btn-default frame-btn pull-left" onclick="location.href='/<?php echo $frame['pluginKey'] . '/' . $action . '/' . $frame['id']; ?>'">
@@ -36,8 +28,7 @@
 					<span class="sr-only"><?php echo __d('frames', 'Show flame setting'); ?></span>
 				</button>
 
-				<?php echo $this->element('Frames.delete_form', array('frame' => $frame, 'pageId' => $pageId)); ?>
-
+				<?php echo $this->element('Frames.delete_form', array('frame' => $frame)); ?>
 			</div>
 		<?php endif; ?>
 	</div>

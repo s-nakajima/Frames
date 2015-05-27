@@ -27,7 +27,8 @@ class FramesController extends FramesAppController {
  */
 	public $uses = array(
 		'Frames.Frame',
-		'Pages.Page'
+		'Pages.Page',
+		'PluginManager.Plugin'
 	);
 
 /**
@@ -39,7 +40,7 @@ class FramesController extends FramesAppController {
 		'NetCommons.NetCommonsRoomRole' => array(
 			//コンテンツの権限設定
 			'allowedActions' => array(
-				'pageEditable' => array('add', 'edit', 'delete'),
+				'pageEditable' => array('add', 'edit', 'delete', 'order'),
 			),
 		),
 		'Security'
@@ -72,7 +73,7 @@ class FramesController extends FramesAppController {
  *
  * @return void
  */
-	public function add($pageId = null) {
+	public function add() {
 		$this->request->onlyAllow('post');
 
 		if (! $page = $this->Page->findById($pageId)) {
@@ -94,7 +95,16 @@ class FramesController extends FramesAppController {
 			return;
 		}
 
-		$this->redirect('/' . Page::SETTING_MODE_WORD . '/' . $page['Page']['permalink']);
+		if ($plugin = $this->Plugin->findByKey($data['Frame']['plugin_key'])) {
+			if ($plugin['plugin']['default_setting_action']) {
+				$this->redirect($data['Frame']['plugin_key'] . '/' . $plugin['plugin']['default_setting_action']);
+				return;
+			}
+		}
+
+		if (! $this->request->is('ajax')) {
+			$this->redirect($this->request->referer());
+		}
 	}
 
 /**
@@ -104,13 +114,8 @@ class FramesController extends FramesAppController {
  * @throws NotFoundException
  * @return void
  */
-	public function delete($id = null, $pageId = null) {
+	public function delete($id = null) {
 		$this->request->onlyAllow('delete');
-
-		if (! $page = $this->Page->findById($pageId)) {
-			$this->throwBadRequest();
-			return;
-		}
 
 		$this->Frame->setDataSource('master');
 		if (! $frame = $this->Frame->findById($id)) {
@@ -126,20 +131,15 @@ class FramesController extends FramesAppController {
 			return;
 		}
 
-		$this->redirect('/' . Page::SETTING_MODE_WORD . '/' . $page['Page']['permalink']);
-
-		//$this->Frame->id = $id;
-		//if ($this->Frame->deleteFrame()) {
-		//	return $this->flash(__('The frame has been deleted.'), array('action' => 'index'));
-		//} else {
-		//	return $this->flash(__('The frame could not be deleted. Please, try again.'), array('action' => 'index'));
-		//}
+		if (! $this->request->is('ajax')) {
+			$this->redirect($this->request->referer());
+		}
 	}
 
 /**
  * edit method
  *
- * @param int $frameId frameId
+ * @param int $frameId frames.id
  * @return void
  * @throws InternalErrorException
  */
@@ -148,12 +148,48 @@ class FramesController extends FramesAppController {
 
 		$this->Frame->setDataSource('master');
 		if (! $frame = $this->Frame->findById($frameId)) {
-			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+			$this->throwBadRequest();
+			return;
 		}
 
 		$data = Hash::merge($frame, $this->data);
 		if (! $this->Frame->saveFrame($data)) {
-			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+			$this->throwBadRequest();
+			return;
+		}
+		if (! $this->request->is('ajax')) {
+			$this->redirect($this->request->referer());
+		}
+	}
+
+/**
+ * sort method
+ *
+ * @param int $frameId frames.id
+ * @return void
+ * @throws InternalErrorException
+ */
+	public function order($frameId = null) {
+		$this->request->onlyAllow('post');
+
+		$this->Frame->setDataSource('master');
+		if (! $frame = $this->Frame->findById($frameId)) {
+			$this->throwBadRequest();
+			return;
+		}
+
+		if (array_key_exists('up', $this->data)) {
+			$order = 'up';
+		} elseif (array_key_exists('down', $this->data)) {
+			$order = 'down';
+		} else {
+			$this->throwBadRequest();
+			return;
+		}
+
+		if (! $this->Frame->saveWeight($frame, $order)) {
+			$this->throwBadRequest();
+			return;
 		}
 		if (! $this->request->is('ajax')) {
 			$this->redirect($this->request->referer());

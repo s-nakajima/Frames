@@ -26,7 +26,6 @@ foreach ($frames as $frame) {
 
 	echo $this->element('Frames.frame', array(
 			'frame' => $frame,
-			'view' => $view,
-			'pageId' => $pageId
+			'view' => $view
 		));
 }

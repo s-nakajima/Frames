@@ -136,26 +136,12 @@ class Frame extends FramesAppModel {
 		try {
 			if ($data['Frame']['is_deleted']) {
 				//論理削除の場合、カウントDown
-				$this->updateAll(
-					array('Frame.weight' => 'Frame.weight - 1'),
-					array(
-						'Frame.weight > ' => $data['Frame']['weight'],
-						'Frame.box_id' => $data['Frame']['box_id'],
-						'Frame.is_deleted' => false,
-					)
-				);
+				$this->__saveWeight($data, -1);
 				$data['Frame']['weight'] = null;
 			} elseif (! isset($data['Frame']['id']) || ! $data['Frame']['id']) {
 				//カウントUp
 				$data['Frame']['weight'] = $this->getMaxWeight($data['Frame']['box_id']) + 1;
-				$this->updateAll(
-					array('Frame.weight' => 'Frame.weight + 1'),
-					array(
-						'Frame.weight >= ' => $data['Frame']['weight'],
-						'Frame.box_id' => $data['Frame']['box_id'],
-						'Frame.is_deleted' => false,
-					)
-				);
+				$this->__saveWeight($data, 1);
 			}
 
 			$frame = $this->save($data);
@@ -173,6 +159,75 @@ class Frame extends FramesAppModel {
 			$dataSource->rollback();
 			CakeLog::error($ex);
 			throw $ex;
+		}
+	}
+
+/**
+ * Save frame to master data source
+ * Is it better to use before after method?
+ * If so, is it okay to use beforeValidate?
+ *
+ * @param array $data request data
+ * @throws Exception
+ * @return mixed On success Model::$data if its not empty or true, false on failure
+ */
+	public function saveWeight($data, $order) {
+
+		$this->setDataSource('master');
+		$dataSource = $this->getDataSource();
+		$dataSource->begin();
+
+		try {
+			if ($order === 'up') {
+				$data['Frame']['weight']--;
+				$this->__saveWeight($data, 1, '=');
+			} else {
+				$data['Frame']['weight']++;
+				$this->__saveWeight($data, -1, '=');
+			}
+
+			$this->id = (int)$data['Frame']['id'];
+			if (! $this->saveField('weight', $data['Frame']['weight'])) {
+				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+			}
+
+			$dataSource->commit();
+			return true;
+
+		} catch (Exception $ex) {
+			$dataSource->rollback();
+			CakeLog::error($ex);
+			throw $ex;
+		}
+	}
+
+/**
+ * Save frame to master data source
+ * Is it better to use before after method?
+ * If so, is it okay to use beforeValidate?
+ *
+ * @param array $data request data
+ * @throws Exception
+ * @return mixed On success Model::$data if its not empty or true, false on failure
+ */
+	private function __saveWeight($data, $sequence, $sign = null) {
+		if (! isset($sign)) {
+			if ($sequence > 0) {
+				$sign = '>=';
+			} else {
+				$sign = '>';
+			}
+		}
+
+		if (! $this->updateAll(
+			array('Frame.weight' => 'Frame.weight + (' . $sequence . ')'),
+			array(
+				'Frame.weight ' . $sign . ' ' => $data['Frame']['weight'],
+				'Frame.box_id' => $data['Frame']['box_id'],
+				'Frame.is_deleted' => false,
+			)
+		)) {
+			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 		}
 	}
 

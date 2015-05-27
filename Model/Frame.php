@@ -50,7 +50,7 @@ class Frame extends FramesAppModel {
 			'order' => ''
 		),
 		'Plugin' => array(
-			'className' => 'Plugin',
+			'className' => 'PluginManager.Plugin',
 			'foreignKey' => false,
 			'conditions' => array('Frame.plugin_key = Plugin.key'),
 			'fields' => '',
@@ -100,6 +100,12 @@ class Frame extends FramesAppModel {
  * @return mixed On success Model::$data if its not empty or true, false on failure
  */
 	public function saveFrame($data) {
+		$plugin = Inflector::camelize($data[$this->alias]['plugin_key']);
+		$model = Inflector::singularize($plugin);
+		$this->loadModels([
+			$model => $plugin . '.' . $model,
+		]);
+
 		$this->setDataSource('master');
 		$dataSource = $this->getDataSource();
 		$dataSource->begin();
@@ -131,6 +137,9 @@ class Frame extends FramesAppModel {
 			$frame = $this->save($data);
 			if (! $frame) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+			}
+			if (method_exists($this->{$model}, 'afterFrameSave')) {
+				$this->{$model}->afterFrameSave($frame);
 			}
 
 			$dataSource->commit();

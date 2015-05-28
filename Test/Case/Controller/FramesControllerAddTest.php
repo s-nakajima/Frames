@@ -28,6 +28,7 @@ class FramesControllerAddTest extends ControllerTestCase {
 		'plugin.m17n.language',
 		'plugin.net_commons.site_setting',
 		'plugin.pages.page',
+		'plugin.users.user',
 	);
 
 /**
@@ -36,6 +37,17 @@ class FramesControllerAddTest extends ControllerTestCase {
  * @return   void
  */
 	public function setUp() {
+		$framesPath = App::pluginPath('Frames');
+		$noDir = (empty($framesPath) || !file_exists($framesPath));
+		if ($noDir) {
+			$this->markTestAsSkipped('Could not find Frames in plugin paths');
+		}
+
+		App::build(array(
+			'Plugin' => array($framesPath . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
+		));
+		CakePlugin::load('ModelWithAfterFrameSaveTestPlugin');
+
 		parent::setUp();
 	}
 
@@ -48,7 +60,8 @@ class FramesControllerAddTest extends ControllerTestCase {
 		$options = array(
 			'data' => array(
 				'box_id' => '1',
-				'plugin_id' => '1'
+				'plugin_key' => 'model_with_after_frame_save_test_plugin',
+				'plugin_id' => '1',
 			)
 		);
 		$this->testAction('/frames/frames/add', $options);
@@ -77,7 +90,14 @@ class FramesControllerAddTest extends ControllerTestCase {
 			->method('save')
 			->will($this->returnValue(false));
 
-		$this->testAction('/frames/frames/add');
+		$options = array(
+			'data' => array(
+				'box_id' => '1',
+				'plugin_key' => 'model_with_after_frame_save_test_plugin',
+				'plugin_id' => '1',
+			)
+		);
+		$this->testAction('/frames/frames/add', $options);
 		// It should be error assertion
 	}
 

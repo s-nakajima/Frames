@@ -25,7 +25,10 @@ class FramesController extends FramesAppController {
  *
  * @var array
  */
-	public $uses = array('Frames.Frame');
+	public $uses = array(
+		'Frames.Frame',
+		'PluginManager.Plugin',
+	);
 
 /**
  * use component
@@ -53,6 +56,14 @@ class FramesController extends FramesAppController {
 		$frame['Frame']['Language'] = $frame['Language'];
 		unset($frame['Plugin'], $frame['Language']);
 		$this->set('frames', array($frame['Frame']));
+
+		$options = array('conditions' => array('language_id' => 2,));
+		$plugins = $this->Plugin->getKeyIndexedHash($options);
+		$pluginMap = [];
+		foreach ($plugins as $plugin) {
+			$pluginMap[$plugin['Plugin']['key']] = $plugin['Plugin'];
+		}
+		$this->set('pluginMap', $pluginMap);
 
 		// It probably doesn't needs index.ctp, but lower readability.
 		//$this->render('Frames.Elements/render_frames');

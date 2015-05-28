@@ -21,7 +21,7 @@ class FrameFixture extends CakeTestFixture {
 	public $fields = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
 		'language_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 6),
-		'room_id' => array('type' => 'integer', 'null' => false, 'default' => null),
+		'room_id' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'box_id' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'plugin_key' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'block_id' => array('type' => 'integer', 'null' => true, 'default' => null),
@@ -29,17 +29,18 @@ class FrameFixture extends CakeTestFixture {
 		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => 'Name of the frame.', 'charset' => 'utf8'),
 		'header_type' => array('type' => 'string', 'null' => false, 'default' => 'default', 'collate' => 'utf8_general_ci', 'comment' => 'Header type of the frame.', 'charset' => 'utf8'),
 		'translation_engine' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'is_first_auto_translation' => array('type' => 'boolean', 'null' => false),
-		'is_auto_translated' => array('type' => 'boolean', 'null' => false),
+		'is_first_auto_translation' => array('type' => 'boolean', 'null' => false, 'default' => null),
+		'is_auto_translated' => array('type' => 'boolean', 'null' => false, 'default' => null),
 		'weight' => array('type' => 'integer', 'null' => true, 'default' => null, 'comment' => 'Display order.'),
+		'is_deleted' => array('type' => 'boolean', 'null' => false, 'default' => null),
 		'created_user' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'modified_user' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'indexes' => array(
-			'PRIMARY' => array('column' => 'id', 'unique' => 1),
+			'PRIMARY' => array('column' => 'id', 'unique' => 1)
 		),
-		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB'),
+		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
 
 /**
@@ -58,6 +59,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_1',
 			'name' => 'Test frame name 1',
 			'weight' => 1,
+			'is_deleted' => 0,
 			'created_user' => 1,
 			'created' => '2014-07-25 08:10:53',
 			'modified_user' => 1,
@@ -73,6 +75,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_2',
 			'name' => 'Test frame name 2',
 			'weight' => 2,
+			'is_deleted' => 0,
 			'created_user' => 2,
 			'created' => '2014-07-25 08:10:53',
 			'modified_user' => 2,
@@ -88,6 +91,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_3',
 			'name' => 'Test frame name 3',
 			'weight' => 3,
+			'is_deleted' => 0,
 			'created_user' => 3,
 			'created' => '2014-07-25 08:10:53',
 			'modified_user' => 3,
@@ -103,6 +107,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_4',
 			'name' => 'Test frame name 4',
 			'weight' => 4,
+			'is_deleted' => 0,
 			'created_user' => 4,
 			'created' => '2014-07-25 08:10:53',
 			'modified_user' => 4,
@@ -118,6 +123,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_5',
 			'name' => 'Test frame name 5',
 			'weight' => 5,
+			'is_deleted' => 0,
 			'created_user' => 5,
 			'created' => '2014-07-25 08:10:53',
 			'modified_user' => 5,
@@ -133,6 +139,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_6',
 			'name' => 'Test frame name 6',
 			'weight' => 6,
+			'is_deleted' => 0,
 			'created_user' => 6,
 			'created' => '2014-07-25 08:10:53',
 			'modified_user' => 6,
@@ -146,6 +153,7 @@ class FrameFixture extends CakeTestFixture {
 			'plugin_key' => 'plugin_7',
 			'block_id' => 7,
 			'weight' => 7,
+			'is_deleted' => 0,
 			'key' => 'frame_7',
 			'name' => 'Test frame name 7',
 			'created_user' => 7,
@@ -163,6 +171,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_8',
 			'name' => 'Test frame name 8',
 			'weight' => 8,
+			'is_deleted' => 0,
 			'created_user' => 8,
 			'created' => '2014-07-25 08:10:53',
 			'modified_user' => 8,
@@ -178,6 +187,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_9',
 			'name' => 'Test frame name 9',
 			'weight' => 9,
+			'is_deleted' => 0,
 			'created' => '2014-07-25 08:10:53',
 			'modified_user' => 9,
 			'modified' => '2014-07-25 08:10:53'
@@ -192,6 +202,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_10',
 			'name' => 'Test frame name 10',
 			'weight' => 10,
+			'is_deleted' => 0,
 			'created_user' => 10,
 			'created' => '2014-07-25 08:10:53',
 			'modified_user' => 10,
@@ -210,6 +221,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_11',
 			'name' => 'Test frame name 11',
 			'weight' => 11,
+			'is_deleted' => 0,
 			'created_user' => 11,
 			'created' => '2014-07-25 08:11:53',
 			'modified_user' => 11,
@@ -227,6 +239,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_100',
 			'name' => 'Test frame name 100',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 		array(
 			'id' => '101',
@@ -238,6 +251,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_101',
 			'name' => 'Test frame name 101',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 		array(
 			'id' => '102',
@@ -249,6 +263,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_102',
 			'name' => 'Test frame name 102',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 		array(
 			'id' => '103',
@@ -260,6 +275,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_105',
 			'name' => 'Test frame name 105',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 
 		//Edumap plugin
@@ -273,6 +289,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_121',
 			'name' => 'Test frame name 121',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 		array(
 			'id' => '122',
@@ -284,6 +301,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_122',
 			'name' => 'Test frame name 122',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 		array(
 			'id' => '123',
@@ -295,6 +313,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_123',
 			'name' => 'Test frame name 123',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 		array(
 			'id' => '124',
@@ -306,6 +325,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_125',
 			'name' => 'Test frame name 125',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 
 		//Iframes plugin
@@ -319,6 +339,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_141',
 			'name' => 'Test frame name 141',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 		array(
 			'id' => '142',
@@ -330,6 +351,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_142',
 			'name' => 'Test frame name 142',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 		array(
 			'id' => '143',
@@ -341,6 +363,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_143',
 			'name' => 'Test frame name 143',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 		array(
 			'id' => '144',
@@ -352,6 +375,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_145',
 			'name' => 'Test frame name 145',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 
 		//AccessCounters plugin
@@ -365,6 +389,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_161',
 			'name' => 'Test frame name 161',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 		array(
 			'id' => '162',
@@ -376,6 +401,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_162',
 			'name' => 'Test frame name 162',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 		array(
 			'id' => '163',
@@ -387,6 +413,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_163',
 			'name' => 'Test frame name 163',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 		array(
 			'id' => '164',
@@ -398,6 +425,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_165',
 			'name' => 'Test frame name 165',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 
 		//RssReaders plugin
@@ -411,6 +439,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_181',
 			'name' => 'Test frame name 181',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 		array(
 			'id' => '182',
@@ -422,6 +451,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_182',
 			'name' => 'Test frame name 162',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 		array(
 			'id' => '183',
@@ -433,6 +463,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_183',
 			'name' => 'Test frame name 183',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 		array(
 			'id' => '184',
@@ -444,6 +475,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_185',
 			'name' => 'Test frame name 185',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 		array(
 			'id' => '185',
@@ -455,6 +487,7 @@ class FrameFixture extends CakeTestFixture {
 			'key' => 'frame_186',
 			'name' => 'Test frame name 186',
 			'weight' => 1,
+			'is_deleted' => 0,
 		),
 
 	);

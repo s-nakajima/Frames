@@ -13,7 +13,11 @@ foreach ($frames as $frame) {
 		continue;
 	}
 
-	$action = $pluginMap[$frame['pluginKey']]['defaultAction'] ? : $frame['pluginKey'] . '/index';
+	if (isset($pluginMap[$frame['pluginKey']]['defaultAction']) && $pluginMap[$frame['pluginKey']]['defaultAction'] !== '') {
+		$action = $pluginMap[$frame['pluginKey']]['defaultAction'];
+	} else {
+		$action = $frame['pluginKey'] . '/index';
+	}
 	$url = $frame['pluginKey'] . '/' . $action . '/' . $frame['id'];
 	if (Page::isSetting()) {
 		$url = Page::SETTING_MODE_WORD . '/' . $url;

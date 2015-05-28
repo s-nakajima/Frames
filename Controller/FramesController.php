@@ -76,11 +76,6 @@ class FramesController extends FramesAppController {
 	public function add() {
 		$this->request->onlyAllow('post');
 
-		if (! $page = $this->Page->findById($pageId)) {
-			$this->throwBadRequest();
-			return;
-		}
-
 		$this->Frame->create();
 		$data = $this->data;
 		$data['Frame']['is_deleted'] = false;
@@ -89,15 +84,15 @@ class FramesController extends FramesAppController {
 			$data['Frame']['room_id'] = null;
 		}
 
-		if (! $this->Frame->saveFrame($data)) {
+		if (! $frame = $this->Frame->saveFrame($data)) {
 			//エラー処理
 			$this->throwBadRequest();
 			return;
 		}
 
 		if ($plugin = $this->Plugin->findByKey($data['Frame']['plugin_key'])) {
-			if ($plugin['plugin']['default_setting_action']) {
-				$this->redirect($data['Frame']['plugin_key'] . '/' . $plugin['plugin']['default_setting_action']);
+			if ($plugin['Plugin']['default_setting_action']) {
+				$this->redirect('/' . $data['Frame']['plugin_key'] . '/' . $plugin['Plugin']['default_setting_action'] . '/' . $frame['Frame']['id']);
 				return;
 			}
 		}

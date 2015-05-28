@@ -27,7 +27,7 @@ class FrameTest extends CakeTestCase {
 		'plugin.blocks.block',
 		'plugin.boxes.box',
 		'plugin.frames.frame',
-		'plugin.frames.plugin',
+		'plugin.plugin_manager.plugin',
 		'plugin.m17n.language',
 		'plugin.pages.page',
 		'plugin.users.user',
@@ -88,7 +88,7 @@ class FrameTest extends CakeTestCase {
 		$expectCount = $this->Frame->find('count', array('recursive' => -1)) + 1;
 
 		$this->Frame->create();
-		$this->Frame->saveFrame(array());
+		$this->Frame->saveFrame(array('Frame' => array('plugin_key' => 'model_with_after_frame_save_test_plugin')));
 
 		$this->assertEquals($expectCount, $this->Frame->find('count', array('recursive' => -1)));
 	}
@@ -107,7 +107,7 @@ class FrameTest extends CakeTestCase {
 		$expectCount = $frameMock->find('count', array('recursive' => -1));
 
 		$frameMock->create();
-		$this->assertFalse($frameMock->saveFrame(array()));
+		$this->assertFalse($frameMock->saveFrame(array('Frame' => array('plugin_key' => 'model_with_after_frame_save_test_plugin'))));
 
 		//$this->assertEquals('master', $this->Frame->useDbConfig);
 		$this->assertEquals($expectCount, $frameMock->find('count', array('recursive' => -1)));

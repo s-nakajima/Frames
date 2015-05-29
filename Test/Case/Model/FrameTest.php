@@ -27,7 +27,7 @@ class FrameTest extends CakeTestCase {
 		'plugin.blocks.block',
 		'plugin.boxes.box',
 		'plugin.frames.frame',
-		'plugin.frames.plugin',
+		'plugin.plugin_manager.plugin',
 		'plugin.m17n.language',
 		'plugin.pages.page',
 		'plugin.users.user',
@@ -41,6 +41,17 @@ class FrameTest extends CakeTestCase {
 	public function setUp() {
 		parent::setUp();
 		$this->Frame = ClassRegistry::init('Frames.Frame');
+
+		$framesPath = App::pluginPath('Frames');
+		$noDir = (empty($framesPath) || !file_exists($framesPath));
+		if ($noDir) {
+			$this->markTestAsSkipped('Could not find Frames in plugin paths');
+		}
+
+		App::build(array(
+			'Plugin' => array($framesPath . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
+		));
+		CakePlugin::load('ModelWithAfterFrameSaveTestPlugin');
 	}
 
 /**
@@ -98,7 +109,7 @@ class FrameTest extends CakeTestCase {
 		);
 
 		$this->Frame->create();
-		$this->Frame->saveFrame($data);
+		$this->Frame->saveFrame(array('Frame' => array('plugin_key' => 'model_with_after_frame_save_test_plugin')));
 
 		$this->assertEquals($expectCount, $this->Frame->find('count', array('recursive' => -1)));
 	}
@@ -117,7 +128,7 @@ class FrameTest extends CakeTestCase {
 		$expectCount = $frameMock->find('count', array('recursive' => -1));
 
 		$frameMock->create();
-		$this->assertFalse($frameMock->saveFrame(array()));
+		$this->assertFalse($frameMock->saveFrame(array('Frame' => array('plugin_key' => 'model_with_after_frame_save_test_plugin'))));
 
 		//$this->assertEquals('master', $this->Frame->useDbConfig);
 		$this->assertEquals($expectCount, $frameMock->find('count', array('recursive' => -1)));

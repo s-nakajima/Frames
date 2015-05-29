@@ -63,6 +63,7 @@ class FramesController extends FramesAppController {
 		$frame['Frame']['Language'] = $frame['Language'];
 		unset($frame['Plugin'], $frame['Language']);
 		$this->set('frames', array($frame['Frame']));
+
 	}
 
 /**

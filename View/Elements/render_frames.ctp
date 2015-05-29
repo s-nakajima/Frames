@@ -13,12 +13,7 @@ foreach ($frames as $frame) {
 		continue;
 	}
 
-	if (isset($pluginMap[$frame['pluginKey']]['defaultAction']) && $pluginMap[$frame['pluginKey']]['defaultAction'] !== '') {
-		$action = $pluginMap[$frame['pluginKey']]['defaultAction'];
-	} else {
-		$action = $frame['pluginKey'] . '/index';
-	}
-	$url = $frame['pluginKey'] . '/' . $action . '/' . $frame['id'];
+	$url = $frame['pluginKey'] . '/' . $this->Layout->getDefaultAction($frame['pluginKey']) . '/' . $frame['id'];
 	if (Page::isSetting()) {
 		$url = Page::SETTING_MODE_WORD . '/' . $url;
 	}

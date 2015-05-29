@@ -93,8 +93,7 @@ class Frame extends FramesAppModel {
 /**
  * getMaxWeight
  *
- * @param string $blockKey blocks.key
- * @param string $categoryKey categories.key
+ * @param int $boxId boxes.id
  * @return int $weight link_orders.weight
  */
 	public function getMaxWeight($boxId) {
@@ -119,7 +118,7 @@ class Frame extends FramesAppModel {
  * If so, is it okay to use beforeValidate?
  *
  * @param array $data request data
- * @throws Exception
+ * @throws InternalErrorException
  * @return mixed On success Model::$data if its not empty or true, false on failure
  */
 	public function saveFrame($data) {
@@ -168,11 +167,11 @@ class Frame extends FramesAppModel {
  * If so, is it okay to use beforeValidate?
  *
  * @param array $data request data
- * @throws Exception
+ * @param array $order Param is 'up' or 'down'
+ * @throws InternalErrorException
  * @return mixed On success Model::$data if its not empty or true, false on failure
  */
 	public function saveWeight($data, $order) {
-
 		$this->setDataSource('master');
 		$dataSource = $this->getDataSource();
 		$dataSource->begin();
@@ -207,8 +206,10 @@ class Frame extends FramesAppModel {
  * If so, is it okay to use beforeValidate?
  *
  * @param array $data request data
- * @throws Exception
- * @return mixed On success Model::$data if its not empty or true, false on failure
+ * @param int $sequence Count sequence
+ * @param string $sign Sign
+ * @throws InternalErrorException
+ * @return mixed On success void if it not throw exception on failure
  */
 	private function __saveWeight($data, $sequence, $sign = null) {
 		if (! isset($sign)) {
@@ -236,7 +237,7 @@ class Frame extends FramesAppModel {
  * Is it better to use before after method?
  * If so, is it okay to use beforeValidate?
  *
- * @throws Exception
+ * @throws InternalErrorException
  * @return bool True on success
  */
 	public function deleteFrame() {

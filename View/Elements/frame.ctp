@@ -22,9 +22,9 @@
 			<div class="pull-right">
 				<?php echo $this->element('Frames.order_form', array('frame' => $frame)); ?>
 
-				<?php if (isset($pluginMap[$frame['pluginKey']]['defaultSettingAction']) && $pluginMap[$frame['pluginKey']]['defaultSettingAction'] !== '') : ?>
+				<?php if ($action = $this->PageLayout->getDefaultSettingAction($frame['pluginKey'])) : ?>
 					<button class="btn btn-default frame-btn pull-left"
-							onclick="location.href='/<?php echo $frame['pluginKey'] . '/' . $pluginMap[$frame['pluginKey']]['defaultSettingAction'] . '/' . $frame['id']; ?>'">
+							onclick="location.href='/<?php echo $frame['pluginKey'] . '/' . $action . '/' . $frame['id']; ?>'">
 						<span class="glyphicon glyphicon-cog"></span>
 						<span class="sr-only"><?php echo __d('frames', 'Show flame setting'); ?></span>
 					</button>

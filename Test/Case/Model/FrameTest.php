@@ -87,8 +87,18 @@ class FrameTest extends CakeTestCase {
 	public function testSaveFrame() {
 		$expectCount = $this->Frame->find('count', array('recursive' => -1)) + 1;
 
+		$data = array(
+			'Frame' => array(
+				'is_deleted' => false,
+				'name' => '',
+				'room_id' => null,
+				'plugin_key' => 'frames',
+				'box_id' => '1'
+			)
+		);
+
 		$this->Frame->create();
-		$this->Frame->saveFrame(array());
+		$this->Frame->saveFrame($data);
 
 		$this->assertEquals($expectCount, $this->Frame->find('count', array('recursive' => -1)));
 	}

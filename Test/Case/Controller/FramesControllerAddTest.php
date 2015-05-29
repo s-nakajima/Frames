@@ -37,6 +37,8 @@ class FramesControllerAddTest extends ControllerTestCase {
  * @return   void
  */
 	public function setUp() {
+		parent::setUp();
+
 		$framesPath = App::pluginPath('Frames');
 		$noDir = (empty($framesPath) || !file_exists($framesPath));
 		if ($noDir) {
@@ -47,8 +49,6 @@ class FramesControllerAddTest extends ControllerTestCase {
 			'Plugin' => array($framesPath . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
 		));
 		CakePlugin::load('ModelWithAfterFrameSaveTestPlugin');
-
-		parent::setUp();
 	}
 
 /**

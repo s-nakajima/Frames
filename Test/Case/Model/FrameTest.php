@@ -41,6 +41,17 @@ class FrameTest extends CakeTestCase {
 	public function setUp() {
 		parent::setUp();
 		$this->Frame = ClassRegistry::init('Frames.Frame');
+
+		$framesPath = App::pluginPath('Frames');
+		$noDir = (empty($framesPath) || !file_exists($framesPath));
+		if ($noDir) {
+			$this->markTestAsSkipped('Could not find Frames in plugin paths');
+		}
+
+		App::build(array(
+			'Plugin' => array($framesPath . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
+		));
+		CakePlugin::load('ModelWithAfterFrameSaveTestPlugin');
 	}
 
 /**

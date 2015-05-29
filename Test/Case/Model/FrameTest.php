@@ -103,13 +103,13 @@ class FrameTest extends CakeTestCase {
 				'is_deleted' => false,
 				'name' => '',
 				'room_id' => null,
-				'plugin_key' => 'frames',
+				'plugin_key' => 'model_with_after_frame_save_test_plugin',
 				'box_id' => '1'
 			)
 		);
 
 		$this->Frame->create();
-		$this->Frame->saveFrame(array('Frame' => array('plugin_key' => 'model_with_after_frame_save_test_plugin')));
+		$this->Frame->saveFrame($data);
 
 		$this->assertEquals($expectCount, $this->Frame->find('count', array('recursive' => -1)));
 	}

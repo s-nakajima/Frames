@@ -57,7 +57,7 @@ class FramesController extends FramesAppController {
 		unset($frame['Plugin'], $frame['Language']);
 		$this->set('frames', array($frame['Frame']));
 
-		$options = array('conditions' => array('language_id' => 2,));
+		$options = array('conditions' => array('language_id' => 2));
 		$plugins = $this->Plugin->getKeyIndexedHash($options);
 		$pluginMap = [];
 		foreach ($plugins as $plugin) {

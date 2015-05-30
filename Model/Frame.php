@@ -43,7 +43,7 @@ class Frame extends FramesAppModel {
  */
 	public $belongsTo = array(
 		'Box' => array(
-			'className' => 'Box',
+			'className' => 'Boxes.Box',
 			'foreignKey' => 'box_id',
 			'conditions' => '',
 			'fields' => '',

@@ -8,6 +8,9 @@
  * @license http://www.netcommons.org/license.txt NetCommons License
  */
 
+App::uses('NetCommonsRoomRoleComponent', 'NetCommons.Controller/Component');
+App::uses('YAControllerTestCase', 'NetCommons.TestSuite');
+
 App::uses('FramesController', 'Frames.Controller');
 
 /**
@@ -45,7 +48,7 @@ CakePlugin::load('TestPlugin', array('path' => 'test_plugin'));
 /**
  * Summary for FramesController Test Case
  */
-class FramesControllerTest extends ControllerTestCase {
+class FramesControllerTest extends YAControllerTestCase {
 
 /**
  * Fixtures
@@ -54,12 +57,22 @@ class FramesControllerTest extends ControllerTestCase {
  */
 	public $fixtures = array(
 		'plugin.blocks.block',
+		'plugin.blocks.block_role_permission',
 		'plugin.boxes.box',
+		'plugin.boxes.boxes_page',
+		'plugin.containers.container',
+		'plugin.containers.containers_page',
 		'plugin.frames.frame',
-		'plugin.plugin_manager.plugin',
 		'plugin.m17n.language',
+		'plugin.m17n.languages_page',
 		'plugin.net_commons.site_setting',
 		'plugin.pages.page',
+		'plugin.plugin_manager.plugin',
+		'plugin.roles.default_role_permission',
+		'plugin.rooms.plugins_room',
+		'plugin.rooms.roles_rooms_user',
+		'plugin.rooms.room',
+		'plugin.rooms.room_role_permission',
 		'plugin.users.user',
 	);
 
@@ -93,7 +106,14 @@ class FramesControllerTest extends ControllerTestCase {
  * @return void
  */
 	public function testIndex() {
-		$this->testAction('/frames/frames/index/1', array('return' => 'view'));
+		$frameId = '1';
+
+		$this->testAction('/frames/frames/index/' . $frameId,
+			array(
+				'method' => 'get',
+				'return' => 'view',
+			)
+		);
 		$this->__assertNormalView();
 	}
 
@@ -113,7 +133,14 @@ class FramesControllerTest extends ControllerTestCase {
  * @return void
  */
 	public function testIndexNoneContent() {
-		$this->testAction('/frames/frames/index/2', array('return' => 'view'));
+		$frameId = '2';
+
+		$this->testAction('/frames/frames/index/' . $frameId,
+			array(
+				'method' => 'get',
+				'return' => 'view',
+			)
+		);
 		$this->assertEmpty($this->view);
 	}
 
@@ -123,7 +150,14 @@ class FramesControllerTest extends ControllerTestCase {
  * @return void
  */
 	public function testIndexSettingMode() {
-		$this->testAction('/' . Page::SETTING_MODE_WORD . '/frames/frames/index/1', array('return' => 'view'));
+		$frameId = '1';
+
+		$this->testAction('/' . Page::SETTING_MODE_WORD . '/frames/frames/index/' . $frameId,
+			array(
+				'method' => 'get',
+				'return' => 'view',
+			)
+		);
 		$this->__assertNormalView();
 	}
 
@@ -133,7 +167,14 @@ class FramesControllerTest extends ControllerTestCase {
  * @return void
  */
 	public function testIndexSettingModeNoneContent() {
-		$this->testAction('/' . Page::SETTING_MODE_WORD . '/frames/frames/index/2', array('return' => 'view'));
+		$frameId = '2';
+
+		$this->testAction('/' . Page::SETTING_MODE_WORD . '/frames/frames/index/' . $frameId,
+			array(
+				'method' => 'get',
+				'return' => 'view',
+			)
+		);
 		$this->assertTextContains('<div id="frame-wrap-2" class="frame frame-id-2"', $this->view);
 		$this->assertTextContains('<div class="block block-id-2">', $this->view);
 		$this->assertTextContains('Test frame name 2', $this->view);

@@ -43,7 +43,8 @@ class FramesController extends FramesAppController {
 				'pageEditable' => array('add', 'edit', 'delete', 'order'),
 			),
 		),
-		'Security'
+		'Pages.PageLayout',
+		'Security',
 	);
 
 /**
@@ -59,10 +60,23 @@ class FramesController extends FramesAppController {
 			throw new NotFoundException();
 		}
 
+		$this->set('languageId', 2);
+
 		$frame['Frame']['Plugin'] = $frame['Plugin'];
 		$frame['Frame']['Language'] = $frame['Language'];
 		unset($frame['Plugin'], $frame['Language']);
-		$this->set('frames', array($frame['Frame']));
+
+		$frame = $this->camelizeKeyRecursive($frame);
+		$this->set('frames', array($frame['frame']));
+
+		$options = array('conditions' => array('language_id' => $this->viewVars['languageId']));
+		$plugins = $this->Plugin->getKeyIndexedHash($options);
+		$pluginMap = [];
+		foreach ($plugins as $plugin) {
+			$pluginMap[$plugin['Plugin']['key']] = $plugin['Plugin'];
+		}
+		$pluginMap = $this->camelizeKeyRecursive($pluginMap);
+		$this->set('pluginMap', $pluginMap);
 	}
 
 /**
@@ -102,20 +116,23 @@ class FramesController extends FramesAppController {
 /**
  * delete method
  *
- * @param string $id frameId
- * @throws NotFoundException
+ * @param int $frameId frames.id
  * @return void
  */
-	public function delete($id = null) {
+	public function delete($frameId = null) {
 		$this->request->onlyAllow('delete');
 
 		$this->Frame->setDataSource('master');
-		if (! $frame = $this->Frame->findById($id)) {
+		if (! $frame = $this->Frame->find('first', array(
+			'recursive' => -1,
+			'conditions' => array('id' => $id)
+		))) {
 			$this->throwBadRequest();
 			return;
 		}
 
 		$data = Hash::merge($frame, $this->data);
+		$data['Frame']['id'] = (int)$id;
 		$data['Frame']['is_deleted'] = true;
 		if (! $this->Frame->saveFrame($data)) {
 			//エラー処理
@@ -133,7 +150,6 @@ class FramesController extends FramesAppController {
  *
  * @param int $frameId frames.id
  * @return void
- * @throws InternalErrorException
  */
 	public function edit($frameId = null) {
 		$this->request->onlyAllow('post');
@@ -155,11 +171,10 @@ class FramesController extends FramesAppController {
 	}
 
 /**
- * sort method
+ * order method
  *
  * @param int $frameId frames.id
  * @return void
- * @throws InternalErrorException
  */
 	public function order($frameId = null) {
 		$this->request->onlyAllow('post');

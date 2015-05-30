@@ -8,6 +8,10 @@
  * @license http://www.netcommons.org/license.txt NetCommons License
  */
 
+App::uses('NetCommonsBlockComponent', 'NetCommons.Controller/Component');
+App::uses('NetCommonsRoomRoleComponent', 'NetCommons.Controller/Component');
+App::uses('YACakeTestCase', 'NetCommons.TestSuite');
+
 App::uses('Frame', 'Frames.Model');
 
 /**
@@ -16,7 +20,7 @@ App::uses('Frame', 'Frames.Model');
  * @author Kohei Teraguchi <kteraguchi@commonsnet.org>
  * @package NetCommons\Frames\Test\Case\Model
  */
-class FrameTest extends CakeTestCase {
+class FrameTest extends YACakeTestCase {
 
 /**
  * Fixtures
@@ -27,9 +31,10 @@ class FrameTest extends CakeTestCase {
 		'plugin.blocks.block',
 		'plugin.boxes.box',
 		'plugin.frames.frame',
-		'plugin.plugin_manager.plugin',
 		'plugin.m17n.language',
 		'plugin.pages.page',
+		'plugin.plugin_manager.plugin',
+		'plugin.rooms.roles_rooms_user',
 		'plugin.users.user',
 	);
 
@@ -42,16 +47,7 @@ class FrameTest extends CakeTestCase {
 		parent::setUp();
 		$this->Frame = ClassRegistry::init('Frames.Frame');
 
-		$framesPath = App::pluginPath('Frames');
-		$noDir = (empty($framesPath) || !file_exists($framesPath));
-		if ($noDir) {
-			$this->markTestAsSkipped('Could not find Frames in plugin paths');
-		}
-
-		App::build(array(
-			'Plugin' => array($framesPath . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS)
-		));
-		CakePlugin::load('ModelWithAfterFrameSaveTestPlugin');
+		YACakeTestCase::loadTestPlugin('Frames', 'ModelWithAfterFrameSaveTestPlugin');
 	}
 
 /**
@@ -73,21 +69,12 @@ class FrameTest extends CakeTestCase {
 	public function testGetContainableQuery() {
 		$containableQuery = $this->Frame->getContainableQuery();
 
-		$this->assertCount(3, $containableQuery);
+		//$query配列の中身(conditions, order)
+		$this->assertCount(2, $containableQuery);
 
 		$this->assertArrayHasKey('order', $containableQuery);
 		$this->assertCount(1, $containableQuery['order']);
 		$this->assertContains('Frame.weight', $containableQuery['order']);
-
-		$this->assertArrayHasKey('Language', $containableQuery);
-		$this->assertCount(1, $containableQuery['Language']);
-		$this->assertArrayHasKey('conditions', $containableQuery['Language']);
-		$this->assertCount(1, $containableQuery['Language']['conditions']);
-		$this->assertArrayHasKey('Language.code', $containableQuery['Language']['conditions']);
-		// It should test language code.
-		$this->assertContains('ja', $containableQuery['Language']['conditions']);
-
-		$this->assertContains('Plugin', $containableQuery);
 	}
 
 /**
@@ -120,6 +107,8 @@ class FrameTest extends CakeTestCase {
  * @return void
  */
 	public function testSaveFrameError() {
+		$this->setExpectedException('InternalErrorException');
+
 		$frameMock = $this->getMockForModel('Frames.Frame', array('save'));
 		$frameMock->expects($this->once())
 			->method('save')
@@ -127,8 +116,18 @@ class FrameTest extends CakeTestCase {
 
 		$expectCount = $frameMock->find('count', array('recursive' => -1));
 
+		$data = array(
+			'Frame' => array(
+				'is_deleted' => false,
+				'name' => '',
+				'room_id' => null,
+				'plugin_key' => 'model_with_after_frame_save_test_plugin',
+				'box_id' => '1'
+			)
+		);
+
 		$frameMock->create();
-		$this->assertFalse($frameMock->saveFrame(array('Frame' => array('plugin_key' => 'model_with_after_frame_save_test_plugin'))));
+		$this->assertFalse($frameMock->saveFrame($data));
 
 		//$this->assertEquals('master', $this->Frame->useDbConfig);
 		$this->assertEquals($expectCount, $frameMock->find('count', array('recursive' => -1)));
@@ -156,6 +155,8 @@ class FrameTest extends CakeTestCase {
  * @return void
  */
 	public function testDeleteFrameError() {
+		$this->setExpectedException('InternalErrorException');
+
 		$frameMock = $this->getMockForModel('Frames.Frame', array('delete'));
 		$frameMock->expects($this->once())
 			->method('delete')

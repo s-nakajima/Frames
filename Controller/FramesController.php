@@ -125,14 +125,14 @@ class FramesController extends FramesAppController {
 		$this->Frame->setDataSource('master');
 		if (! $frame = $this->Frame->find('first', array(
 			'recursive' => -1,
-			'conditions' => array('id' => $id)
+			'conditions' => array('id' => (int)$frameId)
 		))) {
 			$this->throwBadRequest();
 			return;
 		}
 
 		$data = Hash::merge($frame, $this->data);
-		$data['Frame']['id'] = (int)$id;
+		$data['Frame']['id'] = (int)$frameId;
 		$data['Frame']['is_deleted'] = true;
 		if (! $this->Frame->saveFrame($data)) {
 			//エラー処理

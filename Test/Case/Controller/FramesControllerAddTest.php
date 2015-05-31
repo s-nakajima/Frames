@@ -34,8 +34,8 @@ class FramesControllerAddTest extends YAControllerTestCase {
 		'plugin.containers.containers_page',
 		'plugin.frames.frame',
 		'plugin.m17n.language',
-		'plugin.m17n.languages_page',
 		'plugin.net_commons.site_setting',
+		'plugin.pages.languages_page',
 		'plugin.pages.page',
 		'plugin.plugin_manager.plugin',
 		'plugin.roles.default_role_permission',
@@ -55,7 +55,7 @@ class FramesControllerAddTest extends YAControllerTestCase {
 	public function setUp() {
 		parent::setUp();
 
-		YACakeTestCase::loadTestPlugin('Frames', 'ModelWithAfterFrameSaveTestPlugin');
+		YACakeTestCase::loadTestPlugin($this, 'Frames', 'ModelWithAfterFrameSaveTestPlugin');
 
 		$this->generate(
 			'Frames.Frames',

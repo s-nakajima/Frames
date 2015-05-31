@@ -34,8 +34,8 @@ class FramesControllerDeleteTest extends YAControllerTestCase {
 		'plugin.containers.containers_page',
 		'plugin.frames.frame',
 		'plugin.m17n.language',
-		'plugin.m17n.languages_page',
 		'plugin.net_commons.site_setting',
+		'plugin.pages.languages_page',
 		'plugin.pages.page',
 		'plugin.plugin_manager.plugin',
 		'plugin.roles.default_role_permission',
@@ -56,7 +56,7 @@ class FramesControllerDeleteTest extends YAControllerTestCase {
 	public function setUp() {
 		parent::setUp();
 
-		YACakeTestCase::loadTestPlugin('NetCommons', 'TestPlugin');
+		YACakeTestCase::loadTestPlugin($this, 'NetCommons', 'TestPlugin');
 
 		$this->generate(
 			'Frames.Frames',

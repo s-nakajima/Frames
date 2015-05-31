@@ -47,7 +47,7 @@ class FrameTest extends YACakeTestCase {
 		parent::setUp();
 		$this->Frame = ClassRegistry::init('Frames.Frame');
 
-		YACakeTestCase::loadTestPlugin('Frames', 'ModelWithAfterFrameSaveTestPlugin');
+		YACakeTestCase::loadTestPlugin($this, 'Frames', 'ModelWithAfterFrameSaveTestPlugin');
 	}
 
 /**

@@ -65,11 +65,12 @@ class FramesControllerTest extends YAControllerTestCase {
 		'plugin.frames.frame',
 		'plugin.m17n.language',
 		'plugin.net_commons.site_setting',
-		'plugin.pages.page',
 		'plugin.pages.languages_page',
+		'plugin.pages.page',
 		'plugin.plugin_manager.plugin',
 		'plugin.roles.default_role_permission',
 		'plugin.rooms.plugins_room',
+		'plugin.rooms.roles_room',
 		'plugin.rooms.roles_rooms_user',
 		'plugin.rooms.room',
 		'plugin.rooms.room_role_permission',
@@ -91,13 +92,12 @@ class FramesControllerTest extends YAControllerTestCase {
 /**
  * It asserts view value of frame ID 1
  *
+ * @param int $frameId frames.id
  * @return void
  */
-	private function __assertNormalView() {
-		$this->assertTextContains('<div id="frame-wrap-1" class="frame frame-id-1"', $this->view);
-		$this->assertTextContains('<div class="block block-id-5">', $this->view);
-		$this->assertTextContains('TestPluginController_index_1', $this->view);
-		$this->assertTextContains('Test frame name 1', $this->view);
+	private function __assertView($frameId) {
+		$this->assertTextContains('<section class="frame panel panel-default">', $this->view);
+		$this->assertTextContains('Test frame name ' . $frameId, $this->view);
 	}
 
 /**
@@ -114,7 +114,8 @@ class FramesControllerTest extends YAControllerTestCase {
 				'return' => 'view',
 			)
 		);
-		$this->__assertNormalView();
+		$this->__assertView($frameId);
+		$this->assertTextContains('TestPluginController_index_' . $frameId, $this->view);
 	}
 
 /**
@@ -158,7 +159,8 @@ class FramesControllerTest extends YAControllerTestCase {
 				'return' => 'view',
 			)
 		);
-		$this->__assertNormalView();
+		$this->__assertView($frameId);
+		$this->assertTextContains('TestPluginController_index_' . $frameId, $this->view);
 	}
 
 /**
@@ -175,10 +177,10 @@ class FramesControllerTest extends YAControllerTestCase {
 				'return' => 'view',
 			)
 		);
-		$this->assertTextContains('<div id="frame-wrap-2" class="frame frame-id-2"', $this->view);
-		$this->assertTextContains('<div class="block block-id-2">', $this->view);
-		$this->assertTextContains('Test frame name 2', $this->view);
-		$this->assertTextNotContains('TestPluginController_index_', $this->view);
+
+		$this->__assertView($frameId);
+		$this->assertTextContains('/frames/frames/order/' . $frameId, $this->view);
+		$this->assertTextContains('/frames/frames/delete/' . $frameId, $this->view);
 	}
 
 }

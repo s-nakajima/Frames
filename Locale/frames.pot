@@ -5,7 +5,6 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2015-05-05 15:03+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -14,27 +13,51 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Frames/View/Elements/setting_header.ctp:80
+#: Frames/Controller/FramesController.php:93
+msgid "New frame %s"
+msgstr ""
+
+#: Frames/View/Elements/delete_form.ctp:23
+msgid "Delete frame"
+msgstr ""
+
+#: Frames/View/Elements/delete_form.ctp:26
+msgid "Do you want to delete the frame?"
+msgstr ""
+
+#: Frames/View/Elements/frame.ctp:29
+msgid "Show flame setting"
+msgstr ""
+
+#: Frames/View/Elements/order_form.ctp:27
+msgid "Up frame position"
+msgstr ""
+
+#: Frames/View/Elements/order_form.ctp:32
+msgid "Down frame position"
+msgstr ""
+
+#: Frames/View/Elements/setting_header.ctp:78
 msgid "default"
 msgstr ""
 
-#: Frames/View/Elements/setting_header.ctp:81
+#: Frames/View/Elements/setting_header.ctp:79
 msgid "primary"
 msgstr ""
 
-#: Frames/View/Elements/setting_header.ctp:82
+#: Frames/View/Elements/setting_header.ctp:80
 msgid "info"
 msgstr ""
 
-#: Frames/View/Elements/setting_header.ctp:83
+#: Frames/View/Elements/setting_header.ctp:81
 msgid "success"
 msgstr ""
 
-#: Frames/View/Elements/setting_header.ctp:84
+#: Frames/View/Elements/setting_header.ctp:82
 msgid "warning"
 msgstr ""
 
-#: Frames/View/Elements/setting_header.ctp:85
+#: Frames/View/Elements/setting_header.ctp:83
 msgid "danger"
 msgstr ""
 

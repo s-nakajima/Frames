@@ -21,7 +21,7 @@
 	</button>
 
 	<a class="btn btn-default active" title="<?php echo __d('net_commons', 'Quit'); ?>"
-	   href="<?php echo $this->Html->url(isset($current['page']) ? '/' . $current['page']['permalink'] : null); ?>">
+	   href="<?php echo $this->Html->url(isset($current['page']['permalink']) ? '/' . Page::SETTING_MODE_WORD . '/' . h($current['page']['permalink']) : null); ?>">
 		<span class="glyphicon glyphicon-cog"> </span>
 		<span class="sr-only"><?php echo __('Show flame setting'); ?></span>
 	</a>

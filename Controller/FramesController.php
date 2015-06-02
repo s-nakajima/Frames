@@ -165,6 +165,8 @@ class FramesController extends FramesAppController {
 			$this->throwBadRequest();
 			return;
 		}
+
+		$this->setFlashNotification(__d('net_commons', 'Successfully saved.'), 'success');
 		if (! $this->request->is('ajax')) {
 			$this->redirect($this->request->referer());
 		}

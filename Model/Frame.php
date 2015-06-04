@@ -69,6 +69,13 @@ class Frame extends FramesAppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'Room' => array(
+			'className' => 'Rooms.Room',
+			'foreignKey' => 'room_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 

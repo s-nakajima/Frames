@@ -36,6 +36,7 @@
 	array(
 		'name' => 'frameForm',
 		'novalidate' => true,
+		'action' => 'post',
 		'url' => array('plugin' => 'frames', 'controller' => 'frames', 'action' => 'edit', $frameId),
 	)); ?>
 

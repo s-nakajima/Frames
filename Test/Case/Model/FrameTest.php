@@ -35,6 +35,7 @@ class FrameTest extends YACakeTestCase {
 		'plugin.pages.page',
 		'plugin.plugin_manager.plugin',
 		'plugin.rooms.roles_rooms_user',
+		'plugin.rooms.room',
 		'plugin.users.user',
 	);
 

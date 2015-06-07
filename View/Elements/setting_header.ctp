@@ -97,7 +97,7 @@
 		</ul>
 	</div>
 
-	<button type="submit" class="btn btn-default">
+	<button type="submit" class="btn btn-default" ng-click="sending=true" ng-disabled="sending">
 		<?php echo __d('net_commons', 'OK'); ?>
 	</button>
 <?php echo $this->Form->end();

@@ -44,8 +44,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			<?php echo $this->element('Pages.page_header'); ?>
 
 			<div class="row">
-				<?php echo $this->element('Pages.page_major'); ?>
-
 				<!-- container-main -->
 				<div role="main" id="container-main" class="<?php echo $this->PageLayout->getContainerSize(Container::TYPE_MAIN); ?>"
 					 ng-controller="FrameSettingsController" ng-init="initialize({frame: <?php echo h(json_encode(PageLayoutHelper::$frame)) ?>})">
@@ -59,6 +57,8 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 						</div>
 					</section>
 				</div>
+
+				<?php echo $this->element('Pages.page_major'); ?>
 
 				<?php echo $this->element('Pages.page_minor'); ?>
 			</div>

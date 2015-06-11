@@ -28,7 +28,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			echo $this->fetch('css');
 
 			echo $this->element('NetCommons.common_js');
-			echo $this->Html->script('/frames/js/frames.js', false);
 			echo $this->fetch('script');
 		?>
 	</head>

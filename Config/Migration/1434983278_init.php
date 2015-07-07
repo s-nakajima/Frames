@@ -65,6 +65,44 @@ class Init extends CakeMigration {
 	);
 
 /**
+ * Records keyed by model name.
+ *
+ * @var array $records
+ */
+	public $records = array(
+		'Frame' => array(
+			array(
+				'id' => '1',
+				'language_id' => '2',
+				'room_id' => '1',
+				'box_id' => '3',
+				'plugin_key' => 'announcements',
+				'block_id' => '1',
+				'key' => 'frame_1',
+				'name' => 'お知らせ',
+				'weight' => '1',
+				'is_published' => true,
+				'from' => null,
+				'to' => null,
+			),
+			array(
+				'id' => '2',
+				'language_id' => '2',
+				'room_id' => '1',
+				'box_id' => '2',
+				'plugin_key' => 'menus',
+				'block_id' => '2',
+				'key' => 'frame_2',
+				'name' => 'メニュー',
+				'weight' => '1',
+				'is_published' => true,
+				'from' => null,
+				'to' => null,
+			),
+		),
+	);
+
+/**
  * Before migration callback
  *
  * @param string $direction Direction of migration process (up or down)

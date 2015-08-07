@@ -18,13 +18,18 @@ foreach ($frames as $frame) {
 		$url = Page::SETTING_MODE_WORD . '/' . $url;
 	}
 
-	$view = $this->requestAction($url, array('return'));
-	if (! Page::isSetting() && strlen($view) === 0) {
-		continue;
-	}
-
-	echo $this->element('Frames.frame', array(
+	try {
+		$view = $this->requestAction($url, array('return'));
+		if (! Page::isSetting() && strlen($view) === 0) {
+			continue;
+		}
+		echo $this->element('Frames.frame', array(
 			'frame' => $frame,
 			'view' => $view
 		));
+	} catch (MissingActionException $ex) {
+		CakeLog::error($ex);
+	} catch (MissingControllerException $ex) {
+		CakeLog::error($ex);
+	}
 }

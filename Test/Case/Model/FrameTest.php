@@ -28,15 +28,15 @@ class FrameTest extends YACakeTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'plugin.blocks.block',
-		'plugin.boxes.box',
+		//'plugin.blocks.block',
+		//'plugin.boxes.box',
 		'plugin.frames.frame',
-		'plugin.m17n.language',
-		'plugin.pages.page',
-		'plugin.plugin_manager.plugin',
-		'plugin.rooms.roles_rooms_user',
-		'plugin.rooms.room',
-		'plugin.users.user',
+		//'plugin.m17n.language',
+		//'plugin.pages.page',
+		//'plugin.plugin_manager.plugin',
+		//'plugin.rooms.roles_rooms_user',
+		//'plugin.rooms.room',
+		//'plugin.users.user',
 	);
 
 /**

@@ -82,11 +82,16 @@ class Frame extends FramesAppModel {
 /**
  * Get query option for containable behavior
  *
+ * @param int $languageId languages.id
  * @return array
  */
-	public function getContainableQuery() {
+	public function getContainableQuery($languageId = null) {
+		if (! isset($languageId)) {
+			$languageId = Configure::read('Config.languageId');
+		}
 		$query = array(
 			'conditions' => array(
+				'language_id' => $languageId,
 				'is_deleted' => false
 			),
 			'order' => array(
@@ -101,13 +106,21 @@ class Frame extends FramesAppModel {
  * getMaxWeight
  *
  * @param int $boxId boxes.id
+ * @param int $languageId languages.id
  * @return int $weight link_orders.weight
  */
-	public function getMaxWeight($boxId) {
+	public function getMaxWeight($boxId, $languageId = null) {
+		if (! isset($languageId)) {
+			$languageId = Configure::read('Config.languageId');
+		}
+
 		$order = $this->find('first', array(
 				'recursive' => -1,
 				'fields' => array('weight'),
-				'conditions' => array('box_id' => $boxId),
+				'conditions' => array(
+					'language_id' => $languageId,
+					'box_id' => $boxId
+				),
 				'order' => array('weight' => 'DESC')
 			));
 

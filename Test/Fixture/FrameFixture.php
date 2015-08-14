@@ -515,6 +515,18 @@ class FrameFixture extends CakeTestFixture {
 			'weight' => 1,
 			'is_deleted' => 0,
 		),
+		array(
+			'id' => '193',
+			'language_id' => '2',
+			'room_id' => '1',
+			'box_id' => '1',
+			'plugin_key' => 'test_plugin',
+			'block_id' => '193',
+			'key' => 'frame_193',
+			'name' => 'Test frame name 193',
+			'weight' => 1,
+			'is_deleted' => 0,
+		),
 	);
 
 }

@@ -92,7 +92,7 @@ class FramesController extends FramesAppController {
 		$data['Frame']['is_deleted'] = false;
 		$data['Frame']['name'] = __d('frames', 'New frame %s', date('YmdHis'));
 		if (! $data['Frame']['room_id']) {
-			$data['Frame']['room_id'] = null;
+			$data['Frame']['room_id'] = 1;
 		}
 
 		if (! $frame = $this->Frame->saveFrame($data)) {

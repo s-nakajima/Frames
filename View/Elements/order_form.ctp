@@ -21,7 +21,7 @@
 		)); ?>
 
 	<?php echo $this->Form->hidden('Frame.box_id', array(
-			'value' => $frame['boxId'],
+			'value' => $frame['box_id'],
 		)); ?>
 
 	<?php echo $this->Form->button('<span class="glyphicon glyphicon-arrow-up"></span><span class="sr-only">' . __d('frames', 'Up frame position') . '</span>', array(

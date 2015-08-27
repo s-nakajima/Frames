@@ -9,11 +9,11 @@
  */
 
 foreach ($frames as $frame) {
-	if (strlen($frame['pluginKey']) === 0) {
+	if (strlen($frame['plugin_key']) === 0) {
 		continue;
 	}
 
-	$url = $frame['pluginKey'] . '/' . $this->PageLayout->getDefaultAction($frame['pluginKey']) . '/' . $frame['id'];
+	$url = $frame['plugin_key'] . '/' . $this->PageLayout->getDefaultAction($frame['plugin_key']) . '/' . $frame['id'];
 	if (Page::isSetting()) {
 		$url = Page::SETTING_MODE_WORD . '/' . $url;
 	}

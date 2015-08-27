@@ -45,7 +45,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			<div class="row">
 				<!-- container-main -->
 				<div role="main" id="container-main" class="<?php echo $this->PageLayout->getContainerSize(Container::TYPE_MAIN); ?>"
-					 ng-controller="FrameSettingsController" ng-init="initialize({frame: <?php echo h(json_encode(PageLayoutHelper::$frame)) ?>})">
+					 ng-controller="FrameSettingsController" ng-init="initialize({frame: <?php echo h(json_encode(NetCommonsAppController::camelizeKeyRecursive(PageLayoutHelper::$frame))) ?>})">
 
 					<section class="frame panel panel-{{frame.headerType}}">
 						<div class="panel-heading clearfix">

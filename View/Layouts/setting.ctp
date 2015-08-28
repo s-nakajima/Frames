@@ -24,6 +24,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 
 			echo $this->element('NetCommons.common_css');
 			echo $this->Html->css('/frames/css/style.css', false);
+			echo $this->Html->css('/blocks/css/style.css', false);
 			echo $this->Html->css('style', array('plugin' => false));
 			echo $this->fetch('css');
 

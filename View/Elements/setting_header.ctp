@@ -21,7 +21,7 @@
 	</button>
 
 	<a class="btn btn-default active" title="<?php echo __d('net_commons', 'Quit'); ?>"
-	   href="<?php echo $this->Html->url('/' . CurrentUtility::SETTING_MODE_WORD . '/' . h(CurrentUtility::read('Page.permalink'))); ?>">
+	   href="<?php echo $this->Html->url('/' . Current::SETTING_MODE_WORD . '/' . h(Current::read('Page.permalink'))); ?>">
 		<span class="glyphicon glyphicon-cog"> </span>
 		<span class="sr-only"><?php echo __d('frames', 'Show flame setting'); ?></span>
 	</a>
@@ -37,11 +37,11 @@
 		'name' => 'frameForm',
 		'novalidate' => true,
 		'action' => 'post',
-		'url' => array('plugin' => 'frames', 'controller' => 'frames', 'action' => 'edit', CurrentUtility::read('Frame.id')),
+		'url' => array('plugin' => 'frames', 'controller' => 'frames', 'action' => 'edit', Current::read('Frame.id')),
 	)); ?>
 
 	<?php echo $this->Form->hidden('Frame.id', array(
-			'value' => CurrentUtility::read('Frame.id'),
+			'value' => Current::read('Frame.id'),
 		)); ?>
 
 	<?php echo $this->Form->input('Frame.name',

@@ -60,7 +60,7 @@ class FramesController extends FramesAppController {
 			throw new NotFoundException();
 		}
 
-		$this->set('languageId', CurrentUtility::read('Language.id'));
+		$this->set('languageId', Current::read('Language.id'));
 
 		$frame['Frame']['Plugin'] = $frame['Plugin'];
 		$frame['Frame']['Language'] = $frame['Language'];

@@ -87,7 +87,7 @@ class Frame extends FramesAppModel {
 	public function getContainableQuery() {
 		$query = array(
 			'conditions' => array(
-				'language_id' => CurrentUtility::read('Language.id'),
+				'language_id' => Current::read('Language.id'),
 				'is_deleted' => false
 			),
 			'order' => array(
@@ -110,7 +110,7 @@ class Frame extends FramesAppModel {
 			'recursive' => -1,
 			'fields' => array('weight'),
 			'conditions' => array(
-				'language_id' => CurrentUtility::read('Language.id'),
+				'language_id' => Current::read('Language.id'),
 				'box_id' => $boxId
 			),
 			'order' => array('weight' => 'DESC')

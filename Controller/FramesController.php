@@ -37,10 +37,10 @@ class FramesController extends FramesAppController {
  * @var array
  */
 	public $components = array(
-		'NetCommons.NetCommonsRoomRole' => array(
-			//コンテンツの権限設定
-			'allowedActions' => array(
-				'pageEditable' => array('add', 'edit', 'delete', 'order'),
+		'NetCommons.Permission' => array(
+			//アクセスの権限
+			'allow' => array(
+				'add,edit,delete,order' => 'page_editable',
 			),
 		),
 		'Pages.PageLayout',
@@ -60,22 +60,30 @@ class FramesController extends FramesAppController {
 			throw new NotFoundException();
 		}
 
-		$this->set('languageId', 2);
+		$this->set('languageId', CurrentUtility::read('Language.id'));
 
 		$frame['Frame']['Plugin'] = $frame['Plugin'];
 		$frame['Frame']['Language'] = $frame['Language'];
 		unset($frame['Plugin'], $frame['Language']);
 
-		$frame = $this->camelizeKeyRecursive($frame);
+		//後で削除
+		//$frame = $this->camelizeKeyRecursive($frame);
 		$this->set('frames', array($frame['frame']));
 
-		$options = array('conditions' => array('language_id' => $this->viewVars['languageId']));
-		$plugins = $this->Plugin->getKeyIndexedHash($options);
-		$pluginMap = [];
-		foreach ($plugins as $plugin) {
-			$pluginMap[$plugin['Plugin']['key']] = $plugin['Plugin'];
-		}
-		$pluginMap = $this->camelizeKeyRecursive($pluginMap);
+		//後で削除
+		//$options = array('conditions' => array('language_id' => $this->viewVars['languageId']));
+		//$plugins = $this->Plugin->getKeyIndexedHash($options);
+		$plugins = $this->Plugin->find('all', array(
+			'recursive' => -1,
+			'conditions' => array('language_id' => $this->viewVars['languageId'])
+		));
+		$pluginMap = Hash::combine($plugins, '{n}.Plugin.key', '{n}.Plugin');
+		//後で削除
+		//$pluginMap = [];
+		//foreach ($plugins as $plugin) {
+		//	$pluginMap[$plugin['Plugin']['key']] = $plugin['Plugin'];
+		//}
+		//$pluginMap = $this->camelizeKeyRecursive($pluginMap);
 		$this->set('pluginMap', $pluginMap);
 	}
 
@@ -108,9 +116,7 @@ class FramesController extends FramesAppController {
 			}
 		}
 
-		if (! $this->request->is('ajax')) {
-			$this->redirect($this->request->referer());
-		}
+		$this->redirect($this->request->referer());
 	}
 
 /**
@@ -140,9 +146,7 @@ class FramesController extends FramesAppController {
 			return;
 		}
 
-		if (! $this->request->is('ajax')) {
-			$this->redirect($this->request->referer());
-		}
+		$this->redirect($this->request->referer());
 	}
 
 /**
@@ -167,9 +171,7 @@ class FramesController extends FramesAppController {
 		}
 
 		$this->setFlashNotification(__d('net_commons', 'Successfully saved.'), array('class' => 'success'));
-		if (! $this->request->is('ajax')) {
-			$this->redirect($this->request->referer());
-		}
+		$this->redirect($this->request->referer());
 	}
 
 /**
@@ -200,8 +202,6 @@ class FramesController extends FramesAppController {
 			$this->throwBadRequest();
 			return;
 		}
-		if (! $this->request->is('ajax')) {
-			$this->redirect($this->request->referer());
-		}
+		$this->redirect($this->request->referer());
 	}
 }

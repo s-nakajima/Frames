@@ -56,6 +56,7 @@ class Records extends NetCommonsMigration {
 				'is_published' => true,
 				'from' => null,
 				'to' => null,
+				'is_deleted' => false,
 			),
 			array(
 				'id' => '2',
@@ -70,6 +71,7 @@ class Records extends NetCommonsMigration {
 				'is_published' => true,
 				'from' => null,
 				'to' => null,
+				'is_deleted' => false,
 			),
 			//英語
 			array(
@@ -85,6 +87,7 @@ class Records extends NetCommonsMigration {
 				'is_published' => true,
 				'from' => null,
 				'to' => null,
+				'is_deleted' => false,
 			),
 			array(
 				'id' => '4',
@@ -99,6 +102,7 @@ class Records extends NetCommonsMigration {
 				'is_published' => true,
 				'from' => null,
 				'to' => null,
+				'is_deleted' => false,
 			),
 		),
 	);

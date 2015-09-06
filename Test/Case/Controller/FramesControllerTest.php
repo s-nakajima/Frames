@@ -135,7 +135,7 @@ class FramesControllerTest extends YAControllerTestCase {
 	public function testIndexSettingMode() {
 		$frameId = '1';
 
-		$this->testAction('/' . Page::SETTING_MODE_WORD . '/frames/frames/index/' . $frameId,
+		$this->testAction('/' . Current::SETTING_MODE_WORD . '/frames/frames/index/' . $frameId,
 			array(
 				'method' => 'get',
 				'return' => 'view',
@@ -153,7 +153,7 @@ class FramesControllerTest extends YAControllerTestCase {
 	public function testIndexSettingModeNoneContent() {
 		$frameId = '2';
 
-		$this->testAction('/' . Page::SETTING_MODE_WORD . '/frames/frames/index/' . $frameId,
+		$this->testAction('/' . Current::SETTING_MODE_WORD . '/frames/frames/index/' . $frameId,
 			array(
 				'method' => 'get',
 				'return' => 'view',

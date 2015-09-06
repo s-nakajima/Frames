@@ -14,13 +14,13 @@ foreach ($frames as $frame) {
 	}
 
 	$url = $frame['plugin_key'] . '/' . $this->PageLayout->getDefaultAction($frame['plugin_key']) . '/' . $frame['id'];
-	if (Page::isSetting()) {
-		$url = Page::SETTING_MODE_WORD . '/' . $url;
+	if (Current::isSettingMode()) {
+		$url = Current::SETTING_MODE_WORD . '/' . $url;
 	}
 
 	try {
 		$view = $this->requestAction($url, array('return'));
-		if (! Page::isSetting() && strlen($view) === 0) {
+		if (! Current::isSettingMode() && strlen($view) === 0) {
 			continue;
 		}
 		echo $this->element('Frames.frame', array(

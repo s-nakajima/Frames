@@ -13,13 +13,13 @@
 
 <section class="frame panel panel-<?php echo h($frame['header_type']); ?>">
 
-	<?php if ($frame['name'] || Page::isSetting()) : ?>
+	<?php if ($frame['name'] || Current::isSettingMode()) : ?>
 		<div class="panel-heading clearfix">
 			<span>
 				<?php echo $frame['name']; ?>
 			</span>
 
-			<?php if (Page::isSetting()): ?>
+			<?php if (Current::isSettingMode()): ?>
 				<div class="pull-right">
 					<?php echo $this->element('Frames.order_form', array('frame' => $frame)); ?>
 

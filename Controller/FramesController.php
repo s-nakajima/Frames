@@ -60,7 +60,8 @@ class FramesController extends FramesAppController {
 			throw new NotFoundException();
 		}
 
-		$this->set('languageId', Current::read('Language.id'));
+		//後で削除
+		//$this->set('languageId', Current::read('Language.id'));
 
 		$frame['Frame']['Plugin'] = $frame['Plugin'];
 		$frame['Frame']['Language'] = $frame['Language'];
@@ -75,7 +76,7 @@ class FramesController extends FramesAppController {
 		//$plugins = $this->Plugin->getKeyIndexedHash($options);
 		$plugins = $this->Plugin->find('all', array(
 			'recursive' => -1,
-			'conditions' => array('language_id' => $this->viewVars['languageId'])
+			'conditions' => array('language_id' => Current::read('Language.id'))
 		));
 		$pluginMap = Hash::combine($plugins, '{n}.Plugin.key', '{n}.Plugin');
 		//後で削除

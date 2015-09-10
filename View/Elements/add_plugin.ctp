@@ -82,3 +82,22 @@
 		</div>
 	</div>
 </section>
+
+<p>
+	<button class="btn btn-primary form-control" data-toggle="modal" data-target="#add-plugin-<?php echo (int)$boxId; ?>">
+
+		<span class="glyphicon glyphicon-pushpin"></span>
+
+		<?php if ($containerType === Container::TYPE_HEADER) : ?>
+			<?php echo __d('boxes', 'Add plugin to header'); ?>
+		<?php elseif ($containerType === Container::TYPE_MAJOR) : ?>
+			<?php echo __d('boxes', 'Add plugin to left'); ?>
+		<?php elseif ($containerType === Container::TYPE_MINOR) : ?>
+			<?php echo __d('boxes', 'Add plugin to right'); ?>
+		<?php elseif ($containerType === Container::TYPE_FOOTER) : ?>
+			<?php echo __d('boxes', 'Add plugin to footer'); ?>
+		<?php else : ?>
+			<?php echo __d('boxes', 'Add plugin to center'); ?>
+		<?php endif; ?>
+	</button>
+</p>

@@ -37,7 +37,7 @@
 		'name' => 'frameForm',
 		'novalidate' => true,
 		'action' => 'post',
-		'url' => array('plugin' => 'frames', 'controller' => 'frames', 'action' => 'edit', Current::read('Frame.id')),
+		'url' => NetCommonsUrl::actionUrl(array('plugin' => 'frames', 'controller' => 'frames', 'action' => 'edit')),
 	)); ?>
 
 	<?php echo $this->Form->hidden('Frame.id', array(

@@ -13,7 +13,7 @@
 <?php echo $this->Form->create('', array(
 		'type' => 'post',
 		'class' => 'frame-btn pull-left',
-		'url' => '/frames/frames/order/' . $frame['id']
+		'url' => NetCommonsUrl::actionUrl(array('plugin' => 'frames', 'controller' => 'frames', 'action' => 'order'))
 	)); ?>
 
 	<?php echo $this->Form->hidden('Frame.id', array(

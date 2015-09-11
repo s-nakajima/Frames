@@ -126,20 +126,16 @@ class FramesController extends FramesAppController {
  * @param int $frameId frames.id
  * @return void
  */
-	public function delete($frameId = null) {
+	public function delete() {
 		$this->request->onlyAllow('delete');
 
 		$this->Frame->setDataSource('master');
-		if (! $frame = $this->Frame->find('first', array(
-			'recursive' => -1,
-			'conditions' => array('id' => (int)$frameId)
-		))) {
+		if (! $frame['Frame'] = Current::read('Frame')) {
 			$this->throwBadRequest();
 			return;
 		}
 
 		$data = Hash::merge($frame, $this->data);
-		$data['Frame']['id'] = (int)$frameId;
 		$data['Frame']['is_deleted'] = true;
 		if (! $this->Frame->saveFrame($data)) {
 			//エラー処理
@@ -156,11 +152,11 @@ class FramesController extends FramesAppController {
  * @param int $frameId frames.id
  * @return void
  */
-	public function edit($frameId = null) {
+	public function edit() {
 		$this->request->onlyAllow('post');
 
 		$this->Frame->setDataSource('master');
-		if (! $frame = $this->Frame->findById($frameId)) {
+		if (! $frame['Frame'] = Current::read('Frame')) {
 			$this->throwBadRequest();
 			return;
 		}
@@ -181,11 +177,11 @@ class FramesController extends FramesAppController {
  * @param int $frameId frames.id
  * @return void
  */
-	public function order($frameId = null) {
+	public function order() {
 		$this->request->onlyAllow('post');
 
 		$this->Frame->setDataSource('master');
-		if (! $frame = $this->Frame->findById($frameId)) {
+		if (! $frame['Frame'] = Current::read('Frame')) {
 			$this->throwBadRequest();
 			return;
 		}

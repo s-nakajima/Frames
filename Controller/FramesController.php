@@ -60,31 +60,17 @@ class FramesController extends FramesAppController {
 			throw new NotFoundException();
 		}
 
-		//後で削除
-		//$this->set('languageId', Current::read('Language.id'));
-
 		$frame['Frame']['Plugin'] = $frame['Plugin'];
 		$frame['Frame']['Language'] = $frame['Language'];
 		unset($frame['Plugin'], $frame['Language']);
 
-		//後で削除
-		//$frame = $this->camelizeKeyRecursive($frame);
 		$this->set('frames', array($frame['frame']));
 
-		//後で削除
-		//$options = array('conditions' => array('language_id' => $this->viewVars['languageId']));
-		//$plugins = $this->Plugin->getKeyIndexedHash($options);
 		$plugins = $this->Plugin->find('all', array(
 			'recursive' => -1,
 			'conditions' => array('language_id' => Current::read('Language.id'))
 		));
 		$pluginMap = Hash::combine($plugins, '{n}.Plugin.key', '{n}.Plugin');
-		//後で削除
-		//$pluginMap = [];
-		//foreach ($plugins as $plugin) {
-		//	$pluginMap[$plugin['Plugin']['key']] = $plugin['Plugin'];
-		//}
-		//$pluginMap = $this->camelizeKeyRecursive($pluginMap);
 		$this->set('pluginMap', $pluginMap);
 	}
 
@@ -123,7 +109,6 @@ class FramesController extends FramesAppController {
 /**
  * delete method
  *
- * @param int $frameId frames.id
  * @return void
  */
 	public function delete() {
@@ -149,7 +134,6 @@ class FramesController extends FramesAppController {
 /**
  * edit method
  *
- * @param int $frameId frames.id
  * @return void
  */
 	public function edit() {
@@ -174,7 +158,6 @@ class FramesController extends FramesAppController {
 /**
  * order method
  *
- * @param int $frameId frames.id
  * @return void
  */
 	public function order() {

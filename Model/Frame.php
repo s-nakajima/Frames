@@ -102,7 +102,6 @@ class Frame extends FramesAppModel {
  * getMaxWeight
  *
  * @param int $boxId boxes.id
- * @param int $languageId languages.id
  * @return int $weight link_orders.weight
  */
 	public function getMaxWeight($boxId) {

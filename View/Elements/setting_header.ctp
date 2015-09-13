@@ -12,23 +12,23 @@
 <div class="pull-right">
 	<button class="btn btn-default" disabled="disabled">
 		<span class="glyphicon glyphicon-arrow-up"></span>
-		<span class="sr-only"><?php echo __('Up frame position'); ?></span>
+		<span class="sr-only"><?php echo __d('frames', 'Up frame position'); ?></span>
 	</button>
 
 	<button class="btn btn-default" disabled="disabled">
 		<span class="glyphicon glyphicon-arrow-down"></span>
-		<span class="sr-only"><?php echo __('Down frame position'); ?></span>
+		<span class="sr-only"><?php echo __d('frames', 'Down frame position'); ?></span>
 	</button>
 
 	<a class="btn btn-default active" title="<?php echo __d('net_commons', 'Quit'); ?>"
-	   href="<?php echo $this->Html->url(isset($current['page']['permalink']) ? '/' . Page::SETTING_MODE_WORD . '/' . h($current['page']['permalink']) : null); ?>">
+	   href="<?php echo $this->Html->url('/' . Current::SETTING_MODE_WORD . '/' . h(Current::read('Page.permalink'))); ?>">
 		<span class="glyphicon glyphicon-cog"> </span>
-		<span class="sr-only"><?php echo __('Show flame setting'); ?></span>
+		<span class="sr-only"><?php echo __d('frames', 'Show flame setting'); ?></span>
 	</a>
 
 	<button class="btn btn-default" disabled="disabled">
 		<span class="glyphicon glyphicon-remove"></span>
-		<span class="sr-only"><?php echo __('Delete frame'); ?></span>
+		<span class="sr-only"><?php echo __d('frames', 'Delete frame'); ?></span>
 	</button>
 </div>
 
@@ -37,11 +37,11 @@
 		'name' => 'frameForm',
 		'novalidate' => true,
 		'action' => 'post',
-		'url' => array('plugin' => 'frames', 'controller' => 'frames', 'action' => 'edit', $frameId),
+		'url' => NetCommonsUrl::actionUrl(array('plugin' => 'frames', 'controller' => 'frames', 'action' => 'edit')),
 	)); ?>
 
 	<?php echo $this->Form->hidden('Frame.id', array(
-			'value' => $frameId,
+			'value' => Current::read('Frame.id'),
 		)); ?>
 
 	<?php echo $this->Form->input('Frame.name',
@@ -52,8 +52,6 @@
 			'error' => false,
 			'div' => false,
 			'value' => $frame['name']
-			//'style' => 'display:inline-block;width:auto;',
-			//'ng-model' => 'frame.name',
 		)); ?>
 
 	<?php echo $this->Form->input('Frame.header_type',
@@ -62,7 +60,7 @@
 			'label' => false,
 			'class' => 'hidden',
 			'div' => false,
-			'value' => $frame['headerType'],
+			'value' => $frame['header_type'],
 		)); ?>
 
 	<div class="btn-group">

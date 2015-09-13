@@ -82,16 +82,12 @@ class Frame extends FramesAppModel {
 /**
  * Get query option for containable behavior
  *
- * @param int $languageId languages.id
  * @return array
  */
-	public function getContainableQuery($languageId = null) {
-		if (! isset($languageId)) {
-			$languageId = Configure::read('Config.languageId');
-		}
+	public function getContainableQuery() {
 		$query = array(
 			'conditions' => array(
-				'language_id' => $languageId,
+				'language_id' => Current::read('Language.id'),
 				'is_deleted' => false
 			),
 			'order' => array(
@@ -106,23 +102,18 @@ class Frame extends FramesAppModel {
  * getMaxWeight
  *
  * @param int $boxId boxes.id
- * @param int $languageId languages.id
  * @return int $weight link_orders.weight
  */
-	public function getMaxWeight($boxId, $languageId = null) {
-		if (! isset($languageId)) {
-			$languageId = Configure::read('Config.languageId');
-		}
-
+	public function getMaxWeight($boxId) {
 		$order = $this->find('first', array(
-				'recursive' => -1,
-				'fields' => array('weight'),
-				'conditions' => array(
-					'language_id' => $languageId,
-					'box_id' => $boxId
-				),
-				'order' => array('weight' => 'DESC')
-			));
+			'recursive' => -1,
+			'fields' => array('weight'),
+			'conditions' => array(
+				'language_id' => Current::read('Language.id'),
+				'box_id' => $boxId
+			),
+			'order' => array('weight' => 'DESC')
+		));
 
 		if (isset($order[$this->alias]['weight'])) {
 			$weight = (int)$order[$this->alias]['weight'];
@@ -151,9 +142,8 @@ class Frame extends FramesAppModel {
 		}
 		$this->loadModels($models);
 
-		$this->setDataSource('master');
-		$dataSource = $this->getDataSource();
-		$dataSource->begin();
+		//トランザクションBegin
+		$this->begin();
 
 		try {
 			if ($data['Frame']['is_deleted']) {
@@ -174,14 +164,15 @@ class Frame extends FramesAppModel {
 				$this->{$model}->afterFrameSave($frame);
 			}
 
-			$dataSource->commit();
-			return $frame;
+			//トランザクションCommit
+			$this->commit();
 
 		} catch (Exception $ex) {
-			$dataSource->rollback();
-			CakeLog::error($ex);
-			throw $ex;
+			//トランザクションRollbaxk
+			$this->rollback($ex);
 		}
+
+		return $frame;
 	}
 
 /**
@@ -195,9 +186,8 @@ class Frame extends FramesAppModel {
  * @return mixed On success Model::$data if its not empty or true, false on failure
  */
 	public function saveWeight($data, $order) {
-		$this->setDataSource('master');
-		$dataSource = $this->getDataSource();
-		$dataSource->begin();
+		//トランザクションBegin
+		$this->begin();
 
 		try {
 			if ($order === 'up') {
@@ -213,14 +203,15 @@ class Frame extends FramesAppModel {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 
-			$dataSource->commit();
-			return true;
+			//トランザクションCommit
+			$this->commit();
 
 		} catch (Exception $ex) {
-			$dataSource->rollback();
-			CakeLog::error($ex);
-			throw $ex;
+			//トランザクションRollbaxk
+			$this->rollback($ex);
 		}
+
+		return true;
 	}
 
 /**
@@ -264,23 +255,23 @@ class Frame extends FramesAppModel {
  * @return bool True on success
  */
 	public function deleteFrame() {
-		$this->setDataSource('master');
-		$dataSource = $this->getDataSource();
-		$dataSource->begin();
+		//トランザクションBegin
+		$this->begin();
 
 		try {
 			if (!$this->delete()) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 
-			$dataSource->commit();
-			return true;
+			//トランザクションCommit
+			$this->commit();
 
 		} catch (Exception $ex) {
-			$dataSource->rollback();
-			CakeLog::error($ex);
-			throw $ex;
+			//トランザクションRollbaxk
+			$this->rollback($ex);
 		}
+
+		return true;
 	}
 
 }

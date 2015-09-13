@@ -37,10 +37,10 @@ class FramesController extends FramesAppController {
  * @var array
  */
 	public $components = array(
-		'NetCommons.NetCommonsRoomRole' => array(
-			//コンテンツの権限設定
-			'allowedActions' => array(
-				'pageEditable' => array('add', 'edit', 'delete', 'order'),
+		'NetCommons.Permission' => array(
+			//アクセスの権限
+			'allow' => array(
+				'add,edit,delete,order' => 'page_editable',
 			),
 		),
 		'Pages.PageLayout',
@@ -60,22 +60,17 @@ class FramesController extends FramesAppController {
 			throw new NotFoundException();
 		}
 
-		$this->set('languageId', 2);
-
 		$frame['Frame']['Plugin'] = $frame['Plugin'];
 		$frame['Frame']['Language'] = $frame['Language'];
 		unset($frame['Plugin'], $frame['Language']);
 
-		$frame = $this->camelizeKeyRecursive($frame);
 		$this->set('frames', array($frame['frame']));
 
-		$options = array('conditions' => array('language_id' => $this->viewVars['languageId']));
-		$plugins = $this->Plugin->getKeyIndexedHash($options);
-		$pluginMap = [];
-		foreach ($plugins as $plugin) {
-			$pluginMap[$plugin['Plugin']['key']] = $plugin['Plugin'];
-		}
-		$pluginMap = $this->camelizeKeyRecursive($pluginMap);
+		$plugins = $this->Plugin->find('all', array(
+			'recursive' => -1,
+			'conditions' => array('language_id' => Current::read('Language.id'))
+		));
+		$pluginMap = Hash::combine($plugins, '{n}.Plugin.key', '{n}.Plugin');
 		$this->set('pluginMap', $pluginMap);
 	}
 
@@ -108,31 +103,24 @@ class FramesController extends FramesAppController {
 			}
 		}
 
-		if (! $this->request->is('ajax')) {
-			$this->redirect($this->request->referer());
-		}
+		$this->redirect($this->request->referer());
 	}
 
 /**
  * delete method
  *
- * @param int $frameId frames.id
  * @return void
  */
-	public function delete($frameId = null) {
+	public function delete() {
 		$this->request->onlyAllow('delete');
 
 		$this->Frame->setDataSource('master');
-		if (! $frame = $this->Frame->find('first', array(
-			'recursive' => -1,
-			'conditions' => array('id' => (int)$frameId)
-		))) {
+		if (! $frame['Frame'] = Current::read('Frame')) {
 			$this->throwBadRequest();
 			return;
 		}
 
 		$data = Hash::merge($frame, $this->data);
-		$data['Frame']['id'] = (int)$frameId;
 		$data['Frame']['is_deleted'] = true;
 		if (! $this->Frame->saveFrame($data)) {
 			//エラー処理
@@ -140,22 +128,19 @@ class FramesController extends FramesAppController {
 			return;
 		}
 
-		if (! $this->request->is('ajax')) {
-			$this->redirect($this->request->referer());
-		}
+		$this->redirect($this->request->referer());
 	}
 
 /**
  * edit method
  *
- * @param int $frameId frames.id
  * @return void
  */
-	public function edit($frameId = null) {
+	public function edit() {
 		$this->request->onlyAllow('post');
 
 		$this->Frame->setDataSource('master');
-		if (! $frame = $this->Frame->findById($frameId)) {
+		if (! $frame['Frame'] = Current::read('Frame')) {
 			$this->throwBadRequest();
 			return;
 		}
@@ -166,23 +151,20 @@ class FramesController extends FramesAppController {
 			return;
 		}
 
-		$this->setFlashNotification(__d('net_commons', 'Successfully saved.'), array('class' => 'success'));
-		if (! $this->request->is('ajax')) {
-			$this->redirect($this->request->referer());
-		}
+		$this->NetCommons->setFlashNotification(__d('net_commons', 'Successfully saved.'), array('class' => 'success'));
+		$this->redirect($this->request->referer());
 	}
 
 /**
  * order method
  *
- * @param int $frameId frames.id
  * @return void
  */
-	public function order($frameId = null) {
+	public function order() {
 		$this->request->onlyAllow('post');
 
 		$this->Frame->setDataSource('master');
-		if (! $frame = $this->Frame->findById($frameId)) {
+		if (! $frame['Frame'] = Current::read('Frame')) {
 			$this->throwBadRequest();
 			return;
 		}
@@ -200,8 +182,6 @@ class FramesController extends FramesAppController {
 			$this->throwBadRequest();
 			return;
 		}
-		if (! $this->request->is('ajax')) {
-			$this->redirect($this->request->referer());
-		}
+		$this->redirect($this->request->referer());
 	}
 }

@@ -11,21 +11,21 @@
  */
 ?>
 
-<section class="frame panel panel-<?php echo h($frame['headerType']); ?>">
+<section class="frame panel panel-<?php echo h($frame['header_type']); ?>">
 
-	<?php if ($frame['name'] || Page::isSetting()) : ?>
+	<?php if ($frame['name'] || Current::isSettingMode()) : ?>
 		<div class="panel-heading clearfix">
 			<span>
 				<?php echo $frame['name']; ?>
 			</span>
 
-			<?php if (Page::isSetting()): ?>
+			<?php if (Current::isSettingMode()): ?>
 				<div class="pull-right">
 					<?php echo $this->element('Frames.order_form', array('frame' => $frame)); ?>
 
-					<?php if ($action = $this->PageLayout->getDefaultSettingAction($frame['pluginKey'])) : ?>
+					<?php if ($action = $this->PageLayout->getDefaultSettingAction($frame['plugin_key'])) : ?>
 						<button class="btn btn-default frame-btn pull-left"
-								onclick="location.href='/<?php echo $frame['pluginKey'] . '/' . $action . '/' . $frame['id']; ?>'">
+								onclick="location.href='/<?php echo $frame['plugin_key'] . '/' . $action . '/' . $frame['id']; ?>'">
 							<span class="glyphicon glyphicon-cog"></span>
 							<span class="sr-only"><?php echo __d('frames', 'Show flame setting'); ?></span>
 						</button>

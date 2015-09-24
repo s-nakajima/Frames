@@ -8,8 +8,6 @@
  * @license http://www.netcommons.org/license.txt NetCommons License
  */
 
-App::uses('NetCommonsCakeTestCase', 'NetCommons.TestSuite');
-
 /**
  * FrameFixture
  *
@@ -136,7 +134,6 @@ class FrameFixture extends CakeTestFixture {
 	public function init() {
 		if (class_exists('NetCommonsCakeTestCase')) {
 			$records = array_keys($this->records);
-			var_dump(NetCommonsCakeTestCase::$plugin);
 			foreach ($records as $i) {
 				$this->records[$i]['plugin_key'] = NetCommonsCakeTestCase::$plugin;
 			}

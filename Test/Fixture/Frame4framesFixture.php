@@ -206,6 +206,19 @@ class Frame4framesFixture extends FrameFixture {
 			'weight' => '2',
 			'is_deleted' => '0',
 		),
+		//メイン(別ルーム)
+		array(
+			'id' => '15',
+			'language_id' => '2',
+			'room_id' => '2',
+			'box_id' => '6',
+			'plugin_key' => 'frames',
+			'block_id' => '101',
+			'key' => 'frame_8',
+			'name' => 'Test frame main',
+			'weight' => '1',
+			'is_deleted' => '0',
+		),
 	);
 
 /**

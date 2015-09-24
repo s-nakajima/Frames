@@ -678,8 +678,11 @@ class FrameFixture extends CakeTestFixture {
  * @return void
  */
 	public function init() {
-		foreach ($this->records as $i => $recode) {
-			$this->records[$i]['plugin_key'] = NetCommonsCakeTestCase::$plugin;
+		if (NetCommonsCakeTestCase::$plugin) {
+			$records = array_keys($this->records);
+			foreach ($records as $i) {
+				$this->records[$i]['plugin_key'] = NetCommonsCakeTestCase::$plugin;
+			}
 		}
 		parent::init();
 	}

@@ -124,15 +124,15 @@ class FrameFixture extends CakeTestFixture {
 			'weight' => '2',
 			'is_deleted' => '0',
 		),
-		//メイン(別ルーム)
+		//メイン(別ルーム(room_id=4))
 		array(
 			'id' => '15',
 			'language_id' => '1',
-			'room_id' => '2',
-			'box_id' => '3',
+			'room_id' => '4',
+			'box_id' => '7',
 			'plugin_key' => 'frames',
-			'block_id' => '1',
-			'key' => 'frame_3',
+			'block_id' => null,
+			'key' => 'frame_8',
 			'name' => 'Test frame main',
 			'weight' => '1',
 			'is_deleted' => '0',
@@ -140,16 +140,40 @@ class FrameFixture extends CakeTestFixture {
 		array(
 			'id' => '16',
 			'language_id' => '2',
-			'room_id' => '2',
-			'box_id' => '3',
+			'room_id' => '4',
+			'box_id' => '7',
 			'plugin_key' => 'frames',
-			'block_id' => '2',
-			'key' => 'frame_3',
+			'block_id' => null,
+			'key' => 'frame_8',
 			'name' => 'Test frame main',
 			'weight' => '1',
 			'is_deleted' => '0',
 		),
-
+		//メイン(別ルーム(room_id=5、ブロックなし))
+		array(
+			'id' => '17',
+			'language_id' => '1',
+			'room_id' => '5',
+			'box_id' => '8',
+			'plugin_key' => 'frames',
+			'block_id' => null,
+			'key' => 'frame_9',
+			'name' => 'Test frame main',
+			'weight' => '1',
+			'is_deleted' => '0',
+		),
+		array(
+			'id' => '18',
+			'language_id' => '2',
+			'room_id' => '5',
+			'box_id' => '8',
+			'plugin_key' => 'frames',
+			'block_id' => null,
+			'key' => 'frame_9',
+			'name' => 'Test frame main',
+			'weight' => '1',
+			'is_deleted' => '0',
+		),
 	);
 
 /**

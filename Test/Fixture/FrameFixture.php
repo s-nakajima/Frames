@@ -182,7 +182,7 @@ class FrameFixture extends CakeTestFixture {
  * @return void
  */
 	public function init() {
-		if (class_exists('NetCommonsCakeTestCase')) {
+		if (class_exists('NetCommonsCakeTestCase') && NetCommonsCakeTestCase::$plugin) {
 			$records = array_keys($this->records);
 			foreach ($records as $i) {
 				$this->records[$i]['plugin_key'] = NetCommonsCakeTestCase::$plugin;

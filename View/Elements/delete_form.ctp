@@ -10,19 +10,19 @@
  */
 ?>
 
-<?php echo $this->Form->create('', array(
+<?php echo $this->NetCommonsForm->create('', array(
 		'type' => 'delete',
 		'class' => 'frame-btn pull-left',
 		'url' => NetCommonsUrl::actionUrl(array('plugin' => 'frames', 'controller' => 'frames', 'action' => 'delete'))
 	)); ?>
 
-	<?php echo $this->Form->hidden('Frame.id', array(
+	<?php echo $this->NetCommonsForm->hidden('Frame.id', array(
 			'value' => $frame['id'],
 		)); ?>
 
-	<?php echo $this->Form->button('<span class="glyphicon glyphicon-remove"></span><span class="sr-only">' . __d('frames', 'Delete frame') . '</span>', array(
+	<?php echo $this->NetCommonsForm->button('<span class="glyphicon glyphicon-remove"></span><span class="sr-only">' . __d('frames', 'Delete frame') . '</span>', array(
 			'name' => 'delete',
 			'class' => 'btn btn-default',
 			'onclick' => 'return confirm(\'' . __d('frames', 'Do you want to delete the frame?') . '\')'
 		)); ?>
-<?php echo $this->Form->end();
+<?php echo $this->NetCommonsForm->end();

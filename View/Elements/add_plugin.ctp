@@ -21,7 +21,7 @@
 				<div class="list-group">
 					<?php foreach ($plugins as $plugin) : ?>
 						<article class="list-group-item clearfix">
-							<?php echo $this->Form->create('FrameAdd' . $plugin['Plugin']['id'], array('type' => 'post', 'url' => '/frames/frames/add')); ?>
+							<?php echo $this->NetCommonsForm->create('FrameAdd' . $plugin['Plugin']['id'], array('type' => 'post', 'url' => '/frames/frames/add')); ?>
 								<div class="pull-left">
 									<h4 class="list-group-item-heading clearfix">
 										<?php echo h($plugin['Plugin']['name']); ?>
@@ -40,23 +40,23 @@
 									<?php echo $this->Composer->getDescription($plugin['Plugin']['key']); ?>
 								</div>
 								<div class="pull-right">
-									<?php echo $this->Form->hidden('Frame.room_id', array(
+									<?php echo $this->NetCommonsForm->hidden('Frame.room_id', array(
 											'value' => $roomId,
 										)); ?>
 
-									<?php echo $this->Form->hidden('Frame.language_id', array(
+									<?php echo $this->NetCommonsForm->hidden('Frame.language_id', array(
 											'value' => $languageId,
 										)); ?>
 
-									<?php echo $this->Form->hidden('Frame.box_id', array(
+									<?php echo $this->NetCommonsForm->hidden('Frame.box_id', array(
 											'value' => $boxId,
 										)); ?>
 
-									<?php echo $this->Form->hidden('Frame.plugin_key', array(
+									<?php echo $this->NetCommonsForm->hidden('Frame.plugin_key', array(
 											'value' => $plugin['Plugin']['key'],
 										)); ?>
 
-									<?php echo $this->Form->button(
+									<?php echo $this->NetCommonsForm->button(
 											'<span class="glyphicon glyphicon-plus"> </span>' . __d('net_commons', 'Add'),
 											array(
 												'class' => 'btn btn-success btn-workflow',
@@ -64,7 +64,7 @@
 											)
 										); ?>
 								</div>
-							<?php echo $this->Form->end(); ?>
+							<?php echo $this->NetCommonsForm->end(); ?>
 						</article>
 					<?php endforeach; ?>
 				</div>

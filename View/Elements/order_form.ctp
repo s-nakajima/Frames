@@ -10,27 +10,27 @@
  */
 ?>
 
-<?php echo $this->Form->create('', array(
+<?php echo $this->NetCommonsForm->create('', array(
 		'type' => 'post',
 		'class' => 'frame-btn pull-left',
 		'url' => NetCommonsUrl::actionUrl(array('plugin' => 'frames', 'controller' => 'frames', 'action' => 'order'))
 	)); ?>
 
-	<?php echo $this->Form->hidden('Frame.id', array(
+	<?php echo $this->NetCommonsForm->hidden('Frame.id', array(
 			'value' => $frame['id'],
 		)); ?>
 
-	<?php echo $this->Form->hidden('Frame.box_id', array(
+	<?php echo $this->NetCommonsForm->hidden('Frame.box_id', array(
 			'value' => $frame['box_id'],
 		)); ?>
 
-	<?php echo $this->Form->button('<span class="glyphicon glyphicon-arrow-up"></span><span class="sr-only">' . __d('frames', 'Up frame position') . '</span>', array(
+	<?php echo $this->NetCommonsForm->button('<span class="glyphicon glyphicon-arrow-up"></span><span class="sr-only">' . __d('frames', 'Up frame position') . '</span>', array(
 			'name' => 'up',
 			'class' => 'btn btn-default frame-btn pull-left',
 		)); ?>
 
-	<?php echo $this->Form->button('<span class="glyphicon glyphicon-arrow-down"></span><span class="sr-only">' . __d('frames', 'Down frame position') . '</span>', array(
+	<?php echo $this->NetCommonsForm->button('<span class="glyphicon glyphicon-arrow-down"></span><span class="sr-only">' . __d('frames', 'Down frame position') . '</span>', array(
 			'name' => 'down',
 			'class' => 'btn btn-default frame-btn pull-left',
 		)); ?>
-<?php echo $this->Form->end();
+<?php echo $this->NetCommonsForm->end();

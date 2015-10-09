@@ -64,7 +64,7 @@ class FramesController extends FramesAppController {
 		$frame['Frame']['Language'] = $frame['Language'];
 		unset($frame['Plugin'], $frame['Language']);
 
-		$this->set('frames', array($frame['frame']));
+		$this->set('frames', array($frame['Frame']));
 
 		$plugins = $this->Plugin->find('all', array(
 			'recursive' => -1,
@@ -98,7 +98,7 @@ class FramesController extends FramesAppController {
 
 		if ($plugin = $this->Plugin->findByKey($data['Frame']['plugin_key'])) {
 			if ($plugin['Plugin']['default_setting_action']) {
-				$this->redirect('/' . $data['Frame']['plugin_key'] . '/' . $plugin['Plugin']['default_setting_action'] . '/' . $frame['Frame']['id']);
+				$this->redirect('/' . $data['Frame']['plugin_key'] . '/' . $plugin['Plugin']['default_setting_action'] . '?frame_id=' . $frame['Frame']['id']);
 				return;
 			}
 		}

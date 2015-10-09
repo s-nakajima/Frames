@@ -13,7 +13,7 @@ foreach ($frames as $frame) {
 		continue;
 	}
 
-	$url = $frame['plugin_key'] . '/' . $this->PageLayout->getDefaultAction($frame['plugin_key']) . '/' . $frame['id'];
+	$url = $frame['plugin_key'] . '/' . $this->PageLayout->getDefaultAction($frame['plugin_key']) . '?frame_id=' . $frame['id'];
 	if (Current::isSettingMode()) {
 		$url = Current::SETTING_MODE_WORD . '/' . $url;
 	}

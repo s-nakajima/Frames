@@ -2,46 +2,28 @@
 /**
  * FrameFixture
  *
- * @copyright Copyright 2014, NetCommons Project
- * @author Kohei Teraguchi <kteraguchi@commonsnet.org>
+ * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @link http://www.netcommons.org NetCommons Project
  * @license http://www.netcommons.org/license.txt NetCommons License
+ * @copyright Copyright 2014, NetCommons Project
  */
+
+App::uses('FrameFixture', 'Frames.Test/Fixture');
 
 /**
  * FrameFixture
  *
- * @author Kohei Teraguchi <kteraguchi@commonsnet.org>
+ * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\Blocks\Test\Fixture
  */
-class FrameFixture extends CakeTestFixture {
+class Frame4framesFixture extends FrameFixture {
 
 /**
- * Fields
+ * Model name
  *
- * @var array
+ * @var string
  */
-	public $fields = array(
-		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
-		'language_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 6),
-		'room_id' => array('type' => 'integer', 'null' => true, 'default' => null),
-		'box_id' => array('type' => 'integer', 'null' => false, 'default' => null),
-		'plugin_key' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'block_id' => array('type' => 'integer', 'null' => true, 'default' => null),
-		'key' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => 'Key of the frame.', 'charset' => 'utf8'),
-		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => 'Name of the frame.', 'charset' => 'utf8'),
-		'header_type' => array('type' => 'string', 'null' => false, 'default' => 'default', 'collate' => 'utf8_general_ci', 'comment' => 'Header type of the frame.', 'charset' => 'utf8'),
-		'weight' => array('type' => 'integer', 'null' => true, 'default' => null, 'comment' => 'Display order.'),
-		'is_deleted' => array('type' => 'boolean', 'null' => false, 'default' => null),
-		'created_user' => array('type' => 'integer', 'null' => true, 'default' => null),
-		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
-		'modified_user' => array('type' => 'integer', 'null' => true, 'default' => null),
-		'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
-		'indexes' => array(
-			'PRIMARY' => array('column' => 'id', 'unique' => 1)
-		),
-		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
-	);
+	public $name = 'Frame';
 
 /**
  * Records
@@ -49,6 +31,56 @@ class FrameFixture extends CakeTestFixture {
  * @var array
  */
 	public $records = array(
+		//トップ
+		array(
+			'id' => '1',
+			'language_id' => '1',
+			'room_id' => '1',
+			'box_id' => '1',
+			'plugin_key' => 'test_plugin',
+			'block_id' => '1',
+			'key' => 'frame_1',
+			'name' => 'Test frame top',
+			'weight' => '1',
+			'is_deleted' => '0',
+		),
+		array(
+			'id' => '2',
+			'language_id' => '2',
+			'room_id' => '1',
+			'box_id' => '1',
+			'plugin_key' => 'test_plugin',
+			'block_id' => '2',
+			'key' => 'frame_1',
+			'name' => 'Test frame top',
+			'weight' => '1',
+			'is_deleted' => '0',
+		),
+		//レフト
+		array(
+			'id' => '3',
+			'language_id' => '1',
+			'room_id' => '1',
+			'box_id' => '2',
+			'plugin_key' => 'test_plugin',
+			'block_id' => '1',
+			'key' => 'frame_2',
+			'name' => 'Test frame left',
+			'weight' => '1',
+			'is_deleted' => '0',
+		),
+		array(
+			'id' => '4',
+			'language_id' => '2',
+			'room_id' => '1',
+			'box_id' => '2',
+			'plugin_key' => 'test_plugin',
+			'block_id' => '2',
+			'key' => 'frame_2',
+			'name' => 'Test frame left',
+			'weight' => '1',
+			'is_deleted' => '0',
+		),
 		//メイン
 		array(
 			'id' => '5',
@@ -71,6 +103,56 @@ class FrameFixture extends CakeTestFixture {
 			'block_id' => '2',
 			'key' => 'frame_3',
 			'name' => 'Test frame main',
+			'weight' => '1',
+			'is_deleted' => '0',
+		),
+		//ライト
+		array(
+			'id' => '7',
+			'language_id' => '1',
+			'room_id' => '1',
+			'box_id' => '4',
+			'plugin_key' => 'test_plugin',
+			'block_id' => '1',
+			'key' => 'frame_4',
+			'name' => 'Test frame right',
+			'weight' => '1',
+			'is_deleted' => '0',
+		),
+		array(
+			'id' => '8',
+			'language_id' => '2',
+			'room_id' => '1',
+			'box_id' => '4',
+			'plugin_key' => 'test_plugin',
+			'block_id' => '2',
+			'key' => 'frame_4',
+			'name' => 'Test frame right',
+			'weight' => '1',
+			'is_deleted' => '0',
+		),
+		//フッター
+		array(
+			'id' => '9',
+			'language_id' => '1',
+			'room_id' => '1',
+			'box_id' => '5',
+			'plugin_key' => 'test_plugin',
+			'block_id' => '1',
+			'key' => 'frame_5',
+			'name' => 'Test frame footer',
+			'weight' => '1',
+			'is_deleted' => '0',
+		),
+		array(
+			'id' => '10',
+			'language_id' => '2',
+			'room_id' => '1',
+			'box_id' => '5',
+			'plugin_key' => 'test_plugin',
+			'block_id' => '2',
+			'key' => 'frame_5',
+			'name' => 'Test frame footer',
 			'weight' => '1',
 			'is_deleted' => '0',
 		),
@@ -131,7 +213,7 @@ class FrameFixture extends CakeTestFixture {
 			'room_id' => '4',
 			'box_id' => '7',
 			'plugin_key' => 'test_plugin',
-			'block_id' => null,
+			'block_id' => '1',
 			'key' => 'frame_8',
 			'name' => 'Test frame main',
 			'weight' => '1',
@@ -143,7 +225,7 @@ class FrameFixture extends CakeTestFixture {
 			'room_id' => '4',
 			'box_id' => '7',
 			'plugin_key' => 'test_plugin',
-			'block_id' => null,
+			'block_id' => '2',
 			'key' => 'frame_8',
 			'name' => 'Test frame main',
 			'weight' => '1',
@@ -156,7 +238,7 @@ class FrameFixture extends CakeTestFixture {
 			'room_id' => '5',
 			'box_id' => '8',
 			'plugin_key' => 'test_plugin',
-			'block_id' => null,
+			'block_id' => '1',
 			'key' => 'frame_9',
 			'name' => 'Test frame main',
 			'weight' => '1',
@@ -168,7 +250,7 @@ class FrameFixture extends CakeTestFixture {
 			'room_id' => '5',
 			'box_id' => '8',
 			'plugin_key' => 'test_plugin',
-			'block_id' => null,
+			'block_id' => '2',
 			'key' => 'frame_9',
 			'name' => 'Test frame main',
 			'weight' => '1',
@@ -182,12 +264,6 @@ class FrameFixture extends CakeTestFixture {
  * @return void
  */
 	public function init() {
-		if (class_exists('NetCommonsTestSuite') && NetCommonsTestSuite::$plugin) {
-			$records = array_keys($this->records);
-			foreach ($records as $i) {
-				$this->records[$i]['plugin_key'] = NetCommonsTestSuite::$plugin;
-			}
-		}
 		parent::init();
 	}
 

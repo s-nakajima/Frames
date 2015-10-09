@@ -32,7 +32,7 @@
 	</button>
 </div>
 
-<?php echo $this->Form->create('Frame',
+<?php echo $this->NetCommonsForm->create('Frame',
 	array(
 		'name' => 'frameForm',
 		'novalidate' => true,
@@ -40,7 +40,7 @@
 		'url' => NetCommonsUrl::actionUrl(array('plugin' => 'frames', 'controller' => 'frames', 'action' => 'edit')),
 	)); ?>
 
-	<?php echo $this->Form->hidden('Frame.id', array(
+	<?php echo $this->NetCommonsForm->hidden('Frame.id', array(
 			'value' => Current::read('Frame.id'),
 		)); ?>
 
@@ -98,4 +98,4 @@
 	<button type="submit" class="btn btn-default" ng-click="sending=true" ng-disabled="sending" onclick="submit()">
 		<?php echo __d('net_commons', 'OK'); ?>
 	</button>
-<?php echo $this->Form->end();
+<?php echo $this->NetCommonsForm->end();

@@ -31,7 +31,8 @@ class Frame extends FramesAppModel {
  * @var array
  */
 	public $actsAs = array(
-		'NetCommons.OriginalKey',
+		//'NetCommons.OriginalKey',
+		'M17n.M17n',
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed

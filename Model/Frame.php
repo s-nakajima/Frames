@@ -32,7 +32,13 @@ class Frame extends FramesAppModel {
  */
 	public $actsAs = array(
 		//'NetCommons.OriginalKey',
-		'M17n.M17n',
+		'M17n.M17n' => array(
+			'associations' => array(
+				'block_id' => array(
+					'className' => 'Blocks.Block',
+				),
+			)
+		),
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed

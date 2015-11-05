@@ -11,7 +11,7 @@
  */
 ?>
 
-<section class="frame panel panel-<?php echo h($frame['header_type']); ?>">
+<section class="frame panel panel-<?php echo !empty($frame['header_type']) ? h($frame['header_type']) : 'default'; ?>">
 
 	<?php if ($frame['name'] || Current::isSettingMode()) : ?>
 		<div class="panel-heading clearfix">

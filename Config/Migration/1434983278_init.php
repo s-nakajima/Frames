@@ -43,6 +43,7 @@ class Init extends CakeMigration {
 					'header_type' => array('type' => 'string', 'null' => false, 'default' => 'default', 'collate' => 'utf8_general_ci', 'comment' => 'Header type of the frame.', 'charset' => 'utf8'),
 					'weight' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false, 'comment' => 'Display order.'),
 					'is_deleted' => array('type' => 'boolean', 'null' => true, 'default' => null),
+					'default_action' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => 'Default action for content rendering', 'charset' => 'utf8'),
 					'created_user' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
 					'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 					'modified_user' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),

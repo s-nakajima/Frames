@@ -24,11 +24,11 @@
 					<?php echo $this->element('Frames.order_form', array('frame' => $frame)); ?>
 
 					<?php if ($action = $this->PageLayout->getDefaultSettingAction($frame['plugin_key'])) : ?>
-						<button class="btn btn-default frame-btn pull-left"
-								onclick="location.href='/<?php echo $frame['plugin_key'] . '/' . $action . '?frame_id=' . $frame['id']; ?>'">
-							<span class="glyphicon glyphicon-cog"></span>
+						<a class="btn btn-default frame-btn pull-left"
+						   href="<?php echo $this->NetCommonsHtml->url('/' . $frame['plugin_key'] . '/' . $action . '?frame_id=' . $frame['id']); ?>">
+							<span class="glyphicon glyphicon-cog"> </span>
 							<span class="sr-only"><?php echo __d('frames', 'Show flame setting'); ?></span>
-						</button>
+						</a>
 					<?php endif; ?>
 
 					<?php echo $this->element('Frames.delete_form', array('frame' => $frame)); ?>

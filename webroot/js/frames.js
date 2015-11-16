@@ -8,17 +8,6 @@
 
 
 /**
- * FramesController Controller Javascript
- *
- * @param {string} Controller name
- * @param {function($scope)} Controller
- */
-NetCommonsApp.controller('FramesController', function($scope, $http) {
-
-});
-
-
-/**
  * FrameSettings Controller Javascript
  *
  * @param {string} Controller name

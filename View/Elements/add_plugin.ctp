@@ -17,7 +17,7 @@
 			</div>
 
 			<div class="modal-body">
-				<?php if ($plugins = $this->PageLayout->getPlugins()) : ?>
+				<?php if ($plugins = Current::read('PluginsRoom')) : ?>
 				<div class="list-group">
 					<?php foreach ($plugins as $plugin) : ?>
 						<article class="list-group-item clearfix">

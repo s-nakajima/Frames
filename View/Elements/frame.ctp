@@ -23,7 +23,7 @@
 				<div class="pull-right">
 					<?php echo $this->element('Frames.order_form', array('frame' => $frame)); ?>
 
-					<?php if ($action = $this->PageLayout->getDefaultSettingAction($frame['plugin_key'])) : ?>
+					<?php if ($action = Hash::get($this->PageLayout->plugins, $frame['plugin_key'] . '.default_setting_action')) : ?>
 						<a class="btn btn-default frame-btn pull-left"
 						   href="<?php echo $this->NetCommonsHtml->url('/' . $frame['plugin_key'] . '/' . $action . '?frame_id=' . $frame['id']); ?>">
 							<span class="glyphicon glyphicon-cog"> </span>

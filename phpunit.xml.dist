@@ -4,12 +4,12 @@
         <whitelist addUncoveredFilesFromWhitelist="true">
             <directory suffix=".ctp">app/Plugin/Frames</directory>
             <directory suffix=".php">app/Plugin/Frames</directory>
-			<exclude>
-				<directory suffix=".php">app/Plugin/Frames/Config/Migration</directory>
-				<directory suffix=".php">app/Plugin/Frames/Config/Schema</directory>
-				<directory suffix=".php">app/Plugin/Frames/Test/Case</directory>
-				<directory suffix=".php">app/Plugin/Frames/Test/Fixture</directory>
-			</exclude>
+            <exclude>
+                <directory suffix=".php">app/Plugin/Frames/Config/Migration</directory>
+                <directory suffix=".php">app/Plugin/Frames/Config/Schema</directory>
+                <directory suffix=".php">app/Plugin/Frames/Test/Case</directory>
+                <directory suffix=".php">app/Plugin/Frames/Test/Fixture</directory>
+            </exclude>
         </whitelist>
     </filter>
     <logging>

@@ -13,7 +13,15 @@ foreach ($frames as $frame) {
 		continue;
 	}
 
-	$url = $frame['plugin_key'] . '/' . $this->PageLayout->getDefaultAction($frame['plugin_key']) . '?frame_id=' . $frame['id'];
+	if ($frame['default_action']) {
+		$action = $frame['default_action'];
+	} elseif (Hash::get($this->PageLayout->plugins, $frame['plugin_key'] . '.default_action')) {
+		$action = Hash::get($this->PageLayout->plugins, $frame['plugin_key'] . '.default_action');
+	} else {
+		$action = $frame['plugin_key'] . '/index';
+	}
+	$url = $frame['plugin_key'] . '/' . $action . '?frame_id=' . $frame['id'];
+	
 	if (Current::isSettingMode()) {
 		$url = Current::SETTING_MODE_WORD . '/' . $url;
 	}

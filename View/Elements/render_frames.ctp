@@ -21,7 +21,7 @@ foreach ($frames as $frame) {
 		$action = $frame['plugin_key'] . '/index';
 	}
 	$url = $frame['plugin_key'] . '/' . $action . '?frame_id=' . $frame['id'];
-	
+
 	if (Current::isSettingMode()) {
 		$url = Current::SETTING_MODE_WORD . '/' . $url;
 	}

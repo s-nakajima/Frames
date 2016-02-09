@@ -44,7 +44,7 @@ echo $this->NetCommonsHtml->script('/frames/js/frames.js');
 			array(
 				'name' => 'frameForm',
 				'novalidate' => true,
-				'action' => 'post',
+				'type' => 'post',
 				'url' => NetCommonsUrl::actionUrl(array('plugin' => 'frames', 'controller' => 'frames', 'action' => 'edit')),
 			)); ?>
 

@@ -144,7 +144,7 @@ class FrameSettingsControllerTest extends NetCommonsControllerTestCase {
 			return;
 		}
 
-		if (($method === 'put' || $method === 'post') && ! $validationError) {
+		if (in_array($method, ['put', 'post'], true) && ! $validationError) {
 			$header = $this->controller->response->header();
 			$asserts = array(
 				array('method' => 'assertNotEmpty', 'value' => $header['Location'])

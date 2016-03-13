@@ -29,7 +29,7 @@ echo $this->NetCommonsHtml->script('/frames/js/frames.js');
 			</button>
 
 			<a class="btn btn-default active" title="<?php echo __d('net_commons', 'Quit'); ?>"
-			   href="<?php echo $this->NetCommonsHtml->url('/' . Current::SETTING_MODE_WORD . '/' . h(Current::read('Page.permalink'))); ?>">
+			   href="<?php echo $this->NetCommonsHtml->url(NetCommonsUrl::settingModeUrl()); ?>">
 				<span class="glyphicon glyphicon-cog"> </span>
 				<span class="sr-only"><?php echo __d('frames', 'Show flame setting'); ?></span>
 			</a>

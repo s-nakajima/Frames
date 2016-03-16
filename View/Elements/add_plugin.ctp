@@ -45,7 +45,7 @@
 										)); ?>
 
 									<?php echo $this->NetCommonsForm->hidden('Frame.language_id', array(
-											'value' => $languageId,
+											'value' => Current::read('Language.id'),
 										)); ?>
 
 									<?php echo $this->NetCommonsForm->hidden('Frame.box_id', array(

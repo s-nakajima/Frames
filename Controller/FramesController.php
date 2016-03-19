@@ -161,9 +161,8 @@ class FramesController extends FramesAppController {
  * @return void
  */
 	public function order() {
-		$this->request->onlyAllow('post');
+		$this->request->onlyAllow('put');
 
-		$this->Frame->setDataSource('master');
 		if (! $frame['Frame'] = Current::read('Frame')) {
 			$this->throwBadRequest();
 			return;

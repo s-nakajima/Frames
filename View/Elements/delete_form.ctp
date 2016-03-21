@@ -10,7 +10,7 @@
  */
 ?>
 
-<?php echo $this->NetCommonsForm->create('', array(
+<?php echo $this->NetCommonsForm->create('Frame', array(
 		'type' => 'delete',
 		'class' => 'frame-btn pull-left',
 		'url' => NetCommonsUrl::actionUrl(array('plugin' => 'frames', 'controller' => 'frames', 'action' => 'delete'))

@@ -10,8 +10,8 @@
  */
 ?>
 
-<?php echo $this->NetCommonsForm->create('', array(
-		'type' => 'post',
+<?php echo $this->NetCommonsForm->create('Frame', array(
+		'type' => 'put',
 		'class' => 'frame-btn pull-left',
 		'url' => NetCommonsUrl::actionUrl(array('plugin' => 'frames', 'controller' => 'frames', 'action' => 'order'))
 	)); ?>

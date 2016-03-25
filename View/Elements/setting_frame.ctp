@@ -82,6 +82,7 @@ echo $this->NetCommonsHtml->script('/frames/js/frames.js');
 				</button>
 				<?php
 					$headerTypes = array(
+						['key' => 'none', 'name' => __d('frames', 'none')],
 						['key' => 'default', 'name' => __d('frames', 'default')],
 						['key' => 'primary', 'name' => __d('frames', 'primary')],
 						['key' => 'info', 'name' => __d('frames', 'info')],

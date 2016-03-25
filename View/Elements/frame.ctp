@@ -9,9 +9,18 @@
  * @link http://www.netcommons.org NetCommons Project
  * @license http://www.netcommons.org/license.txt NetCommons License
  */
+
+if ($frame['header_type'] === 'none' && ! Current::isSettingMode()) {
+	$panelCss = '';
+} elseif (!empty($frame['header_type'])) {
+	$panelCss = ' panel panel-' . h($frame['header_type']);
+} else {
+	$panelCss = ' panel panel-default';
+}
+
 ?>
 
-<section class="frame panel panel-<?php echo !empty($frame['header_type']) ? h($frame['header_type']) : 'default'; ?>">
+<section class="frame<?php echo $panelCss; ?>">
 
 	<?php if ($frame['name'] || Current::isSettingMode()) : ?>
 		<div class="panel-heading clearfix">
@@ -37,7 +46,7 @@
 		</div>
 	<?php endif; ?>
 
-	<div class="panel-body block">
+	<div class="<?php echo ($panelCss ? 'panel-body ' : ''); ?>block">
 		<?php echo $view; ?>
 	</div>
 </section>

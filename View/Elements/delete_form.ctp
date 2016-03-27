@@ -22,7 +22,7 @@
 
 	<?php echo $this->NetCommonsForm->button('<span class="glyphicon glyphicon-remove"></span><span class="sr-only">' . __d('frames', 'Delete frame') . '</span>', array(
 			'name' => 'delete',
-			'class' => 'btn btn-default',
+			'class' => 'btn btn-default btn-sm',
 			'onclick' => 'return confirm(\'' . __d('frames', 'Do you want to delete the frame?') . '\')'
 		)); ?>
 <?php echo $this->NetCommonsForm->end();

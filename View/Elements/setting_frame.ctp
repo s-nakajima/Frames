@@ -18,23 +18,23 @@ echo $this->NetCommonsHtml->script('/frames/js/frames.js');
 		<?php $frame = Current::read('Frame'); ?>
 
 		<div class="pull-right">
-			<button class="btn btn-default" disabled="disabled">
+			<button class="btn btn-default btn-sm" disabled="disabled">
 				<span class="glyphicon glyphicon-arrow-up"></span>
 				<span class="sr-only"><?php echo __d('frames', 'Up frame position'); ?></span>
 			</button>
 
-			<button class="btn btn-default" disabled="disabled">
+			<button class="btn btn-default btn-sm" disabled="disabled">
 				<span class="glyphicon glyphicon-arrow-down"></span>
 				<span class="sr-only"><?php echo __d('frames', 'Down frame position'); ?></span>
 			</button>
 
-			<a class="btn btn-default active" title="<?php echo __d('net_commons', 'Quit'); ?>"
+			<a class="btn btn-default btn-sm active" title="<?php echo __d('net_commons', 'Quit'); ?>"
 			   href="<?php echo $this->NetCommonsHtml->url(NetCommonsUrl::backToPageUrl(true)); ?>">
 				<span class="glyphicon glyphicon-cog"> </span>
 				<span class="sr-only"><?php echo __d('frames', 'Show flame setting'); ?></span>
 			</a>
 
-			<button class="btn btn-default" disabled="disabled">
+			<button class="btn btn-default btn-sm" disabled="disabled">
 				<span class="glyphicon glyphicon-remove"></span>
 				<span class="sr-only"><?php echo __d('frames', 'Delete frame'); ?></span>
 			</button>
@@ -82,6 +82,7 @@ echo $this->NetCommonsHtml->script('/frames/js/frames.js');
 				</button>
 				<?php
 					$headerTypes = array(
+						['key' => 'none', 'name' => __d('frames', 'none')],
 						['key' => 'default', 'name' => __d('frames', 'default')],
 						['key' => 'primary', 'name' => __d('frames', 'primary')],
 						['key' => 'info', 'name' => __d('frames', 'info')],

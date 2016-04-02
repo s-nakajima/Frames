@@ -9,9 +9,18 @@
  * @link http://www.netcommons.org NetCommons Project
  * @license http://www.netcommons.org/license.txt NetCommons License
  */
+
+if ($frame['header_type'] === 'none' && ! Current::isSettingMode()) {
+	$panelCss = '';
+} elseif (!empty($frame['header_type'])) {
+	$panelCss = ' panel panel-' . h($frame['header_type']);
+} else {
+	$panelCss = ' panel panel-default';
+}
+
 ?>
 
-<section class="frame panel panel-<?php echo !empty($frame['header_type']) ? h($frame['header_type']) : 'default'; ?>">
+<section class="frame<?php echo $panelCss . ' plugin-' . strtr($frame['plugin_key'], '_', '-'); ?>">
 
 	<?php if ($frame['name'] || Current::isSettingMode()) : ?>
 		<div class="panel-heading clearfix">
@@ -24,7 +33,7 @@
 					<?php echo $this->element('Frames.order_form', array('frame' => $frame)); ?>
 
 					<?php if ($action = Hash::get($this->PageLayout->plugins, $frame['plugin_key'] . '.default_setting_action')) : ?>
-						<a class="btn btn-default frame-btn pull-left"
+						<a class="btn btn-default btn-sm frame-btn pull-left"
 						   href="<?php echo $this->NetCommonsHtml->url('/' . $frame['plugin_key'] . '/' . $action . '?frame_id=' . $frame['id']); ?>">
 							<span class="glyphicon glyphicon-cog"> </span>
 							<span class="sr-only"><?php echo __d('frames', 'Show flame setting'); ?></span>
@@ -37,7 +46,7 @@
 		</div>
 	<?php endif; ?>
 
-	<div class="panel-body block">
+	<div class="<?php echo ($panelCss ? 'panel-body ' : ''); ?>block">
 		<?php echo $view; ?>
 	</div>
 </section>

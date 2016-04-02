@@ -20,7 +20,7 @@ if ($frame['header_type'] === 'none' && ! Current::isSettingMode()) {
 
 ?>
 
-<section class="frame<?php echo $panelCss . ' plugin-' . $frame['plugin_key']; ?>">
+<section class="frame<?php echo $panelCss . ' plugin-' . strtr($frame['plugin_key'], '_', '-'); ?>">
 
 	<?php if ($frame['name'] || Current::isSettingMode()) : ?>
 		<div class="panel-heading clearfix">

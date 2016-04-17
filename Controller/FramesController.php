@@ -98,7 +98,8 @@ class FramesController extends FramesAppController {
 
 		if ($plugin = $this->Plugin->findByKey($data['Frame']['plugin_key'])) {
 			if ($plugin['Plugin']['default_setting_action']) {
-				$this->redirect('/' . $data['Frame']['plugin_key'] . '/' . $plugin['Plugin']['default_setting_action'] . '?frame_id=' . $frame['Frame']['id']);
+				$url = '/' . $data['Frame']['plugin_key'] . '/' . $plugin['Plugin']['default_setting_action'];
+				$this->redirect($url . '?frame_id=' . $frame['Frame']['id']);
 				return;
 			}
 		}
@@ -151,7 +152,9 @@ class FramesController extends FramesAppController {
 			return;
 		}
 
-		$this->NetCommons->setFlashNotification(__d('net_commons', 'Successfully saved.'), array('class' => 'success'));
+		$this->NetCommons->setFlashNotification(
+			__d('net_commons', 'Successfully saved.'), array('class' => 'success')
+		);
 		$this->redirect($this->request->referer());
 	}
 

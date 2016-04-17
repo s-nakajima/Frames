@@ -151,9 +151,18 @@ class FrameSettingsControllerTest extends NetCommonsControllerTestCase {
 			);
 		} else {
 			$asserts = array(
-				array('method' => 'assertInput', 'type' => 'form', 'name' => null, 'value' => $url),
-				array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Frame][id]', 'value' => $frameId),
-				array('method' => 'assertInput', 'type' => 'input', 'name' => 'data[Frame][key]', 'value' => 'frame_3'),
+				array(
+					'method' => 'assertInput', 'type' => 'form',
+					'name' => null, 'value' => $url
+				),
+				array(
+					'method' => 'assertInput', 'type' => 'input',
+					'name' => 'data[Frame][id]', 'value' => $frameId
+				),
+				array(
+					'method' => 'assertInput', 'type' => 'input',
+					'name' => 'data[Frame][key]', 'value' => 'frame_3'
+				),
 			);
 
 			//バリデーションエラー(エラー表示あり)

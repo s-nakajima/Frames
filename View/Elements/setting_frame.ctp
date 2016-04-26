@@ -28,10 +28,9 @@ echo $this->NetCommonsHtml->script('/frames/js/frames.js');
 				<span class="sr-only"><?php echo __d('frames', 'Down frame position'); ?></span>
 			</button>
 
-			<a class="btn btn-default btn-sm active" title="<?php echo __d('net_commons', 'Quit'); ?>"
-			   href="<?php echo $this->NetCommonsHtml->url(NetCommonsUrl::backToPageUrl(true)); ?>">
-				<span class="glyphicon glyphicon-cog"> </span>
-				<span class="sr-only"><?php echo __d('frames', 'Show flame setting'); ?></span>
+			<a class="btn btn-default btn-sm" href="<?php echo $this->NetCommonsHtml->url(NetCommonsUrl::backToPageUrl(true)); ?>">
+				<span class="glyphicon glyphicon-cog"></span>
+				<?php echo __d('net_commons', 'Quit'); ?>
 			</a>
 
 			<button class="btn btn-default btn-sm" disabled="disabled">

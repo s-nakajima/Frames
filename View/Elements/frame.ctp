@@ -18,6 +18,11 @@ if ($frame['header_type'] === 'none' && ! Current::isSettingMode()) {
 	$panelCss = ' panel panel-default';
 }
 
+if ($this->PageLayout->plugin === 'Pages') {
+	$panelCss .= ' nc-content-list';
+} else {
+	$panelCss .= ' nc-content';
+}
 ?>
 
 <section class="frame<?php echo $panelCss . ' plugin-' . strtr($frame['plugin_key'], '_', '-'); ?>">

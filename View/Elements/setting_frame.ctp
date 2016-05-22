@@ -51,9 +51,8 @@ echo $this->NetCommonsHtml->script('/frames/js/frames.js');
 					'value' => Current::read('Frame.id'),
 				)); ?>
 
-			<?php echo $this->Form->input('Frame.name',
+			<?php echo $this->NetCommonsForm->input('Frame.name',
 				array(
-					'type' => 'text',
 					'label' => false,
 					'class' => 'form-control frame-name-setting',
 					'error' => false,
@@ -61,13 +60,16 @@ echo $this->NetCommonsHtml->script('/frames/js/frames.js');
 					'value' => $frame['name']
 				)); ?>
 
-			<?php echo $this->Form->input('Frame.header_type',
-				array(
-					'type' => 'text',
-					'label' => false,
-					'class' => 'hidden',
-					'div' => false,
+			<?php
+				echo $this->NetCommonsForm->hidden('Frame.header_type', array(
 					'value' => $frame['header_type'],
+					'error' => false,
+				));
+				$this->NetCommonsForm->unlockField('Frame.header_type');
+			?>
+
+			<?php echo $this->NetCommonsForm->hidden('_Frame.redirect', array(
+					'value' => NetCommonsUrl::backToPageUrl(true)
 				)); ?>
 
 			<div class="btn-group">

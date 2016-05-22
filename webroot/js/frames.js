@@ -13,7 +13,7 @@
  * @param {string} Controller name
  * @param {function($scope)} Controller
  */
-NetCommonsApp.controller('FrameSettingsController', function($scope) {
+NetCommonsApp.controller('FrameSettingsController', ['$scope', function($scope) {
 
   /**
    * frame
@@ -40,4 +40,4 @@ NetCommonsApp.controller('FrameSettingsController', function($scope) {
     $scope.frame.headerType = headerType;
     $('#FrameHeaderType')[0].value = headerType;
   };
-});
+}]);

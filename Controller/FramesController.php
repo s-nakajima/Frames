@@ -138,22 +138,16 @@ class FramesController extends FramesAppController {
 	public function edit() {
 		$this->request->onlyAllow('post');
 
-		$this->Frame->setDataSource('master');
 		if (! $frame['Frame'] = Current::read('Frame')) {
-			$this->throwBadRequest();
-			return;
+			return $this->throwBadRequest();
 		}
 
 		$data = Hash::merge($frame, $this->data);
 		if (! $this->Frame->saveFrame($data)) {
-			$this->throwBadRequest();
-			return;
+			return $this->throwBadRequest();
 		}
 
-		$this->NetCommons->setFlashNotification(
-			__d('net_commons', 'Successfully saved.'), array('class' => 'success')
-		);
-		$this->redirect($this->request->referer());
+		$this->redirect(Hash::get($this->request->data, '_Frame.redirect', $this->request->referer()));
 	}
 
 /**

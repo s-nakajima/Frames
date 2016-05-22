@@ -90,15 +90,13 @@ class FramesController extends FramesAppController {
 
 		if (! $frame = $this->Frame->saveFrame($data)) {
 			//エラー処理
-			$this->throwBadRequest();
-			return;
+			return $this->throwBadRequest();
 		}
 
 		if ($plugin = $this->Plugin->findByKey($data['Frame']['plugin_key'])) {
 			if ($plugin['Plugin']['default_setting_action']) {
 				$url = '/' . $data['Frame']['plugin_key'] . '/' . $plugin['Plugin']['default_setting_action'];
-				$this->redirect($url . '?frame_id=' . $frame['Frame']['id']);
-				return;
+				return $this->redirect($url . '?frame_id=' . $frame['Frame']['id']);
 			}
 		}
 
@@ -115,16 +113,14 @@ class FramesController extends FramesAppController {
 
 		$this->Frame->setDataSource('master');
 		if (! $frame['Frame'] = Current::read('Frame')) {
-			$this->throwBadRequest();
-			return;
+			return $this->throwBadRequest();
 		}
 
 		$data = Hash::merge($frame, $this->data);
 		$data['Frame']['is_deleted'] = true;
 		if (! $this->Frame->saveFrame($data)) {
 			//エラー処理
-			$this->throwBadRequest();
-			return;
+			return $this->throwBadRequest();
 		}
 
 		$this->redirect($this->request->referer());
@@ -159,8 +155,7 @@ class FramesController extends FramesAppController {
 		$this->request->onlyAllow('put');
 
 		if (! $frame['Frame'] = Current::read('Frame')) {
-			$this->throwBadRequest();
-			return;
+			return $this->throwBadRequest();
 		}
 
 		if (array_key_exists('up', $this->data)) {
@@ -168,13 +163,11 @@ class FramesController extends FramesAppController {
 		} elseif (array_key_exists('down', $this->data)) {
 			$order = 'down';
 		} else {
-			$this->throwBadRequest();
-			return;
+			return $this->throwBadRequest();
 		}
 
 		if (! $this->Frame->saveWeight($frame, $order)) {
-			$this->throwBadRequest();
-			return;
+			return $this->throwBadRequest();
 		}
 		$this->redirect($this->request->referer());
 	}

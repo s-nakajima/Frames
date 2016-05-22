@@ -8,6 +8,8 @@
  * @copyright Copyright 2014, NetCommons Project
  */
 
+App::uses('NetCommonsTestSuite', 'NetCommons.TestSuite');
+
 /**
  * NetCommons All Test Suite
  *

@@ -13,7 +13,7 @@ echo $this->NetCommonsHtml->css('/blocks/css/style.css');
 echo $this->NetCommonsHtml->script('/frames/js/frames.js');
 ?>
 
-<section class="frame panel panel-{{frame.headerType}}">
+<section class="frame panel panel-{{frame.headerType}}" ng-cloak>
 	<div class="panel-heading clearfix">
 		<?php $frame = Current::read('Frame'); ?>
 

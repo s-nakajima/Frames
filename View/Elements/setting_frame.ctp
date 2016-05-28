@@ -18,25 +18,10 @@ echo $this->NetCommonsHtml->script('/frames/js/frames.js');
 		<?php $frame = Current::read('Frame'); ?>
 
 		<div class="pull-right">
-			<button class="btn btn-default btn-sm" disabled="disabled">
-				<span class="glyphicon glyphicon-arrow-up"></span>
-				<span class="sr-only"><?php echo __d('frames', 'Up frame position'); ?></span>
-			</button>
-
-			<button class="btn btn-default btn-sm" disabled="disabled">
-				<span class="glyphicon glyphicon-arrow-down"></span>
-				<span class="sr-only"><?php echo __d('frames', 'Down frame position'); ?></span>
-			</button>
-
 			<a class="btn btn-default btn-sm" href="<?php echo $this->NetCommonsHtml->url(NetCommonsUrl::backToPageUrl(true)); ?>">
 				<span class="glyphicon glyphicon-cog"></span>
 				<?php echo __d('net_commons', 'Quit'); ?>
 			</a>
-
-			<button class="btn btn-default btn-sm" disabled="disabled">
-				<span class="glyphicon glyphicon-remove"></span>
-				<span class="sr-only"><?php echo __d('frames', 'Delete frame'); ?></span>
-			</button>
 		</div>
 
 		<?php echo $this->NetCommonsForm->create('Frame',

@@ -18,12 +18,12 @@
     },
     "require": {
         "cakedc/migrations":            "~2.2",
-        "netcommons/blocks":            "dev-master",
-        "netcommons/boxes":             "dev-master",
-        "netcommons/net-commons":       "dev-master",
-        "netcommons/pages":             "dev-master",
-        "netcommons/plugin-manager":    "dev-master",
-        "netcommons/rooms":             "dev-master"
+        "netcommons/blocks":            "@dev",
+        "netcommons/boxes":             "@dev",
+        "netcommons/net-commons":       "@dev",
+        "netcommons/pages":             "@dev",
+        "netcommons/plugin-manager":    "@dev",
+        "netcommons/rooms":             "@dev"
     },
     "config": {
         "vendor-dir": "vendors"

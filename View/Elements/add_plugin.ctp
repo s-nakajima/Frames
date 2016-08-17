@@ -56,6 +56,10 @@
 											'value' => $plugin['Plugin']['key'],
 										)); ?>
 
+									<?php echo $this->NetCommonsForm->hidden('Plugin.name', array(
+											'value' => $plugin['Plugin']['name'],
+										)); ?>
+
 									<?php echo $this->NetCommonsForm->button(
 											'<span class="glyphicon glyphicon-plus"> </span>' . __d('net_commons', 'Add'),
 											array(

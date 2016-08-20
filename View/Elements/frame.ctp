@@ -29,7 +29,7 @@ if ($this->PageLayout->plugin === 'Pages') {
 
 	<?php if ($frame['name'] || Current::isSettingMode()) : ?>
 		<div class="panel-heading clearfix">
-			<?php echo $this->PageLayout->getBlockStatus(); ?>
+			<?php //echo $this->PageLayout->getBlockStatus(); ?>
 			<span>
 				<?php echo $frame['name']; ?>
 			</span>

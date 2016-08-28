@@ -35,7 +35,7 @@ if (! isset($displayBackTo)) {
 		<div class="panel-heading clearfix">
 			<?php echo $this->PageLayout->getBlockStatus(true); ?>
 			<span>
-				<?php echo $frame['name']; ?>
+				<?php echo h($frame['name']); ?>
 			</span>
 
 			<?php if (Current::isSettingMode()): ?>

@@ -33,7 +33,8 @@ foreach ($frames as $frame) {
 		}
 		echo $this->element('Frames.frame', array(
 			'frame' => $frame,
-			'view' => $view
+			'view' => $view,
+			'containerType' => $containerType,
 		));
 	} catch (MissingActionException $ex) {
 		CakeLog::error($ex);

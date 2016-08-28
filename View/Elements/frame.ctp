@@ -23,6 +23,10 @@ if ($this->PageLayout->plugin === 'Pages') {
 } else {
 	$panelCss .= ' nc-content';
 }
+
+if (! isset($displayBackTo)) {
+	$displayBackTo = false;
+}
 ?>
 
 <section class="frame<?php echo $panelCss . ' plugin-' . strtr($frame['plugin_key'], '_', '-'); ?>">
@@ -31,7 +35,7 @@ if ($this->PageLayout->plugin === 'Pages') {
 		<div class="panel-heading clearfix">
 			<?php echo $this->PageLayout->getBlockStatus(true); ?>
 			<span>
-				<?php echo $frame['name']; ?>
+				<?php echo h($frame['name']); ?>
 			</span>
 
 			<?php if (Current::isSettingMode()): ?>
@@ -54,5 +58,11 @@ if ($this->PageLayout->plugin === 'Pages') {
 
 	<div class="<?php echo ($panelCss ? 'panel-body ' : ''); ?>block">
 		<?php echo $view; ?>
+
+		<?php if ($displayBackTo && ! empty($centerContent)) : ?>
+			<div class="frame-footer text-center">
+				<?php echo $this->BackTo->listLinkButton($displayBackTo); ?>
+			</div>
+		<?php endif; ?>
 	</div>
 </section>

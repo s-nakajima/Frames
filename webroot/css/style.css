@@ -28,3 +28,8 @@
 .frame-add-plugin {
 	margin-bottom: 0px;
 }
+.frame-footer {
+	margin-top: 4px;
+	padding-top: 16px;
+	/*border-top: 1px solid #ccc;*/
+}

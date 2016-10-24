@@ -35,7 +35,7 @@ class Frame4framesFixture extends FrameFixture {
 		array(
 			'id' => '1',
 			'language_id' => '1',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '1',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '1',
@@ -47,7 +47,7 @@ class Frame4framesFixture extends FrameFixture {
 		array(
 			'id' => '2',
 			'language_id' => '2',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '1',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '2',
@@ -60,7 +60,7 @@ class Frame4framesFixture extends FrameFixture {
 		array(
 			'id' => '3',
 			'language_id' => '1',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '2',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '1',
@@ -72,7 +72,7 @@ class Frame4framesFixture extends FrameFixture {
 		array(
 			'id' => '4',
 			'language_id' => '2',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '2',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '2',
@@ -85,7 +85,7 @@ class Frame4framesFixture extends FrameFixture {
 		array(
 			'id' => '5',
 			'language_id' => '1',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '3',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '1',
@@ -97,7 +97,7 @@ class Frame4framesFixture extends FrameFixture {
 		array(
 			'id' => '6',
 			'language_id' => '2',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '3',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '2',
@@ -110,7 +110,7 @@ class Frame4framesFixture extends FrameFixture {
 		array(
 			'id' => '7',
 			'language_id' => '1',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '4',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '1',
@@ -122,7 +122,7 @@ class Frame4framesFixture extends FrameFixture {
 		array(
 			'id' => '8',
 			'language_id' => '2',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '4',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '2',
@@ -135,7 +135,7 @@ class Frame4framesFixture extends FrameFixture {
 		array(
 			'id' => '9',
 			'language_id' => '1',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '5',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '1',
@@ -147,7 +147,7 @@ class Frame4framesFixture extends FrameFixture {
 		array(
 			'id' => '10',
 			'language_id' => '2',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '5',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '2',
@@ -160,7 +160,7 @@ class Frame4framesFixture extends FrameFixture {
 		array(
 			'id' => '11',
 			'language_id' => '1',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '3',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '1',
@@ -172,7 +172,7 @@ class Frame4framesFixture extends FrameFixture {
 		array(
 			'id' => '12',
 			'language_id' => '2',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '3',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '2',
@@ -185,7 +185,7 @@ class Frame4framesFixture extends FrameFixture {
 		array(
 			'id' => '13',
 			'language_id' => '1',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '3',
 			'plugin_key' => 'test_plugin',
 			'block_id' => null,
@@ -197,7 +197,7 @@ class Frame4framesFixture extends FrameFixture {
 		array(
 			'id' => '14',
 			'language_id' => '2',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '3',
 			'plugin_key' => 'test_plugin',
 			'block_id' => null,
@@ -210,7 +210,7 @@ class Frame4framesFixture extends FrameFixture {
 		array(
 			'id' => '15',
 			'language_id' => '1',
-			'room_id' => '4',
+			'room_id' => '5',
 			'box_id' => '7',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '1',
@@ -222,7 +222,7 @@ class Frame4framesFixture extends FrameFixture {
 		array(
 			'id' => '16',
 			'language_id' => '2',
-			'room_id' => '4',
+			'room_id' => '5',
 			'box_id' => '7',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '2',
@@ -235,7 +235,7 @@ class Frame4framesFixture extends FrameFixture {
 		array(
 			'id' => '17',
 			'language_id' => '1',
-			'room_id' => '5',
+			'room_id' => '6',
 			'box_id' => '8',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '1',
@@ -247,7 +247,7 @@ class Frame4framesFixture extends FrameFixture {
 		array(
 			'id' => '18',
 			'language_id' => '2',
-			'room_id' => '5',
+			'room_id' => '6',
 			'box_id' => '8',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '2',

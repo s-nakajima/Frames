@@ -54,7 +54,7 @@ class FrameFixture extends CakeTestFixture {
 		array(
 			'id' => '5',
 			'language_id' => '1',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '3',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '1',
@@ -66,7 +66,7 @@ class FrameFixture extends CakeTestFixture {
 		array(
 			'id' => '6',
 			'language_id' => '2',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '3',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '2',
@@ -79,7 +79,7 @@ class FrameFixture extends CakeTestFixture {
 		array(
 			'id' => '11',
 			'language_id' => '1',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '3',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '1',
@@ -91,7 +91,7 @@ class FrameFixture extends CakeTestFixture {
 		array(
 			'id' => '12',
 			'language_id' => '2',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '3',
 			'plugin_key' => 'test_plugin',
 			'block_id' => '2',
@@ -104,7 +104,7 @@ class FrameFixture extends CakeTestFixture {
 		array(
 			'id' => '13',
 			'language_id' => '1',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '3',
 			'plugin_key' => 'test_plugin',
 			'block_id' => null,
@@ -116,7 +116,7 @@ class FrameFixture extends CakeTestFixture {
 		array(
 			'id' => '14',
 			'language_id' => '2',
-			'room_id' => '1',
+			'room_id' => '2',
 			'box_id' => '3',
 			'plugin_key' => 'test_plugin',
 			'block_id' => null,
@@ -129,7 +129,7 @@ class FrameFixture extends CakeTestFixture {
 		array(
 			'id' => '15',
 			'language_id' => '1',
-			'room_id' => '4',
+			'room_id' => '5',
 			'box_id' => '7',
 			'plugin_key' => 'test_plugin',
 			'block_id' => null,
@@ -141,7 +141,7 @@ class FrameFixture extends CakeTestFixture {
 		array(
 			'id' => '16',
 			'language_id' => '2',
-			'room_id' => '4',
+			'room_id' => '5',
 			'box_id' => '7',
 			'plugin_key' => 'test_plugin',
 			'block_id' => null,
@@ -154,7 +154,7 @@ class FrameFixture extends CakeTestFixture {
 		array(
 			'id' => '17',
 			'language_id' => '1',
-			'room_id' => '5',
+			'room_id' => '6',
 			'box_id' => '8',
 			'plugin_key' => 'test_plugin',
 			'block_id' => null,
@@ -166,7 +166,7 @@ class FrameFixture extends CakeTestFixture {
 		array(
 			'id' => '18',
 			'language_id' => '2',
-			'room_id' => '5',
+			'room_id' => '6',
 			'box_id' => '8',
 			'plugin_key' => 'test_plugin',
 			'block_id' => null,

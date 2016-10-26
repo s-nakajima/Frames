@@ -21,7 +21,10 @@
 				<div class="list-group">
 					<?php foreach ($plugins as $plugin) : ?>
 						<article class="list-group-item clearfix">
-							<?php echo $this->NetCommonsForm->create('FrameAdd' . $plugin['Plugin']['id'], array('type' => 'post', 'url' => '/frames/frames/add')); ?>
+							<?php echo $this->NetCommonsForm->create(
+									'FrameAdd' . $plugin['Plugin']['id'], array('type' => 'post', 'url' => '/frames/frames/add')
+								); ?>
+
 								<div class="pull-left">
 									<h4 class="list-group-item-heading clearfix">
 										<?php echo h($plugin['Plugin']['name']); ?>
@@ -32,7 +35,9 @@
 													type="button" data-toggle="dropdown" aria-expanded="false">
 												<span class="glyphicon glyphicon-user"></span>
 											</a>
-											<ul class="dropdown-menu" role="menu" aria-labelledby="plugin-authors-<?php echo (int)$boxId . '-' . $plugin['Plugin']['id']; ?>">
+											<ul class="dropdown-menu" role="menu" 
+												aria-labelledby="plugin-authors-<?php echo (int)$boxId . '-' . $plugin['Plugin']['id']; ?>">
+
 												<?php echo $this->Composer->getAuthors($plugin['Plugin']['key']); ?>
 											</ul>
 										</div>

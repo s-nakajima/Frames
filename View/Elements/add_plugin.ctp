@@ -35,7 +35,7 @@
 													type="button" data-toggle="dropdown" aria-expanded="false">
 												<span class="glyphicon glyphicon-user"></span>
 											</a>
-											<ul class="dropdown-menu" role="menu" 
+											<ul class="dropdown-menu" role="menu"
 												aria-labelledby="plugin-authors-<?php echo (int)$boxId . '-' . $plugin['Plugin']['id']; ?>">
 
 												<?php echo $this->Composer->getAuthors($plugin['Plugin']['key']); ?>

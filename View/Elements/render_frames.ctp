@@ -8,7 +8,7 @@
  * @license http://www.netcommons.org/license.txt NetCommons License
  */
 
-foreach ($frames as $frame) {
+foreach ($box['Frame'] as $frame) {
 	if (strlen($frame['plugin_key']) === 0) {
 		continue;
 	}
@@ -35,6 +35,7 @@ foreach ($frames as $frame) {
 			'frame' => $frame,
 			'view' => $view,
 			'containerType' => $containerType,
+			'box' => $box,
 		));
 	} catch (MissingActionException $ex) {
 		CakeLog::error($ex);

@@ -31,14 +31,14 @@ if (! isset($displayBackTo)) {
 
 <section class="frame<?php echo $panelCss . ' plugin-' . strtr($frame['plugin_key'], '_', '-'); ?>">
 
-	<?php if ($frame['name'] || Current::isSettingMode()) : ?>
+	<?php if ($frame['name'] || $this->PageLayout->hasBoxSetting($box)) : ?>
 		<div class="panel-heading clearfix">
 			<?php echo $this->PageLayout->getBlockStatus(true); ?>
 			<span>
 				<?php echo h($frame['name']); ?>
 			</span>
 
-			<?php if (Current::isSettingMode()): ?>
+			<?php if ($this->PageLayout->hasBoxSetting($box)): ?>
 				<div class="pull-right">
 					<?php echo $this->element('Frames.order_form', array('frame' => $frame)); ?>
 

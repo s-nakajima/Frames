@@ -28,7 +28,7 @@ if (! isset($displayBackTo)) {
 	$displayBackTo = false;
 }
 
-if ($centerContent) {
+if (!empty($centerContent)) {
 	$domId = ' id="frame-' . $frame['id'] . '"';
 } else {
 	$domId = '';

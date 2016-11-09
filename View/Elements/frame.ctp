@@ -35,8 +35,7 @@ if (!empty($centerContent)) {
 }
 ?>
 
-<section<?php echo $domId; ?>
-		class="frame<?php echo $panelCss . ' plugin-' . strtr($frame['plugin_key'], '_', '-'); ?>">
+<section<?php echo $domId . ' class="frame' . $panelCss . ' plugin-' . strtr($frame['plugin_key'], '_', '-') . '"'; ?>>
 
 	<?php if ($frame['name'] || $this->PageLayout->hasBoxSetting($box)) : ?>
 		<div class="panel-heading clearfix">

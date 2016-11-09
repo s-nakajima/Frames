@@ -13,20 +13,8 @@ foreach ($box['Frame'] as $frame) {
 		continue;
 	}
 
-	if ($frame['default_action']) {
-		$action = $frame['default_action'];
-	} elseif (Hash::get($this->PageLayout->plugins, $frame['plugin_key'] . '.default_action')) {
-		$action = Hash::get($this->PageLayout->plugins, $frame['plugin_key'] . '.default_action');
-	} else {
-		$action = $frame['plugin_key'] . '/index';
-	}
-	$url = $frame['plugin_key'] . '/' . $action . '?frame_id=' . $frame['id'];
-
-	if (Current::isSettingMode()) {
-		$url = Current::SETTING_MODE_WORD . '/' . $url;
-	}
-
 	try {
+		$url = $this->PageLayout->frameActionUrl($frame);
 		$view = $this->requestAction($url, array('return'));
 		if (! Current::isSettingMode() && strlen($view) === 0) {
 			continue;

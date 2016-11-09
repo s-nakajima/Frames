@@ -11,17 +11,15 @@
 
 echo $this->NetCommonsHtml->css('/blocks/css/style.css');
 echo $this->NetCommonsHtml->script('/frames/js/frames.js');
+
+$frame = Current::read('Frame');
 ?>
 
-<section class="frame panel panel-{{frame.headerType}}" ng-cloak>
+<section id="frame-<?php echo $frame['id']; ?>" class="frame panel panel-{{frame.headerType}}" ng-cloak>
 	<div class="panel-heading clearfix">
-		<?php $frame = Current::read('Frame'); ?>
 
 		<div class="pull-right">
-			<a class="btn btn-default btn-sm" href="<?php echo $this->NetCommonsHtml->url(NetCommonsUrl::backToPageUrl(true)); ?>">
-				<span class="glyphicon glyphicon-cog"></span>
-				<?php echo __d('net_commons', 'Quit'); ?>
-			</a>
+			<?php echo $this->PageLayout->frameSettingQuitLink(); ?>
 		</div>
 
 		<?php echo $this->NetCommonsForm->create('Frame',

@@ -24,13 +24,7 @@
 			'value' => $frame['box_id'],
 		)); ?>
 
-	<?php echo $this->NetCommonsForm->button('<span class="glyphicon glyphicon-arrow-up"></span><span class="sr-only">' . __d('frames', 'Up frame position') . '</span>', array(
-			'name' => 'up',
-			'class' => 'btn btn-default btn-sm frame-btn pull-left',
-		)); ?>
+	<?php echo $this->PageLayout->frameOrderButton('up'); ?>
 
-	<?php echo $this->NetCommonsForm->button('<span class="glyphicon glyphicon-arrow-down"></span><span class="sr-only">' . __d('frames', 'Down frame position') . '</span>', array(
-			'name' => 'down',
-			'class' => 'btn btn-default btn-sm frame-btn pull-left',
-		)); ?>
+	<?php echo $this->PageLayout->frameOrderButton('down'); ?>
 <?php echo $this->NetCommonsForm->end();

@@ -27,9 +27,16 @@ if ($this->PageLayout->plugin === 'Pages') {
 if (! isset($displayBackTo)) {
 	$displayBackTo = false;
 }
+
+if ($centerContent) {
+	$domId = ' id="frame-' . $frame['id'] . '"';
+} else {
+	$domId = '';
+}
 ?>
 
-<section class="frame<?php echo $panelCss . ' plugin-' . strtr($frame['plugin_key'], '_', '-'); ?>">
+<section<?php echo $domId; ?>
+		class="frame<?php echo $panelCss . ' plugin-' . strtr($frame['plugin_key'], '_', '-'); ?>">
 
 	<?php if ($frame['name'] || $this->PageLayout->hasBoxSetting($box)) : ?>
 		<div class="panel-heading clearfix">
@@ -41,15 +48,7 @@ if (! isset($displayBackTo)) {
 			<?php if ($this->PageLayout->hasBoxSetting($box)): ?>
 				<div class="pull-right">
 					<?php echo $this->element('Frames.order_form', array('frame' => $frame)); ?>
-
-					<?php if ($action = Hash::get($this->PageLayout->plugins, $frame['plugin_key'] . '.default_setting_action')) : ?>
-						<a class="btn btn-default btn-sm frame-btn pull-left"
-						   href="<?php echo $this->NetCommonsHtml->url('/' . $frame['plugin_key'] . '/' . $action . '?frame_id=' . $frame['id']); ?>">
-							<span class="glyphicon glyphicon-cog"> </span>
-							<span class="sr-only"><?php echo __d('frames', 'Show flame setting'); ?></span>
-						</a>
-					<?php endif; ?>
-
+					<?php echo $this->PageLayout->frameSettingLink($frame); ?>
 					<?php echo $this->element('Frames.delete_form', array('frame' => $frame)); ?>
 				</div>
 			<?php endif; ?>

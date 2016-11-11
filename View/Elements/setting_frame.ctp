@@ -26,7 +26,7 @@ $frame = Current::read('Frame');
 			array(
 				'name' => 'frameForm',
 				'novalidate' => true,
-				'type' => 'post',
+				'type' => 'put',
 				'url' => NetCommonsUrl::actionUrl(array('plugin' => 'frames', 'controller' => 'frames', 'action' => 'edit')),
 			)); ?>
 

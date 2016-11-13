@@ -16,6 +16,7 @@ App::uses('FramesAppModel', 'Frames.Model');
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\Frames\Test\test_app\Plugin\TestFrames\Model
+ * @codeCoverageIgnore
  */
 class TestFrame extends FramesAppModel {
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * FramesModelTestCase TestCase
+ * FramesGetTest TestCase
  *
  * @author Noriko Arai <arai@nii.ac.jp>
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
@@ -10,17 +10,17 @@
  */
 
 //@codeCoverageIgnoreStart;
-App::uses('NetCommonsModelTestCase', 'NetCommons.TestSuite');
+App::uses('NetCommonsGetTest', 'NetCommons.TestSuite');
 //@codeCoverageIgnoreEnd;
 
 /**
- * FramesModelTestCase TestCase
+ * FramesGetTest TestCase
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\Frames\TestSuite
  * @codeCoverageIgnore
  */
-class FramesModelTestCase extends NetCommonsModelTestCase {
+class FramesGetTest extends NetCommonsGetTest {
 
 /**
  * Fixtures

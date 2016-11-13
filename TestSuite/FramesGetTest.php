@@ -30,7 +30,7 @@ class FramesGetTest extends NetCommonsGetTest {
 	private $__fixtures = array(
 		'plugin.pages.box4pages',
 		'plugin.pages.boxes_page_container4pages',
-		'plugin.pages.frame4pages',
+		'plugin.frames.frame4frames',
 		'plugin.pages.pages_language4pages',
 		'plugin.pages.page_container4pages',
 		'plugin.pages.page4pages',

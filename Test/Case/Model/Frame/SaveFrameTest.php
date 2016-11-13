@@ -101,7 +101,7 @@ class FrameSaveFrameTest extends FramesSaveTest {
  * @param bool $created 作成かどうか
  * @return array
  */
-	public function _getExpected($id, $data, $before, $created) {
+	protected function _getExpected($id, $data, $before, $created) {
 		$model = $this->_modelName;
 
 		$expected = parent::_getExpected($id, $data, $before, $created);

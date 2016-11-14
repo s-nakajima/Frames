@@ -1,6 +1,6 @@
 <?php
 /**
- * FramesControllerTestCase TestCase
+ * FramesSaveTest TestCase
  *
  * @author Noriko Arai <arai@nii.ac.jp>
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
@@ -9,15 +9,18 @@
  * @copyright Copyright 2014, NetCommons Project
  */
 
-App::uses('NetCommonsControllerTestCase', 'NetCommons.TestSuite');
+//@codeCoverageIgnoreStart;
+App::uses('NetCommonsSaveTest', 'NetCommons.TestSuite');
+//@codeCoverageIgnoreEnd;
 
 /**
- * FramesControllerTestCase TestCase
+ * FramesSaveTest TestCase
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\Frames\TestSuite
+ * @codeCoverageIgnore
  */
-class FramesControllerTestCase extends NetCommonsControllerTestCase {
+class FramesSaveTest extends NetCommonsSaveTest {
 
 /**
  * Fixtures

@@ -41,6 +41,9 @@ class FramesControllerEditTest extends FramesControllerTestCase {
 	public function setUp() {
 		parent::setUp();
 
+		//テストプラグインのロード
+		NetCommonsCakeTestCase::loadTestPlugin($this, 'Frames', 'TestFrames');
+
 		//ログイン
 		TestAuthGeneral::login($this);
 	}

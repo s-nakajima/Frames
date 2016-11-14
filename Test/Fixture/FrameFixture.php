@@ -17,34 +17,6 @@
 class FrameFixture extends CakeTestFixture {
 
 /**
- * Fields
- *
- * @var array
- */
-	public $fields = array(
-		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
-		'language_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 6, 'unsigned' => false),
-		'room_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
-		'box_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
-		'plugin_key' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'block_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
-		'key' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => 'Key of the frame.', 'charset' => 'utf8'),
-		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => 'Name of the frame.', 'charset' => 'utf8'),
-		'header_type' => array('type' => 'string', 'null' => false, 'default' => 'default', 'collate' => 'utf8_general_ci', 'comment' => 'Header type of the frame.', 'charset' => 'utf8'),
-		'weight' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false, 'comment' => 'Display order.'),
-		'is_deleted' => array('type' => 'boolean', 'null' => true, 'default' => null),
-		'default_action' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => 'Default action for content rendering', 'charset' => 'utf8'),
-		'created_user' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
-		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
-		'modified_user' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
-		'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
-		'indexes' => array(
-			'PRIMARY' => array('column' => 'id', 'unique' => 1)
-		),
-		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
-	);
-
-/**
  * Records
  *
  * @var array
@@ -183,10 +155,15 @@ class FrameFixture extends CakeTestFixture {
  * @return void
  */
 	public function init() {
+		require_once App::pluginPath('Frames') . 'Config' . DS . 'Schema' . DS . 'schema.php';
+		$this->fields = (new FramesSchema())->tables['frames'];
+
 		if (class_exists('NetCommonsTestSuite') && NetCommonsTestSuite::$plugin) {
 			$records = array_keys($this->records);
 			foreach ($records as $i) {
-				$this->records[$i]['plugin_key'] = NetCommonsTestSuite::$plugin;
+				if ($this->records[$i]['plugin_key'] === 'test_plugin') {
+					$this->records[$i]['plugin_key'] = NetCommonsTestSuite::$plugin;
+				}
 			}
 		}
 		parent::init();

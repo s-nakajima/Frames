@@ -53,7 +53,7 @@ class FrameGetFrameByBoxTest extends FramesGetTest {
 			0 => array(
 				'id' => '2',
 				'language_id' => '2',
-				'room_id' => '2',
+				'room_id' => '1',
 				'box_id' => '1',
 				'plugin_key' => 'test_frames',
 				'block_id' => '2',

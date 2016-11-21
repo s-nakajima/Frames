@@ -68,7 +68,7 @@ class FramesControllerEditTest extends FramesControllerTestCase {
 	public function testEditGet() {
 		//テスト実行
 		$this->_testGetAction(
-			array('action' => 'edit'),
+			array('action' => 'edit', 'frame_id' => '6'),
 			null, 'BadRequestException', 'view'
 		);
 	}

@@ -16,6 +16,7 @@
  */
 
 App::uses('FramesAppModel', 'Frames.Model');
+App::uses('Current', 'NetCommons.Utility');
 
 /**
  * Summary for Frame Model
@@ -50,13 +51,6 @@ class Frame extends FramesAppModel {
 			'order' => ''
 		),
 		//Pluginは、beforeFindでbindする
-		'Language' => array(
-			'className' => 'M17n.Language',
-			'foreignKey' => 'language_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
 		'Block' => array(
 			'className' => 'Blocks.Block',
 			'foreignKey' => 'block_id',
@@ -72,6 +66,20 @@ class Frame extends FramesAppModel {
 			'order' => ''
 		)
 	);
+
+/**
+ * Constructor. Binds the model's database table to the object.
+ *
+ * @param bool|int|string|array $id Set this ID for this model on startup,
+ * can also be an array of options, see above.
+ * @param string $table Name of database table to use.
+ * @param string $ds DataSource connection name.
+ * @see Model::__construct()
+ * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
+ */
+	public function __construct($id = false, $table = null, $ds = null) {
+		parent::__construct($id, $table, $ds);
+	}
 
 /**
  * Called before each find operation. Return false if you want to halt the find
@@ -96,29 +104,20 @@ class Frame extends FramesAppModel {
 						'fields' => '',
 						'order' => ''
 					),
+					'FramesLanguage' => array(
+						'className' => 'Frames.FramesLanguage',
+						'foreignKey' => false,
+						'conditions' => array(
+							'FramesLanguage.frame_id = Frame.id',
+							'FramesLanguage.language_id' => Current::read('Language.id', '2')
+						),
+						'fields' => '',
+						'order' => ''
+					),
 				)
 			), true);
 		}
 		return true;
-	}
-
-/**
- * Get query option for containable behavior
- *
- * @return array
- */
-	public function getContainableQuery() {
-		$query = array(
-			'conditions' => array(
-				'language_id' => Current::read('Language.id'),
-				'is_deleted' => false
-			),
-			'order' => array(
-				'Frame.weight'
-			),
-		);
-
-		return $query;
 	}
 
 /**
@@ -129,19 +128,23 @@ class Frame extends FramesAppModel {
  */
 	public function getFrameByBox($boxId) {
 		$query = array(
-			'recursive' => -1,
+			'recursive' => 0,
 			'conditions' => array(
-				'language_id' => Current::read('Language.id'),
-				'is_deleted' => false,
-				'box_id' => $boxId,
+				//'language_id' => Current::read('Language.id'),
+				'Frame.is_deleted' => false,
+				'Frame.box_id' => $boxId,
 			),
 			'order' => array(
-				'weight'
+				'Frame.weight'
 			),
 		);
 
 		$result = $this->find('all', $query);
-		return Hash::extract($result, '{n}.Frame');
+		$frames = array();
+		foreach ($result as $i => $frame) {
+			$frames[$i] = Hash::merge($frame['FramesLanguage'], $frame['Frame']);
+		}
+		return $frames;
 	}
 
 /**

@@ -111,7 +111,7 @@ class Frame extends FramesAppModel {
 							'FramesLanguage.frame_id = Frame.id',
 							'FramesLanguage.language_id' => Current::read('Language.id', '2')
 						),
-						'fields' => '',
+						'fields' => array('language_id', 'frame_id', 'name', 'is_original', 'is_translation'),
 						'order' => ''
 					),
 				)

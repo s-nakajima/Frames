@@ -28,7 +28,7 @@ class FramesLanguageFixture extends CakeTestFixture {
 			'language_id' => '2',
 			'frame_id' => '6',
 			'name' => 'Test frame main',
-			'is_original' => true,
+			'is_origin' => true,
 			'is_translation' => false,
 		),
 		//フレーム削除（論理削除）
@@ -37,7 +37,7 @@ class FramesLanguageFixture extends CakeTestFixture {
 			'language_id' => '2',
 			'frame_id' => '12',
 			'name' => 'Test frame main 2',
-			'is_original' => true,
+			'is_origin' => true,
 			'is_translation' => false,
 		),
 		//フレームのブロックなし
@@ -46,7 +46,7 @@ class FramesLanguageFixture extends CakeTestFixture {
 			'language_id' => '2',
 			'frame_id' => '14',
 			'name' => 'Test frame main 3',
-			'is_original' => true,
+			'is_origin' => true,
 			'is_translation' => false,
 		),
 		//メイン(別ルーム(room_id=5))
@@ -55,7 +55,7 @@ class FramesLanguageFixture extends CakeTestFixture {
 			'language_id' => '2',
 			'frame_id' => '16',
 			'name' => 'Test frame main',
-			'is_original' => true,
+			'is_origin' => true,
 			'is_translation' => false,
 		),
 		//メイン(別ルーム(room_id=6、ブロックなし))
@@ -64,7 +64,7 @@ class FramesLanguageFixture extends CakeTestFixture {
 			'language_id' => '2',
 			'frame_id' => '18',
 			'name' => 'Test frame main',
-			'is_original' => true,
+			'is_origin' => true,
 			'is_translation' => false,
 		),
 	);

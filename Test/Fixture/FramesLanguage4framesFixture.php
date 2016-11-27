@@ -44,7 +44,7 @@ class FramesLanguage4framesFixture extends FramesLanguageFixture {
 			'language_id' => '2',
 			'frame_id' => '2',
 			'name' => 'Test frame header',
-			'is_original' => true,
+			'is_origin' => true,
 			'is_translation' => false,
 		),
 		//レフト
@@ -53,7 +53,7 @@ class FramesLanguage4framesFixture extends FramesLanguageFixture {
 			'language_id' => '2',
 			'frame_id' => '4',
 			'name' => 'Test frame major',
-			'is_original' => true,
+			'is_origin' => true,
 			'is_translation' => false,
 		),
 		//ライト
@@ -62,7 +62,7 @@ class FramesLanguage4framesFixture extends FramesLanguageFixture {
 			'language_id' => '2',
 			'frame_id' => '8',
 			'name' => 'Test frame minor',
-			'is_original' => true,
+			'is_origin' => true,
 			'is_translation' => false,
 		),
 		//フッター
@@ -71,7 +71,7 @@ class FramesLanguage4framesFixture extends FramesLanguageFixture {
 			'language_id' => '2',
 			'frame_id' => '10',
 			'name' => 'Test frame footer',
-			'is_original' => true,
+			'is_origin' => true,
 			'is_translation' => false,
 		),
 		//メイン
@@ -80,7 +80,7 @@ class FramesLanguage4framesFixture extends FramesLanguageFixture {
 			'language_id' => '2',
 			'frame_id' => '6',
 			'name' => 'Test frame main',
-			'is_original' => true,
+			'is_origin' => true,
 			'is_translation' => false,
 		),
 		//フレーム削除（論理削除）
@@ -89,7 +89,7 @@ class FramesLanguage4framesFixture extends FramesLanguageFixture {
 			'language_id' => '2',
 			'frame_id' => '12',
 			'name' => 'Test frame main 2',
-			'is_original' => true,
+			'is_origin' => true,
 			'is_translation' => false,
 		),
 		//フレームのブロックなし
@@ -98,7 +98,7 @@ class FramesLanguage4framesFixture extends FramesLanguageFixture {
 			'language_id' => '2',
 			'frame_id' => '14',
 			'name' => 'Test frame main 3',
-			'is_original' => true,
+			'is_origin' => true,
 			'is_translation' => false,
 		),
 		//メイン(別ルーム(room_id=5))
@@ -107,7 +107,7 @@ class FramesLanguage4framesFixture extends FramesLanguageFixture {
 			'language_id' => '2',
 			'frame_id' => '16',
 			'name' => 'Test frame main',
-			'is_original' => true,
+			'is_origin' => true,
 			'is_translation' => false,
 		),
 		//メイン(別ルーム(room_id=6、ブロックなし))
@@ -116,7 +116,7 @@ class FramesLanguage4framesFixture extends FramesLanguageFixture {
 			'language_id' => '2',
 			'frame_id' => '18',
 			'name' => 'Test frame main',
-			'is_original' => true,
+			'is_origin' => true,
 			'is_translation' => false,
 		),
 	);

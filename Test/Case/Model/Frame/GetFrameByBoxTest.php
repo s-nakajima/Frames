@@ -55,7 +55,7 @@ class FrameGetFrameByBoxTest extends FramesGetTest {
 				'language_id' => '2',
 				'frame_id' => '2',
 				'name' => 'Test frame header',
-				'is_original' => true,
+				'is_origin' => true,
 				'is_translation' => false,
 				'room_id' => '1',
 				'box_id' => '1',

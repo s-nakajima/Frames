@@ -97,7 +97,17 @@ class Frame extends FramesAppModel {
 							'FramesLanguage.frame_id = Frame.id',
 							'FramesLanguage.language_id' => Current::read('Language.id', '2')
 						),
-						'fields' => array('language_id', 'frame_id', 'name', 'is_original', 'is_translation'),
+						'fields' => array('language_id', 'frame_id', 'name', 'is_origin', 'is_translation'),
+						'order' => ''
+					),
+					'BlocksLanguage' => array(
+						'className' => 'Blocks.BlocksLanguage',
+						'foreignKey' => false,
+						'conditions' => array(
+							'BlocksLanguage.block_id = Frame.block_id',
+							'BlocksLanguage.language_id' => Current::read('Language.id', '2')
+						),
+						'fields' => array('language_id', 'block_id', 'name', 'is_origin', 'is_translation'),
 						'order' => ''
 					),
 				)

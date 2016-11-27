@@ -76,7 +76,7 @@ class FramesLanguage extends FramesAppModel {
 					'message' => __d('net_commons', 'Invalid request.'),
 				),
 			),
-			'is_original' => array(
+			'is_origin' => array(
 				'boolean' => array(
 					'rule' => array('boolean'),
 					'message' => __d('net_commons', 'Invalid request.'),

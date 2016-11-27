@@ -95,7 +95,7 @@ class Frame extends FramesAppModel {
 						'foreignKey' => false,
 						'conditions' => array(
 							'FramesLanguage.frame_id = Frame.id',
-							'FramesLanguage.language_id' => Current::read('Language.id', '2')
+							'FramesLanguage.language_id' => Current::read('Language.id', '0')
 						),
 						'fields' => array('language_id', 'frame_id', 'name', 'is_origin', 'is_translation'),
 						'order' => ''
@@ -105,7 +105,7 @@ class Frame extends FramesAppModel {
 						'foreignKey' => false,
 						'conditions' => array(
 							'BlocksLanguage.block_id = Frame.block_id',
-							'BlocksLanguage.language_id' => Current::read('Language.id', '2')
+							'BlocksLanguage.language_id' => Current::read('Language.id', '0')
 						),
 						'fields' => array('language_id', 'block_id', 'name', 'is_origin', 'is_translation'),
 						'order' => ''

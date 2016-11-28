@@ -97,7 +97,9 @@ class Frame extends FramesAppModel {
 							'FramesLanguage.frame_id = Frame.id',
 							'FramesLanguage.language_id' => Current::read('Language.id', '0')
 						),
-						'fields' => array('language_id', 'frame_id', 'name', 'is_origin', 'is_translation'),
+						'fields' => array(
+							'id', 'language_id', 'frame_id', 'name', 'is_origin', 'is_translation'
+						),
 						'order' => ''
 					),
 					'BlocksLanguage' => array(
@@ -181,7 +183,9 @@ class Frame extends FramesAppModel {
 		$plugin = Inflector::camelize($data[$this->alias]['plugin_key']);
 		$model = Inflector::singularize($plugin);
 		$classExists = ClassRegistry::init($plugin . '.' . $model, true);
-		$models = [];
+		$models = array(
+			'FramesLanguage' => 'Frames.FramesLanguage'
+		);
 		if ($classExists) {
 			$models[$model] = $plugin . '.' . $model;
 		}
@@ -205,6 +209,22 @@ class Frame extends FramesAppModel {
 			if (! $frame) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
+
+			$data = $this->FramesLanguage->create(
+				Hash::merge(
+					array(
+						'frame_id' => $frame['Frame']['id'],
+						'is_origin' => true,
+						'is_translation' => false,
+					),
+					$frame['FramesLanguage']
+				)
+			);
+			$result = $this->FramesLanguage->save($data);
+			if (! $result) {
+				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+			}
+
 			if ($this->{$model} instanceof Model && method_exists($this->{$model}, 'afterFrameSave')) {
 				$this->{$model}->afterFrameSave($frame);
 			}

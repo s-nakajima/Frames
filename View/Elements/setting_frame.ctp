@@ -35,6 +35,10 @@ $frame = Hash::merge($frame, Current::read('FramesLanguage', array()));
 					'value' => Current::read('Frame.id'),
 				)); ?>
 
+			<?php echo $this->NetCommonsForm->hidden('FramesLanguage.id', array(
+					'value' => Current::read('FramesLanguage.id'),
+				)); ?>
+
 			<?php echo $this->NetCommonsForm->input('FramesLanguage.name',
 				array(
 					'label' => false,

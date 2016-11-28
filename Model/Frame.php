@@ -77,7 +77,7 @@ class Frame extends FramesAppModel {
  * @link http://book.cakephp.org/2.0/en/models/callback-methods.html#beforefind
  */
 	public function beforeFind($query) {
-		if ($query['recursive'] > -1) {
+		if (Hash::get($query, 'recursive') > -1) {
 			$this->bindModel(array(
 				'belongsTo' => array(
 					'Plugin' => array(

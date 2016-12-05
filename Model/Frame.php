@@ -90,32 +90,45 @@ class Frame extends FramesAppModel {
 						'fields' => '',
 						'order' => ''
 					),
-					'FramesLanguage' => array(
-						'className' => 'Frames.FramesLanguage',
-						'foreignKey' => false,
-						'conditions' => array(
-							'FramesLanguage.frame_id = Frame.id',
-							'FramesLanguage.language_id' => Current::read('Language.id', '0')
-						),
-						'fields' => array(
-							'id', 'language_id', 'frame_id', 'name', 'is_origin', 'is_translation'
-						),
-						'order' => ''
-					),
-					'BlocksLanguage' => array(
-						'className' => 'Blocks.BlocksLanguage',
-						'foreignKey' => false,
-						'conditions' => array(
-							'BlocksLanguage.block_id = Frame.block_id',
-							'BlocksLanguage.language_id' => Current::read('Language.id', '0')
-						),
-						'fields' => array('language_id', 'block_id', 'name', 'is_origin', 'is_translation'),
-						'order' => ''
-					),
 				)
 			), true);
+
+			$belongsTo = $this->bindModelFrameLang();
+			$this->bindModel($belongsTo, true);
+
+			$belongsTo = $this->Block->bindModelBlockLang();
+			$this->bindModel($belongsTo, true);
 		}
 		return true;
+	}
+
+/**
+ * Frame言語テーブルのバインド条件を戻す
+ *
+ * @return array
+ */
+	public function bindModelFrameLang() {
+		$belongsTo = array(
+			'belongsTo' => array(
+				'FramesLanguage' => array(
+					'className' => 'Frames.FramesLanguage',
+					'foreignKey' => false,
+					'conditions' => array(
+						'FramesLanguage.frame_id = Frame.id',
+						'OR' => array(
+							'FramesLanguage.is_translation' => false,
+							'FramesLanguage.language_id' => Current::read('Language.id', '0'),
+						)
+					),
+					'fields' => array(
+						'id', 'language_id', 'frame_id', 'name', 'is_origin', 'is_translation'
+					),
+					'order' => ''
+				),
+			)
+		);
+
+		return $belongsTo;
 	}
 
 /**

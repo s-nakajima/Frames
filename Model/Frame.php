@@ -223,19 +223,17 @@ class Frame extends FramesAppModel {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 
-			$data = $this->FramesLanguage->create(
-				Hash::merge(
-					array(
-						'frame_id' => $frame['Frame']['id'],
-						'is_origin' => true,
-						'is_translation' => false,
-					),
-					$frame['FramesLanguage']
-				)
-			);
-			$result = $this->FramesLanguage->save($data);
-			if (! $result) {
-				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+			if (isset($data['FramesLanguage'])) {
+				$data = $this->FramesLanguage->create(
+					Hash::merge(
+						array('frame_id' => $frame['Frame']['id']),
+						$frame['FramesLanguage']
+					)
+				);
+				$result = $this->FramesLanguage->save($data);
+				if (! $result) {
+					throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+				}
 			}
 
 			if ($this->{$model} instanceof Model && method_exists($this->{$model}, 'afterFrameSave')) {

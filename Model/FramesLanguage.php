@@ -23,6 +23,18 @@ App::uses('FramesAppModel', 'Frames.Model');
 class FramesLanguage extends FramesAppModel {
 
 /**
+ * use behaviors
+ *
+ * @var array
+ */
+	public $actsAs = array(
+		//多言語
+		'M17n.M17n' => array(
+			'key_field' => 'frame_id'
+		),
+	);
+
+/**
  * Validation rules
  *
  * @var array

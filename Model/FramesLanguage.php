@@ -30,7 +30,7 @@ class FramesLanguage extends FramesAppModel {
 	public $actsAs = array(
 		//多言語
 		'M17n.M17n' => array(
-			'key_field' => 'frame_id'
+			'keyField' => 'frame_id'
 		),
 	);
 

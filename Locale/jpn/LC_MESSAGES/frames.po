@@ -15,50 +15,55 @@ msgstr ""
 "Language: ja\n"
 "X-Generator: Poedit 1.8.1\n"
 
-#: Frames/Controller/FramesController.php:93
+#: Frames/Controller/FramesController.php:64
 msgid "New frame %s"
 msgstr "新しいフレーム %s"
 
-#: Frames/View/Elements/delete_form.ctp:23
-msgid "Delete frame"
-msgstr "フレームの削除"
+#: Frames/View/Elements/setting_frame.ctp:74
+msgid "none"
+msgstr ""
 
-#: Frames/View/Elements/delete_form.ctp:26
-msgid "Do you want to delete the frame?"
-msgstr "フレームを削除してもよろしいですか。"
-
-#: Frames/View/Elements/frame.ctp:29
-msgid "Show flame setting"
-msgstr "フレーム設定"
-
-#: Frames/View/Elements/order_form.ctp:27
-msgid "Up frame position"
-msgstr "上に移動"
-
-#: Frames/View/Elements/order_form.ctp:32
-msgid "Down frame position"
-msgstr "下に移動"
-
-#: Frames/View/Elements/setting_header.ctp:78
+#: Frames/View/Elements/setting_frame.ctp:75
 msgid "default"
 msgstr ""
 
-#: Frames/View/Elements/setting_header.ctp:79
+#: Frames/View/Elements/setting_frame.ctp:76
 msgid "primary"
 msgstr ""
 
-#: Frames/View/Elements/setting_header.ctp:80
+#: Frames/View/Elements/setting_frame.ctp:77
 msgid "info"
 msgstr ""
 
-#: Frames/View/Elements/setting_header.ctp:81
+#: Frames/View/Elements/setting_frame.ctp:78
 msgid "success"
 msgstr ""
 
-#: Frames/View/Elements/setting_header.ctp:82
+#: Frames/View/Elements/setting_frame.ctp:79
 msgid "warning"
 msgstr ""
 
-#: Frames/View/Elements/setting_header.ctp:83
+#: Frames/View/Elements/setting_frame.ctp:80
 msgid "danger"
 msgstr ""
+
+#: Frames/View/Helper/FramesHelper.php:88
+msgid "Show flame setting"
+msgstr "フレーム設定"
+
+#: Frames/View/Helper/FramesHelper.php:138
+msgid "Up frame position"
+msgstr "上に移動"
+
+#: Frames/View/Helper/FramesHelper.php:146
+msgid "Down frame position"
+msgstr "下に移動"
+
+#: Frames/View/Helper/FramesHelper.php:168
+msgid "Delete frame"
+msgstr "フレームの削除"
+
+#: Frames/View/Helper/FramesHelper.php:173
+msgid "Do you want to delete the frame?"
+msgstr "フレームを削除してもよろしいですか。"
+

@@ -66,14 +66,17 @@ class FrameSaveFrameTest extends FramesSaveTest {
 			'Frame' => array(
 				'id' => '6',
 				'box_id' => '28',
-				'language_id' => '2',
 				'room_id' => '2',
-				'name' => 'Edit name',
 				'header_type' => 'success',
 				'key' => 'frame_3',
 				'plugin_key' => 'test_frames',
 				'is_deleted' => false,
 				'weight' => '1',
+			),
+			'FramesLanguage' => array(
+				'language_id' => '2',
+				'name' => 'Edit name',
+				'header_type' => 'success',
 			),
 		);
 

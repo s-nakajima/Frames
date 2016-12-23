@@ -17,7 +17,7 @@ App::uses('BlockFixture', 'Blocks.Test/Fixture');
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\Blocks\Test\Fixture
  */
-class Block4FramesFixture extends BlockFixture {
+class Block4framesFixture extends BlockFixture {
 
 /**
  * Model name

@@ -82,8 +82,11 @@ class FramesControllerEditTest extends FramesControllerTestCase {
 		$data = array(
 			'Frame' => array(
 				'id' => '6',
-				'name' => 'Edit name',
 				'header_type' => 'success',
+			),
+			'FramesLanguage' => array(
+				'id' => '6',
+				'name' => 'Edit name',
 			),
 		);
 

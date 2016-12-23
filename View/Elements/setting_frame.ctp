@@ -13,6 +13,7 @@ echo $this->NetCommonsHtml->css('/blocks/css/style.css');
 echo $this->NetCommonsHtml->script('/frames/js/frames.js');
 
 $frame = Current::read('Frame');
+$frame = Hash::merge($frame, Current::read('FramesLanguage', array()));
 ?>
 
 <section id="frame-<?php echo $frame['id']; ?>" class="frame panel panel-{{frame.headerType}}" ng-cloak>
@@ -34,7 +35,11 @@ $frame = Current::read('Frame');
 					'value' => Current::read('Frame.id'),
 				)); ?>
 
-			<?php echo $this->NetCommonsForm->input('Frame.name',
+			<?php echo $this->NetCommonsForm->hidden('FramesLanguage.id', array(
+					'value' => Current::read('FramesLanguage.id'),
+				)); ?>
+
+			<?php echo $this->NetCommonsForm->input('FramesLanguage.name',
 				array(
 					'label' => false,
 					'class' => 'form-control frame-name-setting',

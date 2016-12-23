@@ -223,19 +223,6 @@ class Frame extends FramesAppModel {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 
-			if (isset($data['FramesLanguage'])) {
-				$data = $this->FramesLanguage->create(
-					Hash::merge(
-						array('frame_id' => $frame['Frame']['id']),
-						$frame['FramesLanguage']
-					)
-				);
-				$result = $this->FramesLanguage->save($data);
-				if (! $result) {
-					throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
-				}
-			}
-
 			if ($this->{$model} instanceof Model && method_exists($this->{$model}, 'afterFrameSave')) {
 				$this->{$model}->afterFrameSave($frame);
 			}
@@ -249,6 +236,34 @@ class Frame extends FramesAppModel {
 		}
 
 		return $frame;
+	}
+
+/**
+ * Called after each successful save operation.
+ *
+ * @param bool $created True if this save created a new record
+ * @param array $options Options passed from Model::save().
+ * @return void
+ * @link http://book.cakephp.org/2.0/en/models/callback-methods.html#aftersave
+ * @see Model::save()
+ * @throws InternalErrorException
+ */
+	public function afterSave($created, $options = array()) {
+		if (isset($this->data['FramesLanguage'])) {
+			$data = $this->FramesLanguage->create(
+				Hash::merge(
+					array('frame_id' => $this->data['Frame']['id']),
+					$this->data['FramesLanguage']
+				)
+			);
+			$result = $this->FramesLanguage->save($data);
+			if (! $result) {
+				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+			}
+			//$this->data['FramesLanguage'] = $result['FramesLanguage'];
+		}
+
+		parent::afterSave($created, $options);
 	}
 
 /**

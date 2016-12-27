@@ -24,10 +24,6 @@ if ($this->PageLayout->plugin === 'Pages') {
 	$panelCss .= ' nc-content';
 }
 
-if (! isset($displayBackTo)) {
-	$displayBackTo = false;
-}
-
 if (!empty($centerContent)) {
 	$domId = ' id="frame-' . $frame['id'] . '"';
 } else {
@@ -56,11 +52,5 @@ if (!empty($centerContent)) {
 
 	<div class="<?php echo ($panelCss ? 'panel-body ' : ''); ?>block">
 		<?php echo $view; ?>
-
-		<?php if ($displayBackTo && ! empty($centerContent)) : ?>
-			<div class="frame-footer text-center">
-				<?php echo $this->BackTo->listLinkButton($displayBackTo); ?>
-			</div>
-		<?php endif; ?>
 	</div>
 </section>

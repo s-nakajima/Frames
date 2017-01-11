@@ -149,10 +149,23 @@ class FrameSaveFrameTest extends FramesSaveTest {
 
 		//テスト実施
 		$result = $this->$model->$methodName($data);
+		$expected = Hash::merge($data, array(
+			'FramesLanguage' => array(
+				'is_origin' => true,
+				'is_translation' => false,
+				'frame_id' => '6',
+				'id' => '19',
+			),
+		));
 
 		//チェック
+		$result = Hash::remove($result, 'FramesLanguage.created');
+		$result = Hash::remove($result, 'FramesLanguage.modified');
+		$result = Hash::remove($result, 'FramesLanguage.created_user');
+		$result = Hash::remove($result, 'FramesLanguage.modified_user');
+
 		unset($result['Frame']['modified']);
-		$this->assertEquals($result, $data);
+		$this->assertEquals($result, $expected);
 	}
 
 /**

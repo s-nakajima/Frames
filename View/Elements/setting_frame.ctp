@@ -13,7 +13,9 @@ echo $this->NetCommonsHtml->css('/blocks/css/style.css');
 echo $this->NetCommonsHtml->script('/frames/js/frames.js');
 
 $frame = Current::read('Frame');
-$frame = Hash::merge($frame, Current::read('FramesLanguage', array()));
+$frameLang = Current::read('FramesLanguage', array());
+$frameLang = Hash::remove($frameLang, 'id');
+$frame = Hash::merge($frame, $frameLang);
 ?>
 
 <section id="frame-<?php echo $frame['id']; ?>" class="frame panel panel-{{frame.headerType}}" ng-cloak>

@@ -76,7 +76,7 @@ class FramesLanguageFixture extends CakeTestFixture {
  */
 	public function init() {
 		require_once App::pluginPath('Frames') . 'Config' . DS . 'Schema' . DS . 'schema.php';
-		$this->fields = (new FramesSchema())->tables['frames_languages'];
+		$this->fields = (new FramesSchema())->tables[Inflector::tableize($this->name)];
 		parent::init();
 	}
 

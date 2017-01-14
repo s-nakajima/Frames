@@ -9,7 +9,10 @@
  * @copyright Copyright 2014, NetCommons Project
  */
 
-echo $this->NetCommonsHtml->css('/blocks/css/style.css');
+echo $this->NetCommonsHtml->css([
+	'/blocks/css/style.css',
+	'/frames/css/style.css',
+]);
 echo $this->NetCommonsHtml->script('/frames/js/frames.js');
 
 $frame = Current::read('Frame');
@@ -95,6 +98,30 @@ $frame = Hash::merge($frame, $frameLang);
 				</ul>
 			</div>
 
+			<?php if (! empty($frameLangs)) : ?>
+				<div class="btn-group">
+					<button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle select-frame-language-btn">
+						<?php echo __d('frames', 'Select languages'); ?>
+						<?php echo $this->NetCommonsForm->hidden('FramePublicLanguage.language_id', ['value' => '0']); ?>
+						<span class="caret"></span>
+					</button>
+					<ul role="select-frame-language" class="dropdown-menu select-frame-language">
+						<?php foreach ($frameLangs as $langId => $frameLangLabel) : ?>
+							<li>
+								<?php echo $this->NetCommonsForm->checkbox('FramePublicLanguage.language_id.' . $langId, array(
+									'label' => $frameLangLabel,
+									'value' => $langId,
+									'checked' => in_array($langId, $framePublicLangs, true),
+									'error' => false,
+									'hiddenField' => false,
+									'div' => array('class' => 'frame-public-lang-outer'),
+								)); ?>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+			<?php endif; ?>
+
 			<button type="submit" class="btn btn-default" ng-click="sending=true" ng-disabled="sending" onclick="submit()">
 				<?php echo __d('net_commons', 'OK'); ?>
 			</button>
@@ -104,3 +131,11 @@ $frame = Hash::merge($frame, $frameLang);
 		<?php echo $view; ?>
 	</div>
 </section>
+
+<?php echo $this->NetCommonsHtml->scriptStart(array('inline' => false)); ?>
+$(document).ready(function() {
+    $(".dropdown-menu.select-frame-language").click(function(e) {
+        e.stopPropagation();
+    });
+});
+<?php echo $this->NetCommonsHtml->scriptEnd();

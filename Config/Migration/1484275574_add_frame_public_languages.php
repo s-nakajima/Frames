@@ -1,6 +1,6 @@
 <?php
 /**
- * frames.name,frames.language_idを削除
+ * frame_public_languagesの追加
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @link http://www.netcommons.org NetCommons Project
@@ -11,7 +11,7 @@
 App::uses('NetCommonsMigration', 'NetCommons.Config/Migration');
 
 /**
- * frames.name,frames.language_idを削除
+ * frame_public_languagesの追加
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\Frames\Config\Migration

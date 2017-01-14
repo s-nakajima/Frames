@@ -1,6 +1,6 @@
 <?php
 /**
- * FramePublicLanguageFixture
+ * FrameFixture
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @link http://www.netcommons.org NetCommons Project
@@ -8,13 +8,29 @@
  * @copyright Copyright 2014, NetCommons Project
  */
 
+App::uses('FramePublicLanguageFixture', 'Frames.Test/Fixture');
+
 /**
- * FramePublicLanguageFixture
+ * FrameFixture
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\Frames\Test\Fixture
  */
-class FramePublicLanguageFixture extends CakeTestFixture {
+class FramePublicLanguage4framesFixture extends FramePublicLanguageFixture {
+
+/**
+ * Model name
+ *
+ * @var string
+ */
+	public $name = 'FramePublicLanguage';
+
+/**
+ * Full Table Name
+ *
+ * @var string
+ */
+	public $table = 'frame_public_languages';
 
 /**
  * Records
@@ -22,6 +38,30 @@ class FramePublicLanguageFixture extends CakeTestFixture {
  * @var array
  */
 	public $records = array(
+		//ヘッダー
+		array(
+			'frame_id' => '2',
+			'language_id' => '0',
+			'is_public' => '1',
+		),
+		//レフト
+		array(
+			'frame_id' => '4',
+			'language_id' => '0',
+			'is_public' => '1',
+		),
+		//ライト
+		array(
+			'frame_id' => '8',
+			'language_id' => '0',
+			'is_public' => '1',
+		),
+		//フッター
+		array(
+			'frame_id' => '10',
+			'language_id' => '0',
+			'is_public' => '1',
+		),
 		//メイン
 		array(
 			'frame_id' => '6',
@@ -60,9 +100,6 @@ class FramePublicLanguageFixture extends CakeTestFixture {
  * @return void
  */
 	public function init() {
-		require_once App::pluginPath('Frames') . 'Config' . DS . 'Schema' . DS . 'schema.php';
-		$this->fields = (new FramesSchema())->tables[Inflector::tableize($this->name)];
-
 		parent::init();
 	}
 

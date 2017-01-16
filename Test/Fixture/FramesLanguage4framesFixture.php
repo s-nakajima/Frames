@@ -46,6 +46,7 @@ class FramesLanguage4framesFixture extends FramesLanguageFixture {
 			'name' => 'Test frame header',
 			'is_origin' => true,
 			'is_translation' => false,
+			'is_original_copy' => false,
 		),
 		//レフト
 		array(
@@ -55,6 +56,7 @@ class FramesLanguage4framesFixture extends FramesLanguageFixture {
 			'name' => 'Test frame major',
 			'is_origin' => true,
 			'is_translation' => false,
+			'is_original_copy' => false,
 		),
 		//ライト
 		array(
@@ -64,6 +66,7 @@ class FramesLanguage4framesFixture extends FramesLanguageFixture {
 			'name' => 'Test frame minor',
 			'is_origin' => true,
 			'is_translation' => false,
+			'is_original_copy' => false,
 		),
 		//フッター
 		array(
@@ -73,6 +76,7 @@ class FramesLanguage4framesFixture extends FramesLanguageFixture {
 			'name' => 'Test frame footer',
 			'is_origin' => true,
 			'is_translation' => false,
+			'is_original_copy' => false,
 		),
 		//メイン
 		array(
@@ -82,6 +86,7 @@ class FramesLanguage4framesFixture extends FramesLanguageFixture {
 			'name' => 'Test frame main',
 			'is_origin' => true,
 			'is_translation' => false,
+			'is_original_copy' => false,
 		),
 		//フレーム削除（論理削除）
 		array(
@@ -91,6 +96,7 @@ class FramesLanguage4framesFixture extends FramesLanguageFixture {
 			'name' => 'Test frame main 2',
 			'is_origin' => true,
 			'is_translation' => false,
+			'is_original_copy' => false,
 		),
 		//フレームのブロックなし
 		array(
@@ -100,6 +106,7 @@ class FramesLanguage4framesFixture extends FramesLanguageFixture {
 			'name' => 'Test frame main 3',
 			'is_origin' => true,
 			'is_translation' => false,
+			'is_original_copy' => false,
 		),
 		//メイン(別ルーム(room_id=5))
 		array(
@@ -109,6 +116,7 @@ class FramesLanguage4framesFixture extends FramesLanguageFixture {
 			'name' => 'Test frame main',
 			'is_origin' => true,
 			'is_translation' => false,
+			'is_original_copy' => false,
 		),
 		//メイン(別ルーム(room_id=6、ブロックなし))
 		array(
@@ -118,6 +126,7 @@ class FramesLanguage4framesFixture extends FramesLanguageFixture {
 			'name' => 'Test frame main',
 			'is_origin' => true,
 			'is_translation' => false,
+			'is_original_copy' => false,
 		),
 	);
 

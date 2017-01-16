@@ -67,3 +67,11 @@ msgstr "フレームの削除"
 msgid "Do you want to delete the frame?"
 msgstr "フレームを削除してもよろしいですか。"
 
+msgid "Select languages"
+msgstr "表示する言語"
+
+msgid "Display of the %s page"
+msgstr "%sページで表示"
+
+msgid "Undisplay of the language page. Select of the language."
+msgstr "当言語ページでは、表示しません。表示する言語で当言語を選択してください。"

@@ -86,7 +86,7 @@ class FrameFixture extends CakeTestFixture {
  */
 	public function init() {
 		require_once App::pluginPath('Frames') . 'Config' . DS . 'Schema' . DS . 'schema.php';
-		$this->fields = (new FramesSchema())->tables['frames'];
+		$this->fields = (new FramesSchema())->tables[Inflector::tableize($this->name)];
 
 		if (class_exists('NetCommonsTestSuite') && NetCommonsTestSuite::$plugin) {
 			$records = array_keys($this->records);

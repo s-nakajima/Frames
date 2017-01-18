@@ -153,7 +153,7 @@ class FrameSaveFrameTest extends FramesSaveTest {
 			'FramesLanguage' => array(
 				'is_origin' => true,
 				'is_translation' => false,
-				'is_original_copy' => '0',
+				'is_original_copy' => false,
 				'frame_id' => '6',
 				'id' => '19',
 			),

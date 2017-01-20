@@ -98,7 +98,7 @@ $frame = Hash::merge($frame, $frameLang);
 				</ul>
 			</div>
 
-			<?php if (! empty($frameLangs)) : ?>
+			<?php if (! empty($frameLangs) && count($frameLangs) > 1) : ?>
 				<div class="btn-group">
 					<button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle select-frame-language-btn">
 						<?php echo __d('frames', 'Select languages'); ?>

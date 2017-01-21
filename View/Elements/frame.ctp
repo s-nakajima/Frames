@@ -24,7 +24,7 @@ if ($this->PageLayout->plugin === 'Pages') {
 	$panelCss .= ' nc-content';
 }
 
-if (!empty($centerContent)) {
+if (!empty($centerContent) || $containerType === Container::TYPE_MAIN) {
 	$domId = ' id="frame-' . $frame['id'] . '"';
 } else {
 	$domId = '';

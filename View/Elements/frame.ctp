@@ -11,7 +11,7 @@
  */
 
 if ($frame['header_type'] === 'none' && ! Current::isSettingMode()) {
-	$panelCss = '';
+	$panelCss = ' panel-none';
 } elseif (!empty($frame['header_type'])) {
 	$panelCss = ' panel panel-' . h($frame['header_type']);
 } else {

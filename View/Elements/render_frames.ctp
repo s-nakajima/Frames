@@ -15,8 +15,13 @@ foreach ($box['Frame'] as $frame) {
 
 	try {
 		$url = $this->PageLayout->frameActionUrl($frame);
+
+CakeLog::debug('-- -- -- ' . $url . ' start ' . microtime() . ' ----');
+$stime = microtime(true);
+
 		$view = $this->requestAction($url, array('return', 'frame_id' => $frame['id']));
 		if (! Current::isSettingMode() && strlen($view) === 0) {
+CakeLog::debug('-- -- -- ' . $url . '   end ' . microtime() . ' (' . (microtime(true) - $stime) . ') ---- ');
 			continue;
 		}
 		echo $this->element('Frames.frame', array(
@@ -30,4 +35,6 @@ foreach ($box['Frame'] as $frame) {
 	} catch (MissingControllerException $ex) {
 		CakeLog::error($ex);
 	}
+CakeLog::debug('-- -- -- ' . $url . '   end ' . microtime() . ' (' . (microtime(true) - $stime) . ') ---- ');
+
 }

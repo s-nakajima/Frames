@@ -16,12 +16,12 @@ foreach ($box['Frame'] as $frame) {
 	try {
 		$url = $this->PageLayout->frameActionUrl($frame);
 
-CakeLog::debug('-- -- -- ' . $url . ' start ' . microtime() . ' ----');
+CakeLog::debug("\t" . '-- -- -- ' . $url . ' start ' . microtime() . '');
 $stime = microtime(true);
 
 		$view = $this->requestAction($url, array('return', 'frame_id' => $frame['id']));
 		if (! Current::isSettingMode() && strlen($view) === 0) {
-CakeLog::debug('-- -- -- ' . $url . '   end ' . microtime() . ' (' . (microtime(true) - $stime) . ') ---- ');
+CakeLog::debug("\t" . '-- -- -- ' . $url . '   end ' . microtime() . "\t" . (microtime(true) - $stime) . '');
 			continue;
 		}
 		echo $this->element('Frames.frame', array(
@@ -35,6 +35,6 @@ CakeLog::debug('-- -- -- ' . $url . '   end ' . microtime() . ' (' . (microtime(
 	} catch (MissingControllerException $ex) {
 		CakeLog::error($ex);
 	}
-CakeLog::debug('-- -- -- ' . $url . '   end ' . microtime() . ' (' . (microtime(true) - $stime) . ') ---- ');
+CakeLog::debug("\t" . '-- -- -- ' . $url . '   end ' . microtime() . "\t" . (microtime(true) - $stime) . '');
 
 }

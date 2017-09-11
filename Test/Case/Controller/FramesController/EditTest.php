@@ -107,6 +107,9 @@ class FramesControllerEditTest extends FramesControllerTestCase {
 			->expects($this->once())->method('setFlashNotification')
 			->with(__d('net_commons', 'Successfully saved.'), array('class' => 'success'));
 
+		//ログイン
+		TestAuthGeneral::login($this);
+
 		//テスト実行
 		$this->_testPostAction(
 			'put', $this->__data(),

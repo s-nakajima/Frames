@@ -59,6 +59,9 @@ div.frame-public-lang-outer {
 	padding-left: 0px;
 	padding-right: 0px;
 }
+.panel-none > .panel-body {
+	padding-top: 0;
+}
 .panel.panel-none {
 	box-shadow: none;
 }

@@ -117,6 +117,35 @@ class FramesHelperFrameSettingLinkTest extends FramesHelperTestCase {
 	}
 
 /**
+ * frameSettingLink()の$settingAction引数ありで先頭に/があるケースのテスト
+ *
+ * @return void
+ */
+	public function testRootWithSettingAction() {
+		//データ生成
+		$frame = [
+			'id' => '1',
+			'plugin_key' => 'test_plugin'
+		];
+		$settingAction = '/test_plugin_2/test_plugin_blocks_2';
+		$title = null;
+		$options = [];
+
+		//テスト実施
+		$result = $this->Frames->frameSettingLink($frame, $settingAction, $title, $options);
+
+		//チェック
+		$expected =
+			'<a href="/test_plugin_2/test_plugin_blocks_2?frame_id=1&amp;page_id=4" ' .
+					'class="btn btn-default btn-sm frame-btn pull-left">' .
+				'<span class="glyphicon glyphicon-cog" aria-hidden="true"> </span> ' .
+				'<span class="sr-only">' . __d('frames', 'Show flame setting') . '</span>' .
+			'</a>';
+
+		$this->assertEquals($expected, $result);
+	}
+
+/**
  * frameSettingLink()の$title引数ありのテスト
  *
  * @return void

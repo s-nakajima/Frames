@@ -67,6 +67,7 @@ class FrameGetFrameByBoxTest extends FramesGetTest {
 				'weight' => '1',
 				'is_deleted' => false,
 				'default_action' => '',
+				'default_setting_action' => '',
 				'created_user' => null,
 				'created' => null,
 				'modified_user' => null,

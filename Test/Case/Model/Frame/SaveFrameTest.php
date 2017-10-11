@@ -114,7 +114,8 @@ class FrameSaveFrameTest extends FramesSaveTest {
 				array(
 					'block_id' => null,
 					'weight' => '1',
-					'default_action' => ''
+					'default_action' => '',
+					'default_setting_action' => '',
 				)
 			);
 		} elseif ($expected[$this->$model->alias]['is_deleted']) {

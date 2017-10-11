@@ -28,16 +28,24 @@ if (!empty($centerContent) || $containerType === Container::TYPE_MAIN) {
 	$domId = ' id="frame-' . $frame['id'] . '"';
 } else {
 	$domId = '';
+	$frameTitle = h($frame['name']);
+}
+
+if (!empty($centerContent)) {
+	$frameTitle = $this->fetch('frameTitle');
+	if (! $frameTitle) {
+		$frameTitle = h($frame['name']);
+	}
+} else {
+	$frameTitle = h($frame['name']);
 }
 ?>
 
 <section<?php echo $domId . ' class="frame' . $panelCss . ' plugin-' . strtr($frame['plugin_key'], '_', '-') . '"'; ?>>
-	<?php if ($frame['name'] || $this->PageLayout->hasBoxSetting($box)) : ?>
+	<?php if ($frameTitle || $this->PageLayout->hasBoxSetting($box)) : ?>
 		<div class="panel-heading clearfix">
 			<?php echo $this->PageLayout->getBlockStatus(true); ?>
-			<span>
-				<?php echo h($frame['name']); ?>
-			</span>
+			<span><?php echo $frameTitle; ?></span>
 
 			<?php if ($this->PageLayout->hasBoxSetting($box)): ?>
 				<div class="pull-right">

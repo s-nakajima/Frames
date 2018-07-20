@@ -100,6 +100,13 @@ class Frame extends FramesAppModel {
 			$this->bindModel($belongsTo, true);
 			$this->BlocksLanguage->useDbConfig = $this->useDbConfig;
 
+			$this->Box->useDbConfig = $this->useDbConfig;
+			if (! empty($this->FramesLanguage)) {
+				$this->FramesLanguage->useDbConfig = $this->useDbConfig;
+			}
+			if (! empty($this->FramePublicLanguage)) {
+				$this->FramePublicLanguage->useDbConfig = $this->useDbConfig;
+			}
 		}
 		return $query;
 	}

@@ -38,7 +38,10 @@ class Plugin4framesFixture extends PluginFixture {
  * @return void
  */
 	public function init() {
-		$this->records = Hash::insert($this->records, '{n}.key', 'test_frames');
+		$this->records[0]['key'] = 'test_frames';
+		$this->records[1]['key'] = 'test_frames';
+		$this->records[2]['key'] = 'test_frames1';
+		$this->records[3]['key'] = 'test_frames2';
 		parent::init();
 	}
 

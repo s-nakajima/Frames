@@ -15,7 +15,7 @@ foreach ($box['Frame'] as $frame) {
 
 	try {
 		$url = $this->PageLayout->frameActionUrl($frame);
-		$view = $this->requestAction($url, array('return', 'frame_id' => $frame['id']));
+		$view = $this->PageLayout->requestAction($url, array('return', 'frame_id' => $frame['id']));
 		if (! Current::isSettingMode() && strlen($view) === 0) {
 			continue;
 		}
